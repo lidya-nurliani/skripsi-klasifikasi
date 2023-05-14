@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Klasifikasi extends Model
+{
+    use HasFactory;
+    protected $table = 'klasifikasi';
+    protected $primarykey = "id";
+    protected $fillable = ['dataken_id', 'bahan_bakar', 'komponen_mesin', 'ban', 'lampu_utama', 'kondisi_rem'];
+
+    public function dataken() {
+        return $this->belongsTo(Dataken::class, 'dataken_id');
+    }
+}
