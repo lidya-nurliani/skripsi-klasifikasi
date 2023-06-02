@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 02:21 PM
+-- Generation Time: Jun 02, 2023 at 05:50 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -38,6 +38,23 @@ CREATE TABLE `dataken` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dataken`
+--
+
+INSERT INTO `dataken` (`id`, `jenis_kendaraan`, `tahun_pembuatan`, `no_polisi`, `no_mesin`, `no_rangka`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(3, 'Roda 2', '2008', 'KT 4522 MZ', 'HB61E-1403882', 'MH1HB61128K403561', '2023-06-01 19:21:52', '2023-06-01 19:21:52', NULL),
+(4, 'Roda 2', '2008', 'KT 4523 MZ', 'HB61E-1220372', 'MH1HB61177K219571', '2023-06-01 19:23:54', '2023-06-01 19:23:54', NULL),
+(5, 'Roda 2', '2008', 'KT 4524 MZ', 'HB61E-1216481', 'MH1HB61137K215128', '2023-06-01 19:27:03', '2023-06-01 19:27:03', NULL),
+(6, 'Roda 2', '2008', 'KT 4520 MZ', 'HB61E-1399422', 'MH1HB61148K408468', '2023-06-01 19:28:43', '2023-06-01 19:28:43', NULL),
+(7, 'Roda 2', '2008', 'KT 4526 MZ', 'HB61E-1403137', 'MH1HB61118K412039', '2023-06-01 19:29:49', '2023-06-01 19:29:49', NULL),
+(8, 'Roda 4', '1997', 'KT 8275 B', '7K-0191496', 'MHF31KF6000005766', '2023-06-01 19:31:15', '2023-06-01 19:35:12', NULL),
+(9, 'Roda 4', '2008', 'KT 1716 BZ', 'DC15385', 'MHFM1BA3J7K039806', '2023-06-01 19:33:37', '2023-06-01 19:33:37', NULL),
+(10, 'Roda 4', '2009', 'KT 1934 B', 'MR20-002711R', 'MHBF2CC3F9001501', '2023-06-01 19:37:15', '2023-06-01 19:37:15', NULL),
+(11, 'Roda 4', '2009', 'KT 1254 BZ', 'G15AID193769', 'MHYGDN42V9J-327577', '2023-06-01 19:38:52', '2023-06-01 19:38:52', NULL),
+(12, 'Roda 4', '2009', 'KT 1239 BZ', 'K3 DE40281', 'MHFM1BA3J9K171192', '2023-06-01 19:40:36', '2023-06-01 19:40:36', NULL),
+(13, 'Roda 2', '2008', 'KT 4527 MZ', 'HB61E-1403971', 'MH1HB611X8K4035', '2023-06-01 19:42:33', '2023-06-01 19:42:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -146,6 +163,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(3, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$soL.rXFvE/U7sr1HWBzbZeF52f13onmmw5MhKYOpEJzVYqEmdBI0.', NULL, '2023-05-22 04:24:39', '2023-05-22 04:24:39');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -204,7 +228,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dataken`
 --
 ALTER TABLE `dataken`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -234,7 +258,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
