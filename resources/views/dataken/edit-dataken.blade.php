@@ -172,7 +172,7 @@
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="#">
+                                    <a href="{{ route('index-klasifikasi') }}">
                                         <i class="fe-box"></i>Klasifikasi</a>
                   
                                 </li>
