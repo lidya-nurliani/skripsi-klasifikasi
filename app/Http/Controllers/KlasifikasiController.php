@@ -22,8 +22,9 @@ class KlasifikasiController extends Controller
      */
     public function create()
     {
+        $dataken = Dataken::all();
         $klasifikasi = Klasifikasi::all();
-        return view('klasifikasi.create-klasifikasi', compact('klasifikasi'));
+        return view('klasifikasi.create-klasifikasi', compact('klasifikasi', 'dataken'));
     }
 
     /**
@@ -38,7 +39,7 @@ class KlasifikasiController extends Controller
         $klasifikasi->dataken_id = $request->dataken_id;
         $klasifikasi->bahan_bakar = $request->bahan_bakar;
         $klasifikasi->komponen_mesin = $request->komponen_mesin;
-        $klasifikasi->ban_kendaraan = $request->ban_kendaraan;
+        $klasifikasi->ban = $request->ban;
         $klasifikasi->lampu_utama = $request->lampu_utama;
         $klasifikasi->kondisi_rem = $request->kondisi_rem;
        

@@ -234,29 +234,36 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="card-box">
+                                
                                 <h4 class="header-title mb-4">Form Klasifikasi</h4>
 
-                                <form>
+                                <form  action="{{ route('simpan-klasifikasi') }}" method="post" enctype="multipart/form-data">
+                                  {{csrf_field() }}
                                     <div class="form-group">
                                         <label>Jenis Kendaraan</label>
-                                        <select name="jenis_kendaraan" class="form-control">
+                                        <select name="jenis_kendaraan" class="form-control" name="dataken_id" id="dataken_id">
                                             <option value="">Pilih Jenis Kendaraan</option>
-                                            <option value="2">Roda 2</option>
-                                            <option value="4">Roda 4</option>
+                                            @foreach ($dataken as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
+
                                     <div class="form-group">
                                         <label>Tahun Pembuatan</label>
-                                        <select name="tahun_pembuatan" class="form-control">
+                                        <select name="tahun_pembuatan" class="form-control" name="dataken_id" id="dataken_id">
                                             <option value="">Pilih tahun pembuatan</option>
-                                            <option value="< 2010">2010 Kebawah</option>
-                                            <option value="> 2010">2010 Keatas</option>
+                                            @foreach ($dataken as $item)
+                                            <option value="{{ $item->id }}">
+                                                {{ $item->tahun_pembuatan}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Bahan Bakar</label>
                                         <select name="bahan_bakar" class="form-control">
-                                            <option value="">Pilih bahan bakar</option>
+                                            <option value="">Pilih jenis bahan bakar</option>
                                             <option value="Dexlite">Dexlite</option>
                                             <option value="Pertamax">Pertamax</option>
                                         </select>
@@ -264,7 +271,7 @@
                                     <div class="form-group">
                                         <label>Komponen Mesin</label>
                                         <select name="komponen_mesin" class="form-control">
-                                            <option value="">Pilih bahan bakar</option>
+                                            <option value="">Pilih Kondisi Komponen mesin</option>
                                             <option value="Baik">Baik</option>
                                             <option value="Sedang">Sedang</option>
                                             <option value="Buruk">Buruk</option>
@@ -273,7 +280,7 @@
                                     <div class="form-group">
                                         <label>Ban Kendaraan</label>
                                         <select name="ban_kendaraan" class="form-control">
-                                            <option value="">Pilih bahan bakar</option>
+                                            <option value="">Pilih Kondisi Ban</option>
                                             <option value="Baik">Baik</option>
                                             <option value="Sedang">Sedang</option>
                                             <option value="Buruk">Buruk</option>
@@ -282,7 +289,7 @@
                                     <div class="form-group">
                                         <label>Lampu Utama</label>
                                         <select name="lampu_utama" class="form-control">
-                                            <option value="">Pilih bahan bakar</option>
+                                            <option value="">Pilih Kondisi Lampu</option>
                                             <option value="Baik">Baik</option>
                                             <option value="Sedang">Sedang</option>
                                             <option value="Buruk">Buruk</option>
@@ -291,7 +298,7 @@
                                     <div class="form-group">
                                         <label>Kondisi Rem</label>
                                         <select name="kondisi_rem" class="form-control">
-                                            <option value="">Pilih bahan bakar</option>
+                                            <option value="">Pilih Kondisi Rem</option>
                                             <option value="Baik">Baik</option>
                                             <option value="Sedang">Sedang</option>
                                             <option value="Buruk">Buruk</option>
@@ -334,7 +341,7 @@
                                                 <td>{{ $item->dataken->tahun_pembuatan }}</td>
                                                 <td>{{ $item->bahan_bakar}}</td>
                                                 <td>{{ $item->komponen_mesin}}</td>
-                                                <td>{{ $item->ban_kendaraan}}</td>
+                                                <td>{{ $item->ban}}</td>
                                                 <td>{{ $item->lampu_utama}}</td>
                                                 <td>{{ $item->kondisi_rem}}</td>
                                                 <td>
