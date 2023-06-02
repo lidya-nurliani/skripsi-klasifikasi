@@ -1,12 +1,11 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
     
-<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 08:56:24 GMT -->
+<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:03 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Dashboard</title>
+        <title>Data kendaraan DISPANTPH</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -14,8 +13,10 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('template/images/favicon.ico') }}">
 
-        <!-- C3 Chart css -->
-        <link href="{{ asset('template/libs/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- third party css -->
+        <link href="{{ asset('template/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('template/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('template/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
@@ -23,9 +24,8 @@
         <link href="{{ asset('template/css/app.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
 
     </head>
-    
+
     <body data-layout="horizontal">
-        
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -48,13 +48,12 @@
                                 </a>
                                 <!-- End mobile menu toggle-->
                             </li>
-    
-                        
+  
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="{{ asset('template/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
-                                    {{ Auth::user()->name }}<i class="mdi mdi-chevron-down"></i> 
+                                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -83,8 +82,6 @@
 
                                     <div class="dropdown-divider"></div>
 
-                                    <!-- item-->
-                                    
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -133,20 +130,38 @@
                         </div>
     
                         <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                
+                            <li class="d-none d-sm-block">
+                                <form class="app-search">
+                                    <div class="app-search-box">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search...">
+                                            <div class="input-group-append">
+                                                <button class="btn" type="submit">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
                         </ul>
                         <div class="clearfix"></div>
                     </div>
                 </div>
                 <!-- end Topbar -->
 
+
+
+                
                 <div class="topbar-menu">
                     <div class="container-fluid">
                         <div id="navigation">
                             <!-- Navigation Menu-->
                             <ul class="navigation-menu">
 
-                                <li class="has-submenu">
-                                    <a href="#"> <i class="fe-airplay"></i>Home</a>
+                            <li class="has-submenu">
+                                    <a href="{{ route('home') }}"> <i class="fe-airplay"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
@@ -157,16 +172,20 @@
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="{{ route('index-klasifikasi') }}">
+                                    <a href="#">
                                         <i class="fe-box"></i>Klasifikasi</a>
                   
                                 </li>
-
 
                                 <li class="has-submenu">
                                     <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
                                 </li>
                             </ul>
+
+
+                               
+                                     
+                                      
                             <!-- End navigation menu -->
 
                             <div class="clearfix"></div>
@@ -195,32 +214,76 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dispantph</a></li>
-                                            <li class="breadcrumb-item active"><a href="javascript: void(0);">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                                            <li class="breadcrumb-item active">Datatable</li>
                                         </ol>
                                     </div>
-                    
+                                  
                                 </div>
                             </div>
                         </div>     
                         <!-- end page title --> 
 
-                        <div class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-14">
-                                    <center>
-                                        <h3 class="m-0">Selamat datang di Sistem Klasifikasi Uji Kondisi Kelayakan pada Kendaraan Bermotor</h3>
-                                    </center>
-                                </div><!-- /.col -->
-                            </div><!-- /.row -->
-                        </div><!-- /.container-fluid -->
-                    </div>
-                       
-                   
-                           
+                        <div class="content">
+    <div class="card card-info card-outline">
+        <div class="card-header">
+            <h3>Buat Data kendaraan</h3>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('simpan-dataken') }}" method="post" enctype="multipart/form-data">
+                {{csrf_field() }}
+     
+                <div class="form-group">
+                <label>Jenis Kendaraan</label>
+                    <select class="form-control select2" style="width : 100%;" name="jenis_kendaraan"
+                        id="jenis_kendaraan" placeholder="Jenis Kendaraan">
+                        <option value="">Jenis Kendaraan</option>
+                        <option value="Roda 2"> Roda 2</option>
+                        <option value="Roda 4"> Roda 4</option>
+                    </select>
+                </div>
 
-                     
+                <div class="form-group">
+                <label>Tahun</label>
+                    <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control" placeholder="tahun">
+                </div>
+
+                <div class="form-group">
+                <label>Nomor Polisi</label>
+                    <input type="text" id="no_polisi" name="no_polisi" class="form-control" placeholder="nomor polisi">
+                </div>
+
+                <div class="form-group">
+                <label>Nomor Mesin</label>
+                    <input type="text" id="no_mesin" name="no_mesin" class="form-control" placeholder="nomor mesin">
+                </div>
+
+                <div class="form-group">
+                <label>Nomor Rangka</label>
+                    <input type="text" id="no_rangka" name="no_rangka" class="form-control" placeholder="nomor rangka">
+                </div>
+               
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div><!-- end row -->
+    
+    
+                          
+                                           
+                                            
+                                      
+                            <!-- end row -->
+                        
+                    </div> <!-- end container-fluid -->
+
+                </div> <!-- end content -->
+
                 
 
                 <!-- Footer Start -->
@@ -276,7 +339,7 @@
                     </div>
             
                     <div class="mb-2">
-                        <img src="asse{{ asset('template/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail" alt="">
+                        <img src="{{ asset('template/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-3">
                         <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appStyle="{{ asset('template/css/app-rtl.min.css') }}" />
@@ -308,18 +371,30 @@
         <!-- Vendor js -->
         <script src="{{ asset('template/js/vendor.min.js') }}"></script>
 
-        <!--C3 Chart-->
-        <script src="{{ asset('template/libs/d3/d3.min.js') }}"></script>
-        <script src="{{ asset('template/libs/c3/c3.min.js') }}"></script>
+        <!-- Required datatable js -->
+        <script src="{{ asset('template/libs/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
+        <!-- Buttons examples -->
+        <script src="{{ asset('template/libs/datatables/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('template/libs/jszip/jszip.min.js') }}"></script>
+        <script src="{{ asset('template/libs/pdfmake/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('template/libs/pdfmake/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.colVis.js') }}"></script>
 
-        <script src="{{ asset('template/libs/echarts/echarts.min.js') }}"></script>
+        <!-- Responsive examples -->
+        <script src="{{ asset('template/libs/datatables/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
 
-        <script src="{{ asset('template/js/pages/dashboard.init.js') }}"></script>
+        <!-- Datatables init -->
+        <script src="{{ asset('template/js/pages/datatables.init.js') }}"></script>
 
         <!-- App js -->
         <script src="{{ asset('template/js/app.min.js') }}"></script>
         
     </body>
 
-<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 08:57:08 GMT -->
+<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:09 GMT -->
 </html>
