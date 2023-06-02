@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
     
-<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:03 GMT -->
+<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/form-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:23 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Data kendaraan DISPANTPH</title>
+        <title>Klasifikasi</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -13,10 +13,11 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('template/images/favicon.ico') }}">
 
-        <!-- third party css -->
-        <link href="{{ asset('template/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('template/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('template/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('template/libs/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" />
+        <link href="{{ asset('template/libs/switchery/switchery.min.css" rel="stylesheet') }}" type="text/css" />
+        <link href="{{ asset('template/libs/select2/select2.min.css" rel="stylesheet') }}" type="text/css" />
+        <link href="{{ asset('template/libs/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('template/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
@@ -48,12 +49,16 @@
                                 </a>
                                 <!-- End mobile menu toggle-->
                             </li>
-  
+    
+                           
+    
+                          
+    
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="{{ asset('template/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
-                                    <span class="pro-user-name ml-1">
-                                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
+                                    <span class="pro-user-name ml-1"> Hai, 
+                                    {{ Auth::user()->name }}  <i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -82,6 +87,7 @@
 
                                     <div class="dropdown-divider"></div>
 
+                                    <!-- item-->
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -151,9 +157,7 @@
                 </div>
                 <!-- end Topbar -->
 
-
-
-                
+               
                 <div class="topbar-menu">
                     <div class="container-fluid">
                         <div id="navigation">
@@ -172,7 +176,7 @@
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="#">
+                                    <a href="{{ route('create-klasifikasi') }}">
                                         <i class="fe-box"></i>Klasifikasi</a>
                   
                                 </li>
@@ -181,11 +185,6 @@
                                     <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
                                 </li>
                             </ul>
-
-
-                               
-                                     
-                                      
                             <!-- End navigation menu -->
 
                             <div class="clearfix"></div>
@@ -214,71 +213,135 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                            <li class="breadcrumb-item active">Datatable</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                                            <li class="breadcrumb-item active">Form Advanced</li>
                                         </ol>
                                     </div>
-                                  
+                                    <h4 class="page-title">silahkan Isi data Klasifikasi</h4>
                                 </div>
                             </div>
                         </div>     
                         <!-- end page title --> 
 
-                        <div class="content">
-    <div class="card card-info card-outline">
-        <div class="card-header">
-            <h3>Buat Data kendaraan</h3>
-        </div>
-        <div class="card-body">
-            <form action="{{ route('simpan-dataken') }}" method="post" enctype="multipart/form-data">
-                {{csrf_field() }}
-     
-                <div class="form-group">
-                <label>Jenis Kendaraan</label>
-                    <select class="form-control select2" style="width : 100%;" name="jenis_kendaraan"
-                        id="jenis_kendaraan" placeholder="Jenis Kendaraan">
-                        <option value="">Jenis Kendaraan</option>
-                        <option value="Roda 2"> Roda 2</option>
-                        <option value="Roda 4"> Roda 4</option>
-                    </select>
-                </div>
+                        <div class="row">
+                            <div class="col-lg-6">
 
-                <div class="form-group">
-                <label>Tahun</label>
-                    <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control" placeholder="tahun">
-                </div>
+                            <form action="{{ route('simpan-klasifikasi') }}" method="post" enctype="multipart/form-data">
+                             {{csrf_field() }}
+                                <div class="card-box">
+                                    <h4 class="header-title">Input Data Uji</h4>
+                                    <label class="mb-1 mt-3 text-muted">Jenis Kendaraan</label>
+                            
+                                    <select class="selectpicker" data-style="btn-outline-primary">
+                                        <option>Roda 2</option>
+                                        <option>Roda 4</option>
+                                    </select>
 
-                <div class="form-group">
-                <label>Nomor Polisi</label>
-                    <input type="text" id="no_polisi" name="no_polisi" class="form-control" placeholder="nomor polisi">
-                </div>
+                                    <label class="mb-1 mt-3 text-muted">Tahun Pembuatan</label>
+                                    <select class="selectpicker" data-style="btn-outline-primary">
+                                        <option>2010 Kebawah</option>
+                                        <option>2010 Keatas</option>
+                                    </select>
 
-                <div class="form-group">
-                <label>Nomor Mesin</label>
-                    <input type="text" id="no_mesin" name="no_mesin" class="form-control" placeholder="nomor mesin">
-                </div>
+                                    <label class="mb-1 mt-3 text-muted">Bahan Bakar</label>
+                                    <select class="selectpicker" data-style="btn-outline-primary">
+                                        <option>Dexlite</option>
+                                        <option>Pertamax</option>
+                                    </select>
 
-                <div class="form-group">
-                <label>Nomor Rangka</label>
-                    <input type="text" id="no_rangka" name="no_rangka" class="form-control" placeholder="nomor rangka">
-                </div>
-               
-                
-                <div class="form-group">
-                    <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div><!-- end row -->
+                                    <label class="mb-1 mt-3 text-muted">Komponen Mesin</label>
+                                    <select class="selectpicker" data-style="btn-outline-primary">
+                                        <option>Baik</option>
+                                        <option>Sedang</option>
+                                        <option>Buruk</option>
+                                    </select>
+
+                                    <label class="mb-1 mt-3 text-muted">Ban Kendaraan</label>
+                                    <select class="selectpicker" data-style="btn-outline-primary">
+                                        <option>Baik</option>
+                                        <option>Sedang</option>
+                                        <option>Buruk</option>
+                                    </select>
+
+                                    <label class="mb-1 mt-3 text-muted">lampu utama</label>
+                                    <select class="selectpicker" data-style="btn-outline-primary">
+                                        <option>Baik</option>
+                                        <option>Sedang</option>
+                                        <option>Buruk</option>
+                                    </select>
+
+                                    <label class="mb-1 mt-3 text-muted">Kondisi Rem</label>
+                                    <select class="selectpicker" data-style="btn-outline-primary">
+                                        <option>Baik</option>
+                                        <option>Sedang</option>
+                                        <option>Buruk</option>
+                                    </select>
+
+                                            <button type="submit" class="btn btn-primary waves-effect width-md waves-light">Klasifikasi</button> 
+                                     </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col-12">
+                                    <div class="card-box table-responsive">
+
+                                        <table id="datatable" class="table table-bordered  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+    
+                                            <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Jenis Kendaraan</th>
+                                                <th>Tahun Pembuatan</th>
+                                                <th>Bahan Bakar</th>
+                                                <th>Komponen Mesin</th>
+                                                <th>Ban Kendaraan</th>
+                                                <th>Lampu Utama</th>
+                                                <th>Kondisi Rem</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                            </thead>
     
     
-                          
-                                           
-                                            
-                                      
-                            <!-- end row -->
+                                            <tbody>
+                                            @foreach ($klasifikasi as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->dataken->jenis_kendaraan }}</td>
+                                                <td>{{ $item->dataken->tahun_pembuatan }}</td>
+                                                <td>{{ $item->bahan_bakar}}</td>
+                                                <td>{{ $item->komponen_mesin}}</td>
+                                                <td>{{ $item->ban_kendaraan}}</td>
+                                                <td>{{ $item->lampu_utama}}</td>
+                                                <td>{{ $item->kondisi_rem}}</td>
+                                                <td>
+
+                                                <center>
+                                                    <a href="{{ url('edit-klasifikasi', $item->id) }}"><i class="fas fa-edit"></i></a>
+                                                    |
+                                                    <a href="{{ url('delete-klasifikasi', $item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
+                                                </center>
+                                               
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+ 
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <!-- end row -->
+
+                                    
+                                </div> <!-- end card-box -->
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
                         
                     </div> <!-- end container-fluid -->
 
@@ -291,7 +354,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                2023 &copy; DISPANTPH <a href="#">Coderthemes</a>
+                                2023 &copy; DISPANTPH<a href="#">Coderthemes</a>
                             </div>
                         </div>
                     </div>
@@ -371,30 +434,23 @@
         <!-- Vendor js -->
         <script src="{{ asset('template/js/vendor.min.js') }}"></script>
 
-        <!-- Required datatable js -->
-        <script src="{{ asset('template/libs/datatables/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('template/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
-        <!-- Buttons examples -->
-        <script src="{{ asset('template/libs/datatables/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ asset('template/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('template/libs/jszip/jszip.min.js') }}"></script>
-        <script src="{{ asset('template/libs/pdfmake/pdfmake.min.js') }}"></script>
-        <script src="{{ asset('template/libs/pdfmake/vfs_fonts.js') }}"></script>
-        <script src="{{ asset('template/libs/datatables/buttons.html5.min.js') }}"></script>
-        <script src="{{ asset('template/libs/datatables/buttons.print.min.js') }}"></script>
-        <script src="{{ asset('template/libs/datatables/buttons.colVis.js') }}"></script>
+        <script src="{{ asset('template/libs/switchery/switchery.min.js') }}"></script>
+        <script src="{{ asset('template/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
+        <script src="{{ asset('template/libs/select2/select2.min.js') }}"></script>
+        <script src="{{ asset('template/libs/jquery-mockjax/jquery.mockjax.min.js') }}"></script>
+        <script src="{{ asset('template/libs/autocomplete/jquery.autocomplete.min.js') }}"></script>
+        <script src="{{ asset('template/libs/bootstrap-select/bootstrap-select.min.js') }}"></script>
+        <script src="{{ asset('template/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+        <script src="{{ asset('template/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+        <script src="{{ asset('template/libs/bootstrap-filestyle2/bootstrap-filestyle.min.js') }}"></script>
 
-        <!-- Responsive examples -->
-        <script src="{{ asset('template/libs/datatables/dataTables.responsive.min.js') }}"></script>
-        <script src="{{ asset('template/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
-
-        <!-- Datatables init -->
-        <script src="{{ asset('template/js/pages/datatables.init.js') }}"></script>
+        <!-- Init js-->
+        <script src="{{ asset('template/js/pages/form-advanced.init.js') }}"></script>
 
         <!-- App js -->
         <script src="{{ asset('template/js/app.min.js') }}"></script>
         
     </body>
 
-<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:09 GMT -->
+<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/form-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:27 GMT -->
 </html>

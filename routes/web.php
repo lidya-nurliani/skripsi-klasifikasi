@@ -34,7 +34,6 @@ Route::get('/delete-dataken/{id}', [DatakenController::class, 'destroy'])->name(
 
 //dafken
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/index-klasifikasi', [KlasifikasiController::class, 'index'])->name('index-klasifikasi');
 Route::get('/create-klasifikasi', [KlasifikasiController::class, 'create'])->name('create-klasifikasi');
 Route::post('/simpan-klasifikasi', [KlasifikasiController::class, 'store'])->name('simpan-klasifikasi');
 Route::get('/edit-klasifikasi/{id}', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');

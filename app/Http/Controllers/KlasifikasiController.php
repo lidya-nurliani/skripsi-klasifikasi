@@ -13,11 +13,7 @@ class KlasifikasiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $klasifikasi = Klasifikasi::all();
-        return view('klasifikasi.index-klasifikasi',compact('klasifikasi'));
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +23,7 @@ class KlasifikasiController extends Controller
     public function create()
     {
         $klasifikasi = Klasifikasi::all();
-        return view('klasifikasi.create-klasifikasi', compact('dataken'));
+        return view('klasifikasi.create-klasifikasi', compact('klasifikasi'));
     }
 
     /**
@@ -40,10 +36,15 @@ class KlasifikasiController extends Controller
     {
         $klasifikasi = new Klasifikasi;
         $klasifikasi->dataken_id = $request->dataken_id;
+        $klasifikasi->bahan_bakar = $request->bahan_bakar;
+        $klasifikasi->komponen_mesin = $request->komponen_mesin;
+        $klasifikasi->ban_kendaraan = $request->ban_kendaraan;
+        $klasifikasi->lampu_utama = $request->lampu_utama;
+        $klasifikasi->kondisi_rem = $request->kondisi_rem;
        
         $klasifikasi->save();
 
-        return redirect ('index-klasifikasi')->with('toast_success', 'data berhasil Tersimpan!');
+        return redirect ('create-klasifikasi')->with('toast_success', 'data berhasil Tersimpan!');
     }
 
     /**
@@ -82,7 +83,7 @@ class KlasifikasiController extends Controller
         $klasifikasi = Klasifikasi::findorfail($id);
         $klasifikasi->update($request->all());
 
-        return redirect ('index-klasifikasi')->with('toast_success', 'Data Berhasil Diubah!');
+        return redirect ('create-klasifikasi')->with('toast_success', 'Data Berhasil Diubah!');
     }
 
     /**
