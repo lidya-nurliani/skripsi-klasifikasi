@@ -241,7 +241,7 @@
                                   {{csrf_field() }}
                                     <div class="form-group">
                                         <label>Jenis Kendaraan</label>
-                                        <select name="jenis_kendaraan" class="form-control" name="dataken_id" id="dataken_id">
+                                        <select class="form-control" name="dataken_id" >
                                             <option value="">Pilih Jenis Kendaraan</option>
                                             @foreach ($dataken as $item)
                                             <option value="{{ $item->id }}">
@@ -252,7 +252,7 @@
 
                                     <div class="form-group">
                                         <label>Tahun Pembuatan</label>
-                                        <select name="tahun_pembuatan" class="form-control" name="dataken_id" id="dataken_id">
+                                        <select name="tahun_pembuatan" class="form-control" >
                                             <option value="">Pilih tahun pembuatan</option>
                                             @foreach ($dataken as $item)
                                             <option value="{{ $item->id }}">
@@ -260,6 +260,7 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label>Bahan Bakar</label>
                                         <select name="bahan_bakar" class="form-control">
@@ -279,7 +280,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Ban Kendaraan</label>
-                                        <select name="ban_kendaraan" class="form-control">
+                                        <select name="ban" class="form-control">
                                             <option value="">Pilih Kondisi Ban</option>
                                             <option value="Baik">Baik</option>
                                             <option value="Sedang">Sedang</option>

@@ -17,7 +17,7 @@ class CreateKlasifikasiTable extends Migration
             $table->id();
             $table->BigInteger('dataken_id')->unsigned();
             $table->string('bahan_bakar');
-            $table->date('komponen_mesin');
+            $table->string('komponen_mesin');
             $table->string('ban');
             $table->string('lampu_utama');
             $table->string('kondisi_rem');

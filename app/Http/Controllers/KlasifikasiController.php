@@ -35,6 +35,7 @@ class KlasifikasiController extends Controller
      */
     public function store(Request $request)
     {
+       
         $klasifikasi = new Klasifikasi;
         $klasifikasi->dataken_id = $request->dataken_id;
         $klasifikasi->bahan_bakar = $request->bahan_bakar;
