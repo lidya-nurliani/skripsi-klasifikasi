@@ -242,6 +242,7 @@
                                             <thead>
                                             <tr>
                                                 <th>No</th>
+                                                <th>Merk Kendaraan</th>
                                                 <th>Jenis Kendaraan</th>
                                                 <th>Tahun Pembuatan</th>
                                                 <th>no polisi</th>
@@ -256,6 +257,7 @@
                                             @foreach ($dataken as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->merk_kendaraan}}</td>
                                                 <td>{{ $item->jenis_kendaraan}}</td>
                                                 <td>{{ $item->tahun_pembuatan}}</td>
                                                 <td>{{ $item->no_polisi}}</td>

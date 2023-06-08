@@ -243,6 +243,12 @@
                             </div>
 
                             <div class="form-group">
+                            <label>Merk Kendaraan</label>
+                                <input type="text" id="merk_kendaraan" name="merk_kendaraan" class="form-control" placeholder="Merk"
+                                    value="{{ $dataken->merk_kendaraan }}">
+                                    </div>
+
+                            <div class="form-group">
                             <label>Tahun</label>
                                 <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control" placeholder="tahun"
                                     value="{{ $dataken->tahun_pembuatan }}">

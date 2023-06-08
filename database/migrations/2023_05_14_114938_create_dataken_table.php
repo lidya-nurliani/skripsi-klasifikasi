@@ -15,6 +15,7 @@ class CreateDatakenTable extends Migration
     {
         Schema::create('dataken', function (Blueprint $table) {
             $table->id();
+            $table->string('merk_kendaraan');
             $table->string('jenis_kendaraan');
             $table->string('tahun_pembuatan');
             $table->string('no_polisi');

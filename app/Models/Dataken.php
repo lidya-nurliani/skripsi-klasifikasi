@@ -9,5 +9,5 @@ class Dataken extends Model
 {
     use HasFactory;
     protected $table = "dataken";
-    protected $fillable = [ 'jenis_kendaraan','tahun_pembuatan', 'no_polisi', 'no_mesin', 'no_rangka'];
+    protected $fillable = [ 'merk_kendaraan','jenis_kendaraan','tahun_pembuatan', 'no_polisi', 'no_mesin', 'no_rangka'];
 }

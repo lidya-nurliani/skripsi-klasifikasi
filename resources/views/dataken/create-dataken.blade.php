@@ -235,6 +235,11 @@
                 {{csrf_field() }}
      
                 <div class="form-group">
+                <label>Merk Kendaraan</label>
+                    <input type="text" id="merk_kendaraan" name="merk_kendaraan" class="form-control" placeholder="Merk">
+                </div>
+
+                <div class="form-group">
                 <label>Jenis Kendaraan</label>
                     <select class="form-control select2" style="width : 100%;" name="jenis_kendaraan"
                         id="jenis_kendaraan" placeholder="Jenis Kendaraan">

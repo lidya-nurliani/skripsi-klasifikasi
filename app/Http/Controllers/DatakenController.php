@@ -37,6 +37,7 @@ class DatakenController extends Controller
     public function store(Request $request)
     {
         $dataken = new Dataken;
+        $dataken->merk_kendaraan = $request->merk_kendaraan;
         $dataken->jenis_kendaraan = $request->jenis_kendaraan;
         $dataken->tahun_pembuatan = $request->tahun_pembuatan;
         $dataken->no_polisi = $request->no_polisi;
@@ -81,6 +82,7 @@ class DatakenController extends Controller
     public function update(Request $request, $id)
     {
         $dataken = Dataken::findorfail($id);
+        $dataken->merk_kendaraan = $request->merk_kendaraan;
         $dataken->jenis_kendaraan = $request->jenis_kendaraan;
         $dataken->tahun_pembuatan = $request->tahun_pembuatan;
         $dataken->no_polisi = $request->no_polisi;
