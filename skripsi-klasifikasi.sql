@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2023 at 05:50 AM
+-- Generation Time: Jun 15, 2023 at 05:45 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dataken` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `merk_kendaraan` varchar(255) NOT NULL,
   `jenis_kendaraan` varchar(255) NOT NULL,
   `tahun_pembuatan` varchar(255) NOT NULL,
   `no_polisi` varchar(255) NOT NULL,
@@ -43,18 +44,57 @@ CREATE TABLE `dataken` (
 -- Dumping data for table `dataken`
 --
 
-INSERT INTO `dataken` (`id`, `jenis_kendaraan`, `tahun_pembuatan`, `no_polisi`, `no_mesin`, `no_rangka`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(3, 'Roda 2', '2008', 'KT 4522 MZ', 'HB61E-1403882', 'MH1HB61128K403561', '2023-06-01 19:21:52', '2023-06-01 19:21:52', NULL),
-(4, 'Roda 2', '2008', 'KT 4523 MZ', 'HB61E-1220372', 'MH1HB61177K219571', '2023-06-01 19:23:54', '2023-06-01 19:23:54', NULL),
-(5, 'Roda 2', '2008', 'KT 4524 MZ', 'HB61E-1216481', 'MH1HB61137K215128', '2023-06-01 19:27:03', '2023-06-01 19:27:03', NULL),
-(6, 'Roda 2', '2008', 'KT 4520 MZ', 'HB61E-1399422', 'MH1HB61148K408468', '2023-06-01 19:28:43', '2023-06-01 19:28:43', NULL),
-(7, 'Roda 2', '2008', 'KT 4526 MZ', 'HB61E-1403137', 'MH1HB61118K412039', '2023-06-01 19:29:49', '2023-06-01 19:29:49', NULL),
-(8, 'Roda 4', '1997', 'KT 8275 B', '7K-0191496', 'MHF31KF6000005766', '2023-06-01 19:31:15', '2023-06-01 19:35:12', NULL),
-(9, 'Roda 4', '2008', 'KT 1716 BZ', 'DC15385', 'MHFM1BA3J7K039806', '2023-06-01 19:33:37', '2023-06-01 19:33:37', NULL),
-(10, 'Roda 4', '2009', 'KT 1934 B', 'MR20-002711R', 'MHBF2CC3F9001501', '2023-06-01 19:37:15', '2023-06-01 19:37:15', NULL),
-(11, 'Roda 4', '2009', 'KT 1254 BZ', 'G15AID193769', 'MHYGDN42V9J-327577', '2023-06-01 19:38:52', '2023-06-01 19:38:52', NULL),
-(12, 'Roda 4', '2009', 'KT 1239 BZ', 'K3 DE40281', 'MHFM1BA3J9K171192', '2023-06-01 19:40:36', '2023-06-01 19:40:36', NULL),
-(13, 'Roda 2', '2008', 'KT 4527 MZ', 'HB61E-1403971', 'MH1HB611X8K4035', '2023-06-01 19:42:33', '2023-06-01 19:42:33', NULL);
+INSERT INTO `dataken` (`id`, `merk_kendaraan`, `jenis_kendaraan`, `tahun_pembuatan`, `no_polisi`, `no_mesin`, `no_rangka`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 'toyota kijang pick up', 'Roda 4', '1997', 'KT 8275 B', '7K-0191496', 'MHF31KF000005766', '2023-06-15 05:41:48', '2023-06-15 05:41:48', NULL),
+(3, 'toyota new avanza/1300 CC', 'Roda 4', '2008', 'KT 1716 BZ', 'DC15385', 'MHFM1BA3J7K039806', '2023-06-15 05:43:55', '2023-06-15 05:43:55', NULL),
+(4, 'nissan X trail', 'Roda 4', '2009', 'KT 1934 B', 'MR20-002711R', 'MHBF2CC3F9001501', '2023-06-15 05:45:16', '2023-06-15 05:45:16', NULL),
+(5, 'suzuki APV 6x', 'Roda 4', '2009', 'KT 1254 BZ', 'G15AID193769', 'MHYGDN42V9-327577', '2023-06-15 05:46:27', '2023-06-15 05:46:27', NULL),
+(6, 'toyota avanza 1.3 g', 'Roda 4', '2009', 'KT 1239 BZ', 'K3 DE40281', 'MHFM1BA3J9K171192', '2023-06-15 05:50:43', '2023-06-15 05:50:43', NULL),
+(7, 'mitsubishi / pajero sport', 'Roda 4', '2011', 'KT 37', '4D56UCCY9756', 'MMBGYKH40CF0022825', '2023-06-15 05:52:49', '2023-06-15 05:52:49', NULL),
+(8, 'toyota hilux tipe G double cabin', 'Roda 4', '2013', 'KT 8392 BZ', '2KDS173430', 'MROFR22G1D0753856', '2023-06-15 05:59:51', '2023-06-15 05:59:51', NULL),
+(9, 'toyota hilux tipe G double cabin', 'Roda 4', '2013', 'KT 8440 BZ', '2KDS147190', 'MROFR22G2D075J431', '2023-06-15 06:01:42', '2023-06-15 06:01:42', NULL),
+(10, 'hilux double cabin 2.4', 'Roda 4', '2022', 'KT 8950 M', '2GD1203703', 'MR0BB3CD6N0002976', '2023-06-15 06:04:30', '2023-06-15 06:04:30', NULL),
+(11, 'Mitsubishi Pajero Sport 2.5 glx', 'Roda 4', '2022', 'KT 23', '4D56YBH7061', 'MK2KSWMDNNJ000510', '2023-06-15 06:06:00', '2023-06-15 06:06:00', NULL),
+(12, 'toyota avanza 1300', 'Roda 4', '2008', 'KT 1746 MZ', 'DC67046', 'MHFM1BA3J8K071529', '2023-06-15 06:07:13', '2023-06-15 06:07:13', NULL),
+(13, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4522 MZ', 'HB61E-1403882', 'MH1HB61128K403561', '2023-06-15 06:17:10', '2023-06-15 06:17:10', NULL),
+(15, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4523 MZ', 'HB61E-1220372', 'MH1HB61177K219571', '2023-06-15 06:18:17', '2023-06-15 06:40:32', NULL),
+(16, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4524 MZ', 'HB61E-1216481', 'MH1HB61137K215128', '2023-06-15 06:33:18', '2023-06-15 06:41:03', NULL),
+(17, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4520 MZ', 'HB61E-1399422', 'MH1HB61148K408468', '2023-06-15 06:35:09', '2023-06-15 06:35:09', NULL),
+(18, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4526 MZ', 'HB61E-1403137', 'MH1HB61118K412039', '2023-06-15 06:39:19', '2023-06-15 06:39:19', NULL),
+(19, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4527 MZ', 'HB61E-1403971', 'MH1HB611X8K403548', '2023-06-15 06:47:59', '2023-06-15 06:47:59', NULL),
+(20, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4528 MZ', 'HB61E-1403069', 'MH1HB61148K412018', '2023-06-15 06:49:42', '2023-06-15 06:49:42', NULL),
+(21, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4530 MZ', 'HB61E-1409616', 'MH1HB61168K411890', '2023-06-15 06:53:35', '2023-06-15 06:53:35', NULL),
+(22, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4531 MZ', 'HB61E-1421864', 'MH1HB61158K423609', '2023-06-15 06:54:52', '2023-06-15 06:54:52', NULL),
+(23, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4532 MZ', 'HB61E-1411841', 'MH1HB61188K415570', '2023-06-15 06:55:56', '2023-06-15 06:55:56', NULL),
+(24, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4533 MZ', 'HB61E-1427928', 'MH1HB61148K427523', '2023-06-15 06:57:15', '2023-06-15 06:57:15', NULL),
+(25, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4534 MZ', 'HB61E-1393510', 'MH1HB61198K397872', '2023-06-15 06:58:51', '2023-06-15 06:58:51', NULL),
+(26, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4536 MZ', 'HB61E-1420242', 'MH1HB61138K425987', '2023-06-15 07:00:51', '2023-06-15 07:00:51', NULL),
+(27, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4538 MZ', 'HB61E-1197802', 'MH1HB61167K202809', '2023-06-15 07:01:53', '2023-06-15 07:01:53', NULL),
+(28, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4539 MZ', 'HB61E-1413690', 'MH1HB61178K416662', '2023-06-15 07:03:15', '2023-06-15 07:03:15', NULL),
+(29, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4540 MZ', 'HB61E-1420271', 'MH1HB61148K425982', '2023-06-15 07:08:56', '2023-06-15 07:08:56', NULL),
+(30, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4541 MZ', 'HB61E-1403002', 'MH1HB61198K412080', '2023-06-15 07:09:51', '2023-06-15 07:09:51', NULL),
+(31, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4542 MZ', 'HB61E-1403020', 'MH1HB61198K412046', '2023-06-15 07:11:17', '2023-06-15 07:11:17', NULL),
+(32, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4543 MZ', 'HB61E-1206396', 'MH1HB61117K217895', '2023-06-15 07:12:36', '2023-06-15 07:12:36', NULL),
+(33, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4546 MZ', 'HB61E-1407139', 'MH1HB61108K407348', '2023-06-15 07:14:34', '2023-06-15 07:14:34', NULL),
+(34, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4548 MZ', 'HB61E-1409609', 'MH1HB61108K420021', '2023-06-15 07:15:42', '2023-06-15 07:15:42', NULL),
+(35, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4549 MZ', 'HB61E-1410360', 'MH1HB61188K41089', '2023-06-15 07:16:44', '2023-06-15 07:16:44', NULL),
+(36, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4550 MZ', 'HB61E-1424446', 'MH1HB61158K429149', '2023-06-15 07:18:12', '2023-06-15 07:18:12', NULL),
+(37, 'honda revo / bebek 110 cc', 'Roda 2', '2008', 'KT 4551 MZ', 'HB61E-1403147', 'MH1HB61188K412037', '2023-06-15 07:19:32', '2023-06-15 07:19:32', NULL),
+(38, 'honda revo / bebek 110 cc', 'Roda 2', '2008', '-', '-', '-', '2023-06-15 07:20:17', '2023-06-15 07:20:17', NULL),
+(39, 'honda NF', 'Roda 2', '2009', 'KT 4761 MZ', 'JBC2E-1053385', 'MH1JBC2199K052583', '2023-06-15 07:21:47', '2023-06-15 07:21:47', NULL),
+(40, 'honda NF', 'Roda 2', '2009', 'KT 4762 MZ', 'JBC2E-1053352', 'MH1JBC2169K052573', '2023-06-15 07:24:36', '2023-06-15 07:24:36', NULL),
+(41, 'honda NF', 'Roda 2', '2009', 'KT 4763 MZ', 'JBC2E-1053382', 'MH1JBC2179K052579', '2023-06-15 07:25:49', '2023-06-15 07:25:49', NULL),
+(42, 'honda NF', 'Roda 2', '2009', 'KT 4765 MZ', 'JBC2E-1053395', 'MH1JBC2119K052576', '2023-06-15 07:29:01', '2023-06-15 07:29:01', NULL),
+(43, 'honda NF', 'Roda 2', '2009', 'KT 4766 MZ', 'JBC2E-1053397', 'MH1JBC2149K052605', '2023-06-15 07:30:44', '2023-06-15 07:30:44', NULL),
+(44, 'honda NF', 'Roda 2', '2009', 'KT 4767 MZ', 'JBC2E-1050486', 'MH1JBC2139K047654', '2023-06-15 07:31:45', '2023-06-15 07:31:45', NULL),
+(45, 'honda NF', 'Roda 2', '2009', 'KT 4768 MZ', 'JBC2E-1050480', 'MH1JBC2109K0476661', '2023-06-15 07:34:49', '2023-06-15 07:34:49', NULL),
+(46, 'honda NF', 'Roda 2', '2009', 'KT 4769 MZ', 'JBC2E-1050459', 'MH1JBC2109K047658', '2023-06-15 07:35:47', '2023-06-15 07:35:47', NULL),
+(47, 'honda NF', 'Roda 2', '2009', 'KT 4770 MZ', 'JBC2E-1050436', 'MH1JBC2129K047662', '2023-06-15 07:36:53', '2023-06-15 07:36:53', NULL),
+(48, 'honda NF', 'Roda 2', '2009', 'KT 4771 MZ', 'JBC2E-1050474', 'MH1JBC2169K047650', '2023-06-15 07:38:22', '2023-06-15 07:38:22', NULL),
+(49, 'honda NF', 'Roda 2', '2009', 'KT 4773 MZ', 'JBC2E-1052855', 'MH1JBC2129K0552117', '2023-06-15 07:39:17', '2023-06-15 07:39:17', NULL),
+(50, 'honda NF', 'Roda 2', '2009', 'KT 4774 MZ', 'JBC2E-1050539', 'MH1JBC2149K052023', '2023-06-15 07:41:43', '2023-06-15 07:41:43', NULL),
+(51, 'honda NF', 'Roda 2', '2009', 'KT 4775 MZ', 'JBC2E-1050542', 'MH1JBC2129K052036', '2023-06-15 07:42:40', '2023-06-15 07:42:40', NULL),
+(52, 'honda NF', 'Roda 2', '2009', 'KT 4776 MZ', 'JBC2E-1052876', 'MH1JBC2139K052062', '2023-06-15 07:43:38', '2023-06-15 07:43:38', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,7 +122,7 @@ CREATE TABLE `klasifikasi` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `dataken_id` bigint(20) UNSIGNED NOT NULL,
   `bahan_bakar` varchar(255) NOT NULL,
-  `komponen_mesin` date NOT NULL,
+  `komponen_mesin` varchar(255) NOT NULL,
   `ban` varchar(255) NOT NULL,
   `lampu_utama` varchar(255) NOT NULL,
   `kondisi_rem` varchar(255) NOT NULL,
@@ -108,12 +148,12 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2023_05_14_114938_create_dataken_table', 2),
-(6, '2023_05_14_115512_create_klasifikasi_table', 3);
+(28, '2014_10_12_000000_create_users_table', 1),
+(29, '2014_10_12_100000_create_password_resets_table', 1),
+(30, '2019_08_19_000000_create_failed_jobs_table', 1),
+(31, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(32, '2023_05_14_114938_create_dataken_table', 1),
+(33, '2023_05_14_115512_create_klasifikasi_table', 1);
 
 -- --------------------------------------------------------
 
@@ -167,7 +207,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(3, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$soL.rXFvE/U7sr1HWBzbZeF52f13onmmw5MhKYOpEJzVYqEmdBI0.', NULL, '2023-05-22 04:24:39', '2023-05-22 04:24:39');
+(1, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$a1h8.Hu0t3ww9HB6U10AcOUSOaLZXdHxtp1ddADFogTDxP6.4R1zG', NULL, '2023-06-08 09:05:23', '2023-06-08 09:05:23');
 
 --
 -- Indexes for dumped tables
@@ -228,7 +268,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dataken`
 --
 ALTER TABLE `dataken`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -240,13 +280,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -258,7 +298,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
