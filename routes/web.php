@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DatakenController;
 use App\Http\Controllers\KlasifikasiController;
+use App\Http\Controllers\PrediksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +43,5 @@ Route::post('/simpan-klasifikasi', [KlasifikasiController::class, 'store'])->nam
 Route::get('/edit-klasifikasi/{id}', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');
 Route::post('/update-klasifikasi/{id}', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
 Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy'])->name('delete-klasifikasi');
+
+Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');

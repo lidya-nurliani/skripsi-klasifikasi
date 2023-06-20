@@ -16,11 +16,14 @@ class CreateKlasifikasiTable extends Migration
         Schema::create('klasifikasi', function (Blueprint $table) {
             $table->id();
             $table->BigInteger('dataken_id')->unsigned();
+            $table->string('jenis_kendaraan');
+            $table->string('tahun_pembuatan');
             $table->string('bahan_bakar');
             $table->string('komponen_mesin');
             $table->string('ban');
             $table->string('lampu_utama');
             $table->string('kondisi_rem');
+            $table->string('kelayakan');
             $table->timestamps();
             $table->softDeletes();
 

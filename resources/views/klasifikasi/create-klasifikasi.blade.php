@@ -189,6 +189,12 @@
                             </li>
 
                             <li class="has-submenu">
+                                <a href="{{ route('prediksi') }}">
+                                    <i class="fe-box"></i>
+                                Prediksi</a>
+                            </li>
+
+                            <li class="has-submenu">
                                 <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
                             </li>
                         </ul>
@@ -245,18 +251,7 @@
                                             <option value="">Pilih Jenis Kendaraan</option>
                                             @foreach ($dataken as $item)
                                             <option value="{{ $item->id }}">
-                                                {{ $item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Tahun Pembuatan</label>
-                                        <select name="tahun_pembuatan" class="form-control" >
-                                            <option value="">Pilih tahun pembuatan</option>
-                                            @foreach ($dataken as $item)
-                                            <option value="{{ $item->id }}">
-                                                {{ $item->tahun_pembuatan}}</option>
+                                                {{ $item->merk_kendaraan." | ".$item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -305,6 +300,14 @@
                                             <option value="Buruk">Buruk</option>
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Kelayakan</label>
+                                        <select name="kelayakan" class="form-control">
+                                            <option value="">Pilih Kelayakan</option>
+                                            <option value="Layak">Layak</option>
+                                            <option value="Tidak Layak">Tidak Layak</option>
+                                        </select>
+                                    </div>
                                     <button type="submit" class="btn btn-primary">Klasifikasi</button>
                                 </form>
                             </div>
@@ -322,6 +325,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
+                                                <th>Kendaraan</th>
                                                 <th>Jenis Kendaraan</th>
                                                 <th>Tahun Pembuatan</th>
                                                 <th>Bahan Bakar</th>
@@ -329,6 +333,7 @@
                                                 <th>Ban Kendaraan</th>
                                                 <th>Lampu Utama</th>
                                                 <th>Kondisi Rem</th>
+                                                <th>Kelayakan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -338,13 +343,15 @@
                                             @foreach ($klasifikasi as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->dataken->jenis_kendaraan }}</td>
-                                                <td>{{ $item->dataken->tahun_pembuatan }}</td>
+                                                <td>{{ $item->dataken->merk_kendaraan }}</td>
+                                                <td>{{ $item->jenis_kendaraan." (".$item->dataken->tahun_pembuatan.")" }}</td>
+                                                <td>{{ $item->tahun_pembuatan }}</td>
                                                 <td>{{ $item->bahan_bakar}}</td>
                                                 <td>{{ $item->komponen_mesin}}</td>
                                                 <td>{{ $item->ban}}</td>
                                                 <td>{{ $item->lampu_utama}}</td>
                                                 <td>{{ $item->kondisi_rem}}</td>
+                                                <td>{{ $item->kelayakan}}</td>
                                                 <td>
         
                                                     <center>
@@ -399,65 +406,6 @@
 
     </div>
     <!-- END wrapper -->
-
-    <!-- Right Sidebar -->
-    <div class="right-bar">
-        <div class="rightbar-title">
-            <a href="javascript:void(0);" class="right-bar-toggle float-right">
-                <i class="mdi mdi-close"></i>
-            </a>
-            <h4 class="font-16 m-0 text-white">Theme Customizer</h4>
-        </div>
-        <div class="slimscroll-menu">
-
-            <div class="p-3">
-                <div class="alert alert-warning" role="alert">
-                    <strong>Customize </strong> the overall color scheme, layout, etc.
-                </div>
-                <div class="mb-2">
-                    <img src="{{ asset('template/images/layouts/light.png') }}" class="img-fluid img-thumbnail" alt="">
-                </div>
-                <div class="custom-control custom-switch mb-3">
-                    <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
-                    <label class="custom-control-label" for="light-mode-switch">Light Mode</label>
-                </div>
-
-                <div class="mb-2">
-                    <img src="{{ asset('template/images/layouts/dark.png') }}" class="img-fluid img-thumbnail" alt="">
-                </div>
-                <div class="custom-control custom-switch mb-3">
-                    <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
-                        data-bsStyle="{{ asset('template/css/bootstrap-dark.min.css') }}"
-                        data-appStyle="{{ asset('template/css/app-dark.min.css') }}" />
-                    <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
-                </div>
-
-                <div class="mb-2">
-                    <img src="{{ asset('template/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail" alt="">
-                </div>
-                <div class="custom-control custom-switch mb-3">
-                    <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
-                        data-appStyle="{{ asset('template/css/app-rtl.min.css') }}" />
-                    <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
-                </div>
-
-                <div class="mb-2">
-                    <img src="{{ asset('template/images/layouts/dark-rtl.png') }}" class="img-fluid img-thumbnail"
-                        alt="">
-                </div>
-                <div class="custom-control custom-switch mb-5">
-                    <input type="checkbox" class="custom-control-input theme-choice" id="dark-rtl-mode-switch"
-                        data-bsStyle="{{ asset('template/css/bootstrap-dark.min.css') }}"
-                        data-appStyle="{{ asset('template/css/app-dark-rtl.min.css') }}" />
-                    <label class="custom-control-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
-                </div>
-
-                <a href="https://1.envato.market/y2YAD" class="btn btn-danger btn-block mt-3 mb-5" target="_blank"><i
-                        class="mdi mdi-download mr-1"></i> Download Now</a>
-            </div>
-        </div> <!-- end slimscroll-menu-->
-    </div>
-    <!-- /Right-bar -->
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
