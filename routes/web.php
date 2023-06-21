@@ -45,3 +45,4 @@ Route::post('/update-klasifikasi/{id}', [KlasifikasiController::class, 'update']
 Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy'])->name('delete-klasifikasi');
 
 Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
+Route::post('/hasil-prediksi', [PrediksiController::class, 'hasil'])->name('prediksi.hasil');

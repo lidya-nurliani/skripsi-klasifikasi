@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Klasifikasi;
+use App\Models\Dataken;
 
 class PrediksiController extends Controller
 {
@@ -230,6 +231,12 @@ class PrediksiController extends Controller
     }
 
     public function index(){
+        $dataken = Dataken::all();
+        $klasifikasi = Klasifikasi::all();
+        return view('prediksi.index',compact('dataken', 'klasifikasi'));
+    }
+
+    public function hasil(Request $request) {
         $klasifikasi = Klasifikasi::all();
         $dataset = Klasifikasi::all()->toArray();
         $attributes = ['jenis_kendaraan', 'tahun_pembuatan', 'bahan_bakar', 'komponen_mesin', 'ban', 'lampu_utama', 'kondisi_rem'];
@@ -241,18 +248,25 @@ class PrediksiController extends Controller
 
         $decisionTree = $this->buildDecisionTree($dataset, $attributes);
 
+        $getDataKen = Dataken::findOrFail($request->dataken_id);
+        if($getDataKen->tahun_pembuatan < 2010){
+            $getSelisihTahun = "<10 tahun";
+        }else{
+            $getSelisihTahun = ">10 tahun";
+        }
+
         $dataToPredict = [
-            'jenis_kendaraan' => 'Roda 4',
-            'tahun_pembuatan' => 2018,
-            'bahan_bakar' => 'Pertamax',
-            'komponen_mesin' => 'Baik',
-            'ban' => 'Sedang',
-            'lampu_utama' => 'Baik',
-            'kondisi_rem' => 'Baik'
+            'jenis_kendaraan' => $getDataKen->jenis_kendaraan,
+            'tahun_pembuatan' => $getSelisihTahun,
+            'bahan_bakar' => $request->bahan_bakar,
+            'komponen_mesin' => $request->komponen_mesin,
+            'ban' => $request->ban,
+            'lampu_utama' => $request->lampu_utama,
+            'kondisi_rem' => $request->kondisi_rem,
         ];
 
         $decisionTreeController = new PrediksiController();
-        return view('prediksi.index', compact('dataset','klasifikasi','attributeInformation','decisionTree','dataToPredict','decisionTreeController'));
+        return view('prediksi.hasil', compact('dataset','klasifikasi','attributeInformation','decisionTree','dataToPredict','decisionTreeController','getDataKen'));
         // dd($decisionTree);
     }
 }
