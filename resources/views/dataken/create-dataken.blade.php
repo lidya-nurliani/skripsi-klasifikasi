@@ -188,10 +188,6 @@
                                 </li>
                             </ul>
 
-
-                               
-                                     
-                                      
                             <!-- End navigation menu -->
 
                             <div class="clearfix"></div>

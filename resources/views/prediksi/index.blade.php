@@ -236,6 +236,21 @@
 
                     <div class="row">
                         <div class="col-12">
+                                @if($decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) == 'Layak')
+                                    <div class="alert alert-icon alert-success text-success alert-dismissible fade show" role="alert">
+                                        <i class="mdi mdi-check-all mr-2"></i>Hasil Keputusan adalah <strong>Layak</strong>
+                                    </div>
+                                @else
+                                    <div class="alert alert-icon alert-danger text-danger alert-dismissible fade show" role="alert">
+                                        <i class="mdi mdi-alert mr-2"></i>
+                                        Hasil Keputusan adalah <strong>Tidak Layak</strong>
+                                    </div>
+                                @endif
+                        </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                        <div class="col-12">
                             <div class="card-box table-responsive">
                                 <h4 class="header-title">DATA Testing</h4>
 
@@ -351,6 +366,16 @@
                                         printDecisionTree($decisionTree);
                                     @endphp
                                 </pre>
+
+                                <h4>Data yang di input</h4>
+                                @foreach ($dataToPredict as $attribute => $value)
+                                <tr>
+                                    <td>
+                                        {{ $attribute }} = {{ $value }},<br>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                <h5>Hasil keputusan : {{ $decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) }}</h5>
                             </div>
                         </div>
                     </div> <!-- end row -->

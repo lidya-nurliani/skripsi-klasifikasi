@@ -215,6 +215,20 @@ class PrediksiController extends Controller
         return $attributeInformation;
     }
 
+    function predictFinalClass($data, $tree) {
+        while (isset($tree['attribute'])) {
+            $attribute = $tree['attribute'];
+            $value = $data[$attribute];
+
+            if (isset($tree['children'][$value])) {
+                $tree = $tree['children'][$value];
+            } else {
+                return "Tidak Diketahui";
+            }
+        }
+        return $tree['label'];
+    }
+
     public function index(){
         $klasifikasi = Klasifikasi::all();
         $dataset = Klasifikasi::all()->toArray();
@@ -226,6 +240,19 @@ class PrediksiController extends Controller
         }
 
         $decisionTree = $this->buildDecisionTree($dataset, $attributes);
-        return view('prediksi.index', compact('klasifikasi','attributeInformation','decisionTree'));
+
+        $dataToPredict = [
+            'jenis_kendaraan' => 'Roda 4',
+            'tahun_pembuatan' => 2018,
+            'bahan_bakar' => 'Pertamax',
+            'komponen_mesin' => 'Baik',
+            'ban' => 'Sedang',
+            'lampu_utama' => 'Baik',
+            'kondisi_rem' => 'Baik'
+        ];
+
+        $decisionTreeController = new PrediksiController();
+        return view('prediksi.index', compact('dataset','klasifikasi','attributeInformation','decisionTree','dataToPredict','decisionTreeController'));
+        // dd($decisionTree);
     }
 }
