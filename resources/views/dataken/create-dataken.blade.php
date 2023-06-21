@@ -178,6 +178,12 @@
                                 </li>
 
                                 <li class="has-submenu">
+                                    <a href="{{ route('prediksi') }}">
+                                        <i class="fe-box"></i>Prediksi</a>
+    
+                                </li>
+
+                                <li class="has-submenu">
                                     <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
                                 </li>
                             </ul>

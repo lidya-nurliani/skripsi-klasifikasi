@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2023 at 05:45 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Jun 21, 2023 at 05:17 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `skripsi-klasifikasi`
+-- Database: `skripsi_klasifikasi`
 --
 
 -- --------------------------------------------------------
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dataken` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `merk_kendaraan` varchar(255) NOT NULL,
-  `jenis_kendaraan` varchar(255) NOT NULL,
-  `tahun_pembuatan` varchar(255) NOT NULL,
-  `no_polisi` varchar(255) NOT NULL,
-  `no_mesin` varchar(255) NOT NULL,
-  `no_rangka` varchar(255) NOT NULL,
+  `merk_kendaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_kendaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_pembuatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_polisi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_mesin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_rangka` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -94,7 +94,17 @@ INSERT INTO `dataken` (`id`, `merk_kendaraan`, `jenis_kendaraan`, `tahun_pembuat
 (49, 'honda NF', 'Roda 2', '2009', 'KT 4773 MZ', 'JBC2E-1052855', 'MH1JBC2129K0552117', '2023-06-15 07:39:17', '2023-06-15 07:39:17', NULL),
 (50, 'honda NF', 'Roda 2', '2009', 'KT 4774 MZ', 'JBC2E-1050539', 'MH1JBC2149K052023', '2023-06-15 07:41:43', '2023-06-15 07:41:43', NULL),
 (51, 'honda NF', 'Roda 2', '2009', 'KT 4775 MZ', 'JBC2E-1050542', 'MH1JBC2129K052036', '2023-06-15 07:42:40', '2023-06-15 07:42:40', NULL),
-(52, 'honda NF', 'Roda 2', '2009', 'KT 4776 MZ', 'JBC2E-1052876', 'MH1JBC2139K052062', '2023-06-15 07:43:38', '2023-06-15 07:43:38', NULL);
+(52, 'honda NF', 'Roda 2', '2009', 'KT 4776 MZ', 'JBC2E-1052876', 'MH1JBC2139K052062', '2023-06-15 07:43:38', '2023-06-15 07:43:38', NULL),
+(53, 'Honda megapro', 'Roda 2', '2013', 'KT. 1231 MZ', 'A23ASDQWJHK45', 'JFKJSDHS83298', '2023-06-19 23:30:38', '2023-06-19 23:30:38', NULL),
+(54, 'Kawasaki LX150 C', 'Roda 2', '2012', 'KT. 1223 mz', '2JKLYE12WE2J', '2LKUKIW23EW', '2023-06-19 23:31:39', '2023-06-19 23:31:39', NULL),
+(55, 'Vario Techno CBS', 'Roda 2', '2011', 'KT. 1441 MZ', 'KBJ23H2IO3P1', 'ASD23HF9H', '2023-06-19 23:35:20', '2023-06-19 23:35:20', NULL),
+(56, 'Honda CS 1', 'Roda 2', '2011', 'KT. 6121 MZ', 'PA2SD8A9S8SW', 'KLAI92HS28H', '2023-06-19 23:36:35', '2023-06-19 23:36:35', NULL),
+(57, 'Honda Supra x 125', 'Roda 2', '2011', 'KT. 4213 MZ', 'SI28ND20NKL3', 'KJS92H2GI1GS', '2023-06-19 23:37:30', '2023-06-19 23:37:30', NULL),
+(58, 'Honda CS 1', 'Roda 2', '2011', 'KT. 3212 MZ', 'KA92JF4P3U29D', 'JK22H92320', '2023-06-19 23:39:34', '2023-06-19 23:39:34', NULL),
+(59, 'Kawasaki LX150 C', 'Roda 2', '2012', 'KT. 2213 MZ', 'JK3UJ3K2905J', 'JKL29HJ32L', '2023-06-19 23:40:50', '2023-06-19 23:40:50', NULL),
+(60, 'Honda Supra x 125', 'Roda 2', '2011', 'KT. 2387 BZ', 'K2WIAA02IO32', 'AL2KOJ3KJHL', '2023-06-19 23:42:51', '2023-06-19 23:42:51', NULL),
+(61, 'Honda CS 1', 'Roda 2', '2011', 'KT. 4423 MZ', 'JK8LK9JKH9L', 'JDSI7GGU83', '2023-06-19 23:45:00', '2023-06-19 23:45:00', NULL),
+(62, 'Honda Supra x 125', 'Roda 2', '2011', 'KT. 1238 MZ', 'K2H3HJG8P7', 'SDJK979', '2023-06-19 23:46:03', '2023-06-19 23:46:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -104,11 +114,11 @@ INSERT INTO `dataken` (`id`, `merk_kendaraan`, `jenis_kendaraan`, `tahun_pembuat
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -121,15 +131,44 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `klasifikasi` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `dataken_id` bigint(20) UNSIGNED NOT NULL,
-  `bahan_bakar` varchar(255) NOT NULL,
-  `komponen_mesin` varchar(255) NOT NULL,
-  `ban` varchar(255) NOT NULL,
-  `lampu_utama` varchar(255) NOT NULL,
-  `kondisi_rem` varchar(255) NOT NULL,
+  `jenis_kendaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_pembuatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bahan_bakar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `komponen_mesin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ban` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lampu_utama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kondisi_rem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kelayakan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `klasifikasi`
+--
+
+INSERT INTO `klasifikasi` (`id`, `dataken_id`, `jenis_kendaraan`, `tahun_pembuatan`, `bahan_bakar`, `komponen_mesin`, `ban`, `lampu_utama`, `kondisi_rem`, `kelayakan`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(2, 53, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 00:23:57', '2023-06-20 00:23:57', NULL),
+(3, 54, 'Roda 2', '>10 tahun', 'Pertamax', 'Sedang', 'Baik', 'Baik', 'Sedang', 'Layak', '2023-06-20 00:27:34', '2023-06-20 00:27:34', NULL),
+(4, 55, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Sedang', 'Sedang', 'Buruk', 'Tidak Layak', '2023-06-20 01:24:07', '2023-06-20 01:24:07', NULL),
+(5, 56, 'Roda 2', '>10 tahun', 'Pertamax', 'Buruk', 'Baik', 'Sedang', 'Baik', 'Tidak Layak', '2023-06-20 01:24:49', '2023-06-20 01:24:49', NULL),
+(6, 57, 'Roda 2', '>10 tahun', 'Pertamax', 'Sedang', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:25:23', '2023-06-20 01:25:23', NULL),
+(7, 39, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:26:05', '2023-06-20 01:26:05', NULL),
+(8, 42, 'Roda 2', '<10 tahun', 'Pertamax', 'Buruk', 'Buruk', 'Sedang', 'Buruk', 'Tidak Layak', '2023-06-20 01:27:28', '2023-06-20 01:27:28', NULL),
+(9, 13, 'Roda 2', '<10 tahun', 'Pertamax', 'Sedang', 'Sedang', 'Baik', 'Sedang', 'Layak', '2023-06-20 01:28:02', '2023-06-20 01:28:02', NULL),
+(10, 15, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Sedang', 'Sedang', 'Layak', '2023-06-20 01:28:23', '2023-06-20 01:28:23', NULL),
+(11, 11, 'Roda 4', '>10 tahun', 'Dexlite', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:28:50', '2023-06-20 01:28:50', NULL),
+(12, 3, 'Roda 4', '<10 tahun', 'Pertamax', 'Baik', 'Sedang', 'Sedang', 'Sedang', 'Layak', '2023-06-20 01:29:36', '2023-06-20 01:29:36', NULL),
+(13, 8, 'Roda 4', '>10 tahun', 'Dexlite', 'Sedang', 'Baik', 'Baik', 'Sedang', 'Layak', '2023-06-20 01:30:10', '2023-06-20 01:30:10', NULL),
+(14, 41, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Buruk', 'Buruk', 'Sedang', 'Tidak Layak', '2023-06-20 01:30:40', '2023-06-20 01:30:40', NULL),
+(15, 58, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Sedang', 'Baik', 'Layak', '2023-06-20 01:31:18', '2023-06-20 01:31:18', NULL),
+(16, 59, 'Roda 2', '>10 tahun', 'Pertamax', 'Buruk', 'Buruk', 'Baik', 'Sedang', 'Tidak Layak', '2023-06-20 01:31:57', '2023-06-20 01:31:57', NULL),
+(17, 22, 'Roda 2', '<10 tahun', 'Pertamax', 'Buruk', 'Baik', 'Sedang', 'Sedang', 'Tidak Layak', '2023-06-20 01:32:34', '2023-06-20 01:32:34', NULL),
+(18, 47, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:33:17', '2023-06-20 01:33:17', NULL),
+(19, 60, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:33:40', '2023-06-20 01:33:40', NULL),
+(20, 61, 'Roda 2', '>10 tahun', 'Pertamax', 'Sedang', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:34:03', '2023-06-20 01:34:03', NULL),
+(21, 62, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Sedang', 'Layak', '2023-06-20 01:34:19', '2023-06-20 01:34:19', NULL);
 
 -- --------------------------------------------------------
 
@@ -139,7 +178,7 @@ CREATE TABLE `klasifikasi` (
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -153,7 +192,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (30, '2019_08_19_000000_create_failed_jobs_table', 1),
 (31, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (32, '2023_05_14_114938_create_dataken_table', 1),
-(33, '2023_05_14_115512_create_klasifikasi_table', 1);
+(35, '2023_05_14_115512_create_klasifikasi_table', 2);
 
 -- --------------------------------------------------------
 
@@ -162,8 +201,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -175,11 +214,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -193,11 +232,11 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -207,7 +246,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$a1h8.Hu0t3ww9HB6U10AcOUSOaLZXdHxtp1ddADFogTDxP6.4R1zG', NULL, '2023-06-08 09:05:23', '2023-06-08 09:05:23');
+(1, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$a1h8.Hu0t3ww9HB6U10AcOUSOaLZXdHxtp1ddADFogTDxP6.4R1zG', NULL, '2023-06-08 09:05:23', '2023-06-08 09:05:23'),
+(2, 'admin', 'admin@mail.com', NULL, '$2y$10$1SxrSNzyvGO29d4wx3veGed/P2Qva3FOseeLayMikszqz1OmfAZZe', NULL, '2023-06-19 19:19:21', '2023-06-19 19:19:21');
 
 --
 -- Indexes for dumped tables
@@ -268,7 +308,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dataken`
 --
 ALTER TABLE `dataken`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -280,13 +320,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -298,7 +338,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
