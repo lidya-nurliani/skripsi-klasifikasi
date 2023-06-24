@@ -61,10 +61,10 @@
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"
                                 data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                 aria-expanded="false">
-                                <img src="{{ asset('template/images/users/avatar-1.jpg') }}" alt="user-image"
+                                <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
                                     class="rounded-circle">
                                 <span class="pro-user-name ml-1"> Hai,
-                                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
+                                    {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -105,15 +105,7 @@
                                 </a>
 
                             </div>
-                        </li>
-
-                        <li class="dropdown notification-list">
-                            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                                <i class="fe-settings noti-icon"></i>
-                            </a>
-                        </li>
-
-
+                        </li>  
                     </ul>
 
                     <!-- LOGO -->
@@ -121,44 +113,19 @@
 
                         <a href="index.html" class="logo text-center logo-dark">
                             <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-dark.png') }}" alt="" height="24">
+                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                                 <!-- <span class="logo-lg-text-dark">Adminox</span> -->
                             </span>
                             <span class="logo-sm">
                                 <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-sm.png') }}" alt="" height="24">
+                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                             </span>
                         </a>
 
-                        <a href="index.html" class="logo text-center logo-light">
-                            <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-light.png') }}" alt="" height="24">
-                                <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                            </span>
-                            <span class="logo-sm">
-                                <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-sm.png') }}" alt="" height="24">
-                            </span>
-                        </a>
+                    
                     </div>
 
-                    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-
-                        <li class="d-none d-sm-block">
-                            <form class="app-search">
-                                <div class="app-search-box">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
+                  
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -184,14 +151,14 @@
 
                             <li class="has-submenu">
                                 <a href="{{ route('create-klasifikasi') }}">
-                                    <i class="fe-box"></i>Klasifikasi</a>
+                                    <i class="fe-box"></i>Data Training/Testing</a>
 
                             </li>
 
                             <li class="has-submenu">
                                 <a href="{{ route('prediksi') }}">
                                     <i class="fe-box"></i>
-                                Prediksi</a>
+                                Klasifikasi</a>
                             </li>
 
                             <li class="has-submenu">
@@ -231,7 +198,7 @@
                                         <li class="breadcrumb-item active">Form Advanced</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">silahkan Isi data Klasifikasi</h4>
+                                <h4 class="page-title">silahkan Isi data</h4>
                             </div>
                         </div>
                     </div>
@@ -241,7 +208,7 @@
                         <div class="col-md-6">
                             <div class="card-box">
                                 
-                                <h4 class="header-title mb-4">Form Klasifikasi</h4>
+                                <h4 class="header-title mb-4">Form data training/testing</h4>
 
                                 <form  action="{{ route('simpan-klasifikasi') }}" method="post" enctype="multipart/form-data">
                                   {{csrf_field() }}
@@ -308,7 +275,7 @@
                                             <option value="Tidak Layak">Tidak Layak</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Klasifikasi</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </form>
                             </div>
                         </div>
@@ -316,7 +283,7 @@
 
                         <div class="col-md-6">
                             <div class="card-box">
-                                <h4 class="header-title mb-4">Data Klasifikasi</h4>
+                                <h4 class="header-title mb-4">Data </h4>
 
                                 <div class="card-box table-responsive">
 
@@ -409,10 +376,6 @@
 
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
-
-    <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-        <i class="mdi mdi-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-    </a>
 
     <!-- Vendor js -->
     <script src="{{ asset('template/js/vendor.min.js') }}"></script>

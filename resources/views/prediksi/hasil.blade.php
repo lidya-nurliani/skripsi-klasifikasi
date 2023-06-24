@@ -52,10 +52,10 @@
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"
                                 data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                 aria-expanded="false">
-                                <img src="{{ asset('template/images/users/avatar-1.jpg') }}" alt="user-image"
+                                <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
                                     class="rounded-circle">
                                 <span class="pro-user-name ml-1">
-                                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
+                                    Hai, {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -96,14 +96,6 @@
 
                             </div>
                         </li>
-
-                        <li class="dropdown notification-list">
-                            <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                                <i class="fe-settings noti-icon"></i>
-                            </a>
-                        </li>
-
-
                     </ul>
 
                     <!-- LOGO -->
@@ -111,44 +103,17 @@
 
                         <a href="index.html" class="logo text-center logo-dark">
                             <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-dark.png') }}" alt="" height="24">
+                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                                 <!-- <span class="logo-lg-text-dark">Adminox</span> -->
                             </span>
                             <span class="logo-sm">
                                 <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-sm.png') }}" alt="" height="24">
-                            </span>
-                        </a>
-
-                        <a href="index.html" class="logo text-center logo-light">
-                            <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-light.png') }}" alt="" height="24">
-                                <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                            </span>
-                            <span class="logo-sm">
-                                <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-sm.png') }}" alt="" height="24">
+                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                             </span>
                         </a>
                     </div>
 
-                    <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-
-                        <li class="d-none d-sm-block">
-                            <form class="app-search">
-                                <div class="app-search-box">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <div class="input-group-append">
-                                            <button class="btn" type="submit">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
+                    
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -176,13 +141,13 @@
 
                             <li class="has-submenu">
                                 <a href="{{ route('create-klasifikasi') }}">
-                                    <i class="fe-box"></i>Klasifikasi</a>
+                                    <i class="fe-box"></i>Data Training/testing</a>
 
                             </li>
 
                             <li class="has-submenu">
                                 <a href="{{ route('prediksi') }}">
-                                    <i class="fe-box"></i>Prediksi</a>
+                                    <i class="fe-box"></i>Klasifikasi</a>
 
                             </li>
 
@@ -224,8 +189,8 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                        <li class="breadcrumb-item active">Datatable</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">hasil</a></li>
+                                        <li class="breadcrumb-item active">klasifikasi</li>
                                     </ol>
                                 </div>
 
@@ -233,21 +198,53 @@
                         </div>
                     </div>
                     <!-- end page title -->
-
+                        
                     <div class="row">
                         <div class="col-12">
                                 @if($decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) == 'Layak')
                                     <div class="alert alert-icon alert-success text-success alert-dismissible fade show" role="alert">
-                                        <i class="mdi mdi-check-all mr-2"></i>Hasil Keputusan adalah <strong>Layak</strong>
+                                    <h4><i class="mdi mdi-check-all mr-2"></i>Hasil Klasifikasi adalah <strong>Layak</strong></h4>
                                     </div>
                                 @else
                                     <div class="alert alert-icon alert-danger text-danger alert-dismissible fade show" role="alert">
-                                        <i class="mdi mdi-alert mr-2"></i>
-                                        Hasil Keputusan adalah <strong>Tidak Layak</strong>
+                                        <h4><i class="mdi mdi-alert mr-2"></i>
+                                        Hasil Klasifikasi adalah <strong>Tidak Layak</strong></h4>
                                     </div>
                                 @endif
                         </div>
                     </div> <!-- end row -->
+
+                        <div class="card">
+                            <div class="card-body">
+                            <h4 class="page-title pull-left">Data Rincian Klasifikasi</h4>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Kendaraan</th>
+                                        <td>{{ $getDataKen->merk_kendaraan }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>No Polisi</th>
+                                        <td>{{ $getDataKen->no_polisi }}</td>
+                                    </tr>
+                                    @foreach ($dataToPredict as $attribute => $value)
+                                    <tr>
+                                        <th>{{ $attribute }}</th>
+                                        <td>{{ $value }}</td>
+                                    </tr>
+                                    @endforeach
+                                </table>
+                                <br>
+                                <h5>HASIL KEPUTUSAN : {{ $decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) }}</h5>
+                                <div class="single-table">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                            </table>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                  
+
 
                     <div class="row">
                         <div class="col-12">
@@ -260,12 +257,12 @@
                                         <tr>
                                             <th>Kendaraan</th>
                                             <th>Jenis Kendaraan</th>
-                                            <th>Tahun</th>
-                                            <th>BBM</th>
-                                            <th>Mesin</th>
+                                            <th>Tahun Pembuatan</th>
+                                            <th>Bahan Bakar</th>
+                                            <th>Komponen Mesin</th>
                                             <th>Ban</th>
-                                            <th>Lampu</th>
-                                            <th>Rem</th>
+                                            <th>Lampu Utama</th>
+                                            <th>Kondisi Rem</th>
                                             <th>Kelayakan</th>
                                         </tr>
                                     </thead>
@@ -369,28 +366,7 @@
                                     @endphp
                                 </pre>
 
-                                <h4>Data yang di input</h4>
-                                <table>
-                                    <tr>
-                                        <th>Kendaraan</th>
-                                        <th>:</th>
-                                        <td>{{ $getDataKen->merk_kendaraan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>No Polisi</th>
-                                        <th>:</th>
-                                        <td>{{ $getDataKen->no_polisi }}</td>
-                                    </tr>
-                                    @foreach ($dataToPredict as $attribute => $value)
-                                    <tr>
-                                        <th>{{ $attribute }}</th>
-                                        <th>:</th>
-                                        <td>{{ $value }}</td>
-                                    </tr>
-                                    @endforeach
-                                </table>
-                                <br>
-                                <h5>Hasil keputusan : {{ $decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) }}</h5>
+                              
                             </div>
                         </div>
                     </div> <!-- end row -->
@@ -423,10 +399,7 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
-    <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-        <i class="mdi mdi-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-    </a>
-
+  
     <!-- Vendor js -->
     <script src="{{ asset('template/js/vendor.min.js') }}"></script>
 

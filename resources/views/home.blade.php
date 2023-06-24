@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
     
@@ -52,9 +50,9 @@
                         
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="{{ asset('template/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
+                                    <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
-                                    {{ Auth::user()->name }}<i class="mdi mdi-chevron-down"></i> 
+                                    Hai, {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -97,13 +95,6 @@
                                 </div>
                             </li>
 
-                            <li class="dropdown notification-list">
-                                <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                                    <i class="fe-settings noti-icon"></i>
-                                </a>
-                            </li>
-    
-    
                         </ul>
     
                         <!-- LOGO -->
@@ -111,23 +102,12 @@
 
                             <a href="index.html" class="logo text-center logo-dark">
                                 <span class="logo-lg">
-                                    <img src="{{ asset('template/images/logo-dark.png') }}" alt="" height="24">
+                                    <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                                     <!-- <span class="logo-lg-text-dark">Adminox</span> -->
                                 </span>
                                 <span class="logo-sm">
                                     <!-- <span class="logo-lg-text-dark">A</span> -->
-                                    <img src="{{ asset('template/images/logo-sm.png') }}" alt="" height="24">
-                                </span>
-                            </a>
-
-                            <a href="index.html" class="logo text-center logo-light">
-                                <span class="logo-lg">
-                                    <img src="{{ asset('template/images/logo-light.png') }}" alt="" height="24">
-                                    <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                                </span>
-                                <span class="logo-sm">
-                                    <!-- <span class="logo-lg-text-dark">A</span> -->
-                                    <img src="{{ asset('template/images/logo-sm.png') }}" alt="" height="24">
+                                    <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                                 </span>
                             </a>
                         </div>
@@ -158,14 +138,14 @@
 
                                 <li class="has-submenu">
                                     <a href="{{ route('create-klasifikasi') }}">
-                                        <i class="fe-box"></i>Klasifikasi</a>
+                                        <i class="fe-box"></i>Data Training/Testing</a>
                   
                                 </li>
 
                                 <li class="has-submenu">
                                     <a href="{{ route('prediksi') }}">
                                         <i class="fe-box"></i>
-                                    Prediksi</a>
+                                    Klasifikasi</a>
                                 </li>
 
 
@@ -307,9 +287,7 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-            <i class="mdi mdi-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-        </a>
+     
 
         <!-- Vendor js -->
         <script src="{{ asset('template/js/vendor.min.js') }}"></script>
