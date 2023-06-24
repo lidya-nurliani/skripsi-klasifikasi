@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DatakenController;
 use App\Http\Controllers\KlasifikasiController;
 use App\Http\Controllers\PrediksiController;
+use App\Http\Controllers\LaporanController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +48,5 @@ Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy']
 
 Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
 Route::post('/hasil-prediksi', [PrediksiController::class, 'hasil'])->name('prediksi.hasil');
+
+Route::get('/cetak-laporan-pdf', [LaporanController::class, 'cetakLaporanPDF'])->name('cetakLaporanPDF');

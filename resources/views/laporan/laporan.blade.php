@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
     
-<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 08:56:24 GMT -->
+<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:03 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Dashboard</title>
+        <title>Data kendaraan DISPANTPH</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -12,8 +13,10 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('template/images/favicon.ico') }}">
 
-        <!-- C3 Chart css -->
-        <link href="{{ asset('template/libs/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- third party css -->
+        <link href="{{ asset('template/libs/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('template/libs/datatables/buttons.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('template/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
         <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
@@ -21,9 +24,8 @@
         <link href="{{ asset('template/css/app.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
 
     </head>
-    
+
     <body data-layout="horizontal">
-        
 
         <!-- Begin page -->
         <div id="wrapper">
@@ -46,13 +48,12 @@
                                 </a>
                                 <!-- End mobile menu toggle-->
                             </li>
-    
-                        
+  
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
-                                    Hai, {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
+                                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -81,8 +82,6 @@
 
                                     <div class="dropdown-divider"></div>
 
-                                    <!-- item-->
-                                    
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -94,7 +93,7 @@
 
                                 </div>
                             </li>
-
+    
                         </ul>
     
                         <!-- LOGO -->
@@ -112,21 +111,23 @@
                             </a>
                         </div>
     
-                        <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-                        </ul>
+                       
                         <div class="clearfix"></div>
                     </div>
                 </div>
                 <!-- end Topbar -->
 
+
+
+                
                 <div class="topbar-menu">
                     <div class="container-fluid">
                         <div id="navigation">
                             <!-- Navigation Menu-->
                             <ul class="navigation-menu">
 
-                                <li class="has-submenu">
-                                    <a href="#"> <i class="fe-airplay"></i>Home</a>
+                            <li class="has-submenu">
+                                    <a href="{{ route('home') }}"> <i class="fe-airplay"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
@@ -138,21 +139,25 @@
 
                                 <li class="has-submenu">
                                     <a href="{{ route('create-klasifikasi') }}">
-                                        <i class="fe-box"></i>Data Training/Testing</a>
+                                        <i class="fe-box"></i>Data training/testing</a>
                   
                                 </li>
 
                                 <li class="has-submenu">
                                     <a href="{{ route('prediksi') }}">
-                                        <i class="fe-box"></i>
-                                    Klasifikasi</a>
+                                        <i class="fe-box"></i>Klasifikasi</a>
+    
                                 </li>
-
 
                                 <li class="has-submenu">
-                                    <a href="cetak-laporan-pdf"> <i class="fe-sidebar"></i>Laporan</a>
+                                    <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
                                 </li>
                             </ul>
+
+
+                               
+                                     
+                                      
                             <!-- End navigation menu -->
 
                             <div class="clearfix"></div>
@@ -181,32 +186,83 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dispantph</a></li>
-                                            <li class="breadcrumb-item active"><a href="javascript: void(0);">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                                            <li class="breadcrumb-item active">Datatable</li>
                                         </ol>
                                     </div>
-                    
+                                  
                                 </div>
                             </div>
                         </div>     
                         <!-- end page title --> 
 
-                        <div class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-14">
-                                    <center>
-                                        <h3 class="m-0">Selamat datang di Sistem Klasifikasi Uji Kondisi Kelayakan pada Kendaraan Bermotor</h3>
-                                    </center>
-                                </div><!-- /.col -->
-                            </div><!-- /.row -->
-                        </div><!-- /.container-fluid -->
-                    </div>
-                       
-                   
-                           
+                        <div class="row">
+                                <div class="col-12">
+                                    <div class="card-box table-responsive">
 
-                     
+                                        <div class="form-group">
+               
+                                        <table id="datatable" class="table table-bordered  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                            <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Merk Kendaraan</th>
+                                                <th>Jenis Kendaraan</th>
+                                                <th>Tahun Pembuatan</th>
+                                                <th>no polisi</th>
+                                                <th>no mesin</th>
+                                                <th>no rangka</th>
+                                                <th>Bahan Bakar</th>
+                                                <th>Komponen Mesin</th>
+                                                <th>Ban Kendaraan</th>
+                                                <th>Lampu Utama</th>
+                                                <th>Kondisi Rem</th>
+                                                <th>Kelayakan</th>
+                                            </tr>
+                                            </thead>
+    
+                                            <tbody>
+                                            @foreach ($dataken as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->merk_kendaraan}}</td>
+                                                <td>{{ $item->jenis_kendaraan}}</td>
+                                                <td>{{ $item->tahun_pembuatan}}</td>
+                                                <td>{{ $item->no_polisi}}</td>
+                                                <td>{{ $item->no_mesin}}</td>
+                                                <td>{{ $item->no_rangka}}</td>
+                                            </tr>
+                                            @endforeach
+
+                                            @foreach ($klasifikasi as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->bahan_bakar}}</td>
+                                                <td>{{ $item->komponen_mesin}}</td>
+                                                <td>{{ $item->ban}}</td>
+                                                <td>{{ $item->lampu_utama}}</td>
+                                                <td>{{ $item->kondisi_rem}}</td>
+                                                <td>{{ $item->kelayakan}}</td>
+                                            </tr>
+                                            @endforeach
+                                    </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div> <!-- end row -->
+    
+    
+                          
+                                           
+                                            
+                                      
+                            <!-- end row -->
+                        
+                    </div> <!-- end container-fluid -->
+
+                </div> <!-- end content -->
+
                 
 
                 <!-- Footer Start -->
@@ -262,7 +318,7 @@
                     </div>
             
                     <div class="mb-2">
-                        <img src="asse{{ asset('template/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail" alt="">
+                        <img src="{{ asset('template/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail" alt="">
                     </div>
                     <div class="custom-control custom-switch mb-3">
                         <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch" data-appStyle="{{ asset('template/css/app-rtl.min.css') }}" />
@@ -287,23 +343,33 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-     
-
         <!-- Vendor js -->
         <script src="{{ asset('template/js/vendor.min.js') }}"></script>
 
-        <!--C3 Chart-->
-        <script src="{{ asset('template/libs/d3/d3.min.js') }}"></script>
-        <script src="{{ asset('template/libs/c3/c3.min.js') }}"></script>
+        <!-- Required datatable js -->
+        <script src="{{ asset('template/libs/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
+        <!-- Buttons examples -->
+        <script src="{{ asset('template/libs/datatables/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('template/libs/jszip/jszip.min.js') }}"></script>
+        <script src="{{ asset('template/libs/pdfmake/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('template/libs/pdfmake/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/buttons.colVis.js') }}"></script>
 
-        <script src="{{ asset('template/libs/echarts/echarts.min.js') }}"></script>
+        <!-- Responsive examples -->
+        <script src="{{ asset('template/libs/datatables/dataTables.responsive.min.js') }}"></script>
+        <script src="{{ asset('template/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
 
-        <script src="{{ asset('template/js/pages/dashboard.init.js') }}"></script>
+        <!-- Datatables init -->
+        <script src="{{ asset('template/js/pages/datatables.init.js') }}"></script>
 
         <!-- App js -->
         <script src="{{ asset('template/js/app.min.js') }}"></script>
         
     </body>
 
-<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 08:57:08 GMT -->
+<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:09 GMT -->
 </html>
