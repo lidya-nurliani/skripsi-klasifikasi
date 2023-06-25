@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2023 at 05:17 AM
+-- Generation Time: Jun 25, 2023 at 07:04 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -236,6 +236,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -245,9 +246,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$a1h8.Hu0t3ww9HB6U10AcOUSOaLZXdHxtp1ddADFogTDxP6.4R1zG', NULL, '2023-06-08 09:05:23', '2023-06-08 09:05:23'),
-(2, 'admin', 'admin@mail.com', NULL, '$2y$10$1SxrSNzyvGO29d4wx3veGed/P2Qva3FOseeLayMikszqz1OmfAZZe', NULL, '2023-06-19 19:19:21', '2023-06-19 19:19:21');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$a1h8.Hu0t3ww9HB6U10AcOUSOaLZXdHxtp1ddADFogTDxP6.4R1zG', 'user', NULL, '2023-06-08 09:05:23', '2023-06-08 09:05:23'),
+(2, 'admin', 'admin@mail.com', NULL, '$2y$10$1SxrSNzyvGO29d4wx3veGed/P2Qva3FOseeLayMikszqz1OmfAZZe', 'admin', NULL, '2023-06-19 19:19:21', '2023-06-19 19:19:21'),
+(3, 'user', 'user@mail.com', NULL, '$2y$10$3Yeql0sOlduHj/CR3xu0mufaPGAXTrW1dhQDBW3VG.cfqtL/rkYLW', 'user', NULL, '2023-06-24 20:15:11', '2023-06-24 20:15:11');
 
 --
 -- Indexes for dumped tables
@@ -338,7 +340,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
