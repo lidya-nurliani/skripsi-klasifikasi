@@ -200,14 +200,20 @@
                         <div class="row">
                                 <div class="col-12">
                                     <div class="card-box table-responsive">
-                                        <h4 class="header-title">iNPUT DATA KENDARAAN</h4>
+                                        <h4 class="header-title">
+                                            @if(Auth::user()->level == 'admin')
+                                            iNPUT
+                                            @endif
+                                            DATA KENDARAAN
+                                        </h4>
                                         <p class="sub-header">
                                             Silahkan Isi data Terlebih dahulu.
                                         </p>
 
                                         <div class="form-group">
-                                     
+                                        @if(Auth::user()->level == 'admin')
                                         <a href="{{ route('create-dataken') }}" class="btn btn-primary waves-effect width-md waves-light">Tambah Data</a>
+                                        @endif
                                         </div>
                                     
 
@@ -222,7 +228,9 @@
                                                 <th>no polisi</th>
                                                 <th>no mesin</th>
                                                 <th>no rangka</th>
+                                                @if(Auth::user()->level == 'admin')
                                                 <th>Aksi</th>
+                                                @endif
                                             </tr>
                                             </thead>
     
@@ -237,15 +245,15 @@
                                                 <td>{{ $item->no_polisi}}</td>
                                                 <td>{{ $item->no_mesin}}</td>
                                                 <td>{{ $item->no_rangka}}</td>
+                                                @if(Auth::user()->level == 'admin')
                                                 <td>
-                
                                                 <center>
                                                     <a href="{{ url('edit-dataken', $item->id) }}"><i class="fas fa-edit"></i></a>
                                                     |
                                                     <a href="{{ url('delete-dataken', $item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
                                                 </center>
-                                               
-                                            </td>
+                                                </td>
+                                                @endif
                                         </tr>
                                         @endforeach
                                     </tbody>

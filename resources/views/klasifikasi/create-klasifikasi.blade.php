@@ -205,6 +205,7 @@
                     <!-- end page title -->
 
                     <div class="row">
+                        @if(Auth::user()->level == 'admin')
                         <div class="col-md-6">
                             <div class="card-box">
                                 
@@ -280,8 +281,12 @@
                             </div>
                         </div>
                         <!-- end col -->
-
+                        @endif
+                        @if(Auth::user()->level == 'admin')
                         <div class="col-md-6">
+                        @else
+                        <div class="col-md-12">
+                        @endif
                             <div class="card-box">
                                 <h4 class="header-title mb-4">Data </h4>
 
@@ -301,7 +306,9 @@
                                                 <th>Lampu Utama</th>
                                                 <th>Kondisi Rem</th>
                                                 <th>Kelayakan</th>
+                                                @if(Auth::user()->level == 'admin')
                                                 <th>Aksi</th>
+                                                @endif
                                             </tr>
                                         </thead>
         
@@ -319,8 +326,8 @@
                                                 <td>{{ $item->lampu_utama}}</td>
                                                 <td>{{ $item->kondisi_rem}}</td>
                                                 <td>{{ $item->kelayakan}}</td>
+                                                @if(Auth::user()->level == 'admin')
                                                 <td>
-        
                                                     <center>
                                                         <a href="{{ url('edit-klasifikasi', $item->id) }}"><i
                                                                 class="fas fa-edit"></i></a>
@@ -328,8 +335,8 @@
                                                         <a href="{{ url('delete-klasifikasi', $item->id) }}"><i
                                                                 class="fas fa-trash-alt" style="color: red"></i></a>
                                                     </center>
-        
                                                 </td>
+                                                @endif
                                             </tr>
                                             @endforeach
                                         </tbody>

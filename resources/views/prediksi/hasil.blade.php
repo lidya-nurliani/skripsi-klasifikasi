@@ -217,6 +217,15 @@
                         <div class="card">
                             <div class="card-body">
                             <h4 class="page-title pull-left">Data Rincian Klasifikasi</h4>
+                            <form action="{{ route('cetakLaporanPDF') }}" method="post" target="_blank">
+                                @csrf
+                                <input type="hidden" name="merk_kendaraan" value="{{ $getDataKen->merk_kendaraan }}">
+                                <input type="hidden" name="no_polisi" value="{{ $getDataKen->no_polisi }}">
+                                @foreach ($dataToPredict as $attribute => $value) 
+                                <input type="hidden" name="{{ $attribute }}" value="{{ $value }}"> 
+                                @endforeach
+                                <button type="submit" class="btn btn-icon waves-effect btn-danger justify"> <i class="far fa-file-pdf"></i> Cetak</button><br><br>
+                            </form>
                                 <table class="table table-bordered">
                                     <tr>
                                         <th>Kendaraan</th>

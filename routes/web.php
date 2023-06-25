@@ -48,5 +48,4 @@ Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy']
 
 Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
 Route::post('/hasil-prediksi', [PrediksiController::class, 'hasil'])->name('prediksi.hasil');
-
-Route::get('/cetak-laporan-pdf', [LaporanController::class, 'cetakLaporanPDF'])->name('cetakLaporanPDF');
+Route::post('/cetak-laporan-pdf', [PrediksiController::class, 'pdf'])->name('cetakLaporanPDF');
