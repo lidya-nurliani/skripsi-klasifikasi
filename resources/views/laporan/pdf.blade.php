@@ -74,7 +74,7 @@
                 </tr>
                 @foreach($klasifikasi as $data)
                 <tr>
-                    <td>{{ $data->dataken->merk_kendaraan }} <br>{{ $data->dataken->no_polisi }}</td>
+                    <td>{{ $data->dataken->merk_kendaraan }} <br>{{ $data->dataken->no_polisi }} <br>{{ $data->dataken->no_rangka }}</td>
                     <td>{{ $data->jenis_kendaraan }}</td>
                     <td>{{ $data->tahun_pembuatan }}</td>
                     <td>{{ $data->bahan_bakar }}</td>
