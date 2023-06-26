@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2023 at 07:04 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Jun 26, 2023 at 06:37 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,12 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `dataken` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `merk_kendaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis_kendaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tahun_pembuatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_polisi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_mesin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_rangka` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `merk_kendaraan` varchar(255) NOT NULL,
+  `jenis_kendaraan` varchar(255) NOT NULL,
+  `tahun_pembuatan` varchar(255) NOT NULL,
+  `no_polisi` varchar(255) NOT NULL,
+  `no_mesin` varchar(255) NOT NULL,
+  `no_rangka` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -95,16 +95,54 @@ INSERT INTO `dataken` (`id`, `merk_kendaraan`, `jenis_kendaraan`, `tahun_pembuat
 (50, 'honda NF', 'Roda 2', '2009', 'KT 4774 MZ', 'JBC2E-1050539', 'MH1JBC2149K052023', '2023-06-15 07:41:43', '2023-06-15 07:41:43', NULL),
 (51, 'honda NF', 'Roda 2', '2009', 'KT 4775 MZ', 'JBC2E-1050542', 'MH1JBC2129K052036', '2023-06-15 07:42:40', '2023-06-15 07:42:40', NULL),
 (52, 'honda NF', 'Roda 2', '2009', 'KT 4776 MZ', 'JBC2E-1052876', 'MH1JBC2139K052062', '2023-06-15 07:43:38', '2023-06-15 07:43:38', NULL),
-(53, 'Honda megapro', 'Roda 2', '2013', 'KT. 1231 MZ', 'A23ASDQWJHK45', 'JFKJSDHS83298', '2023-06-19 23:30:38', '2023-06-19 23:30:38', NULL),
-(54, 'Kawasaki LX150 C', 'Roda 2', '2012', 'KT. 1223 mz', '2JKLYE12WE2J', '2LKUKIW23EW', '2023-06-19 23:31:39', '2023-06-19 23:31:39', NULL),
-(55, 'Vario Techno CBS', 'Roda 2', '2011', 'KT. 1441 MZ', 'KBJ23H2IO3P1', 'ASD23HF9H', '2023-06-19 23:35:20', '2023-06-19 23:35:20', NULL),
-(56, 'Honda CS 1', 'Roda 2', '2011', 'KT. 6121 MZ', 'PA2SD8A9S8SW', 'KLAI92HS28H', '2023-06-19 23:36:35', '2023-06-19 23:36:35', NULL),
-(57, 'Honda Supra x 125', 'Roda 2', '2011', 'KT. 4213 MZ', 'SI28ND20NKL3', 'KJS92H2GI1GS', '2023-06-19 23:37:30', '2023-06-19 23:37:30', NULL),
-(58, 'Honda CS 1', 'Roda 2', '2011', 'KT. 3212 MZ', 'KA92JF4P3U29D', 'JK22H92320', '2023-06-19 23:39:34', '2023-06-19 23:39:34', NULL),
-(59, 'Kawasaki LX150 C', 'Roda 2', '2012', 'KT. 2213 MZ', 'JK3UJ3K2905J', 'JKL29HJ32L', '2023-06-19 23:40:50', '2023-06-19 23:40:50', NULL),
-(60, 'Honda Supra x 125', 'Roda 2', '2011', 'KT. 2387 BZ', 'K2WIAA02IO32', 'AL2KOJ3KJHL', '2023-06-19 23:42:51', '2023-06-19 23:42:51', NULL),
-(61, 'Honda CS 1', 'Roda 2', '2011', 'KT. 4423 MZ', 'JK8LK9JKH9L', 'JDSI7GGU83', '2023-06-19 23:45:00', '2023-06-19 23:45:00', NULL),
-(62, 'Honda Supra x 125', 'Roda 2', '2011', 'KT. 1238 MZ', 'K2H3HJG8P7', 'SDJK979', '2023-06-19 23:46:03', '2023-06-19 23:46:03', NULL);
+(64, 'Honda NF', 'Roda 2', '2009', 'KT 4777 MZ', 'JBC2E1052868', 'MH1JBC2139K052112', '2023-06-26 07:28:32', '2023-06-26 07:28:32', NULL),
+(65, 'Honda NF', 'Roda 2', '2009', 'KT 4778 MZ', 'JBC2E1052853', 'MH1JBC2149K052118', '2023-06-26 07:29:21', '2023-06-26 07:29:21', NULL),
+(66, 'Honda NF', 'Roda 2', '2009', 'KT 4779 MZ', 'JBC2E1052859', 'MH1JBC2119K052108', '2023-06-26 07:30:23', '2023-06-26 07:30:23', NULL),
+(67, 'Honda NF', 'Roda 2', '2009', 'KT 4781 MZ', 'JBC2E1050543', 'MH1JBC2189K052042', '2023-06-26 07:31:16', '2023-06-26 07:31:16', NULL),
+(68, 'Honda NF', 'Roda 2', '2009', 'KT 4782 MZ', 'JBC2E1052891', 'MH1JBC2169K052055', '2023-06-26 07:32:06', '2023-06-26 07:32:06', NULL),
+(69, 'Honda NF', 'Roda 2', '2009', 'KT 4783 MZ', 'JBC2E1052896', 'MH1JBC2179K052078', '2023-06-26 07:32:47', '2023-06-26 07:32:47', NULL),
+(70, 'Honda NF', 'Roda 2', '2009', 'KT 4784 MZ', 'JBC2E1052871', 'MH1JBC2149K052104', '2023-06-26 07:33:30', '2023-06-26 07:33:30', NULL),
+(71, 'Honda NF', 'Roda 2', '2009', 'KT 4785 MZ', 'JBC2E1052913', 'MH1JBC2179K052064', '2023-06-26 07:34:18', '2023-06-26 07:34:18', NULL),
+(72, 'Honda NF', 'Roda 2', '2009', 'KT 4793 MZ', 'JBC2E1052925', 'MH1JBC2189KO52090', '2023-06-26 07:35:05', '2023-06-26 07:35:05', NULL),
+(73, 'Honda NF', 'Roda 2', '2009', 'KT 4794 MZ', 'JBC2E1052933', 'MH1JBC2129K052084', '2023-06-26 07:35:50', '2023-06-26 07:35:50', NULL),
+(74, 'Honda NF', 'Roda 2', '2009', 'KT 4798 MZ', 'JBC2E1052901', 'MH1JBC2129KO52067', '2023-06-26 07:36:40', '2023-06-26 07:36:40', NULL),
+(75, 'Honda NF', 'Roda 2', '2009', 'KT 4799 MZ', 'JBC2E1050536', 'MH1JBC2149K052037', '2023-06-26 07:37:19', '2023-06-26 07:37:19', NULL),
+(76, 'Honda NF', 'Roda 2', '2009', 'KT 4800 MZ', 'JBC2E1052887', 'MH1JBC2159K052046', '2023-06-26 07:38:02', '2023-06-26 07:38:02', NULL),
+(77, 'Honda NF', 'Roda 2', '2009', 'KT 4801 MZ', 'JBC2E1052866', 'MH1JBC21X9K052110', '2023-06-26 07:39:21', '2023-06-26 07:39:21', NULL),
+(78, 'Honda NF', 'Roda 2', '2009', 'KT 4802 MZ', 'JBC2E01052864', 'MH1JBC2169K052105', '2023-06-26 07:40:00', '2023-06-26 07:40:00', NULL),
+(79, 'Honda NF', 'Roda 2', '2009', 'KT 4803 MZ', 'JBC2E1050415', 'MH1JBC2139KO47671', '2023-06-26 07:40:46', '2023-06-26 07:40:46', NULL),
+(80, 'Honda NF', 'Roda 2', '2009', 'KT 4804 MZ', 'JBC2E1050495', 'MH1JBC2119KO47584', '2023-06-26 07:41:37', '2023-06-26 07:41:37', NULL),
+(81, 'Honda NF', 'Roda 2', '2009', 'KT 4805 MZ', 'JBC2E1052607', 'MH1JBC21X9KO47960', '2023-06-26 07:42:21', '2023-06-26 07:42:21', NULL),
+(82, 'Honda NF', 'Roda 2', '2009', 'KT 4813 MZ', 'JBC2E1049967', 'MH1JBC2159KO47350', '2023-06-26 07:43:00', '2023-06-26 07:43:00', NULL),
+(83, 'Honda NF', 'Roda 2', '2009', 'KT 4814 MZ', 'JBC2E1050531', 'MH1JBC2119KO52030', '2023-06-26 07:43:44', '2023-06-26 07:43:44', NULL),
+(84, 'Honda C12', 'Roda 2', '2009', 'KT 4810 MZ', 'JBA1E1089528', 'MH1JBA1129KO89948', '2023-06-26 07:44:45', '2023-06-26 07:44:45', NULL),
+(85, 'Honda C12', 'Roda 2', '2009', 'KT 4811 MZ', 'JBA1E1089529', 'MH1JBA1129KO89951', '2023-06-26 07:45:27', '2023-06-26 07:45:27', NULL),
+(86, 'Honda C12', 'Roda 2', '2009', 'KT 4812 MZ', 'JBA1E1089379', 'MH1JBA1109KO89768', '2023-06-26 07:46:08', '2023-06-26 07:46:08', NULL),
+(87, 'Kawasaki Ninja 250R', 'Roda 2', '2009', 'KT 2310 XB', 'EX250YEA25601', '-', '2023-06-26 07:47:07', '2023-06-26 07:47:07', NULL),
+(88, 'Honda supra X 125', 'Roda 2', '2011', 'KT 3259 M', 'JBO1E1161412', 'MH1JBO118BK162921', '2023-06-26 07:48:03', '2023-06-26 07:48:03', NULL),
+(89, 'Honda supra X 125', 'Roda 2', '2009', 'KT 3260 M', 'JBO1E1160274', 'MH1JB0111BK161724', '2023-06-26 07:49:01', '2023-06-26 07:49:01', NULL),
+(90, 'Honda supra X 125', 'Roda 2', '2009', 'KT 3261 M', 'JBO1E1161446', 'MH1JBO118BK162954', '2023-06-26 07:49:44', '2023-06-26 07:49:44', NULL),
+(91, 'Honda supra X 125', 'Roda 2', '2009', 'KT 6624 BZ', 'JBO1E1160641', 'MH1JBO114BK162253', '2023-06-26 07:50:26', '2023-06-26 07:50:26', NULL),
+(92, 'Honda supra X 125', 'Roda 2', '2011', 'KT 6202 BZ', 'JBO1E1159921', 'MH1JBO110BK161567', '2023-06-26 07:51:16', '2023-06-26 07:51:16', NULL),
+(93, 'Honda supra X 125', 'Roda 2', '2011', 'KT 3264 M', 'JBO1E1162929', 'MH1JBO117BK164577', '2023-06-26 07:52:02', '2023-06-26 07:52:02', NULL),
+(94, 'Honda supra X 125', 'Roda 2', '2011', 'KT 3265 M', 'JBO1E1161911', 'MH1JBO115BK163492', '2023-06-26 07:52:39', '2023-06-26 07:52:39', NULL),
+(95, 'Honda supra X 125', 'Roda 2', '2011', 'KT 3266 M', 'JBO1E1163320', 'MH1JBO11XBK164976', '2023-06-26 07:53:16', '2023-06-26 07:53:16', NULL),
+(96, 'Honda CS 1', 'Roda 2', '2011', 'KT 6190 BZ', 'JBA1E1127216', 'MH1JBA118BK128953', '2023-06-26 07:54:11', '2023-06-26 07:54:11', NULL),
+(97, 'Honda CS 1', 'Roda 2', '2011', 'KT 6199 BZ', 'JBA1E1126931', 'MH1JBA114BK128688', '2023-06-26 07:54:52', '2023-06-26 07:54:52', NULL),
+(98, 'Honda CS 1', 'Roda 2', '2011', 'KT 3255 M', 'JBA1E1124547', 'MH1JBA119BK125902', '2023-06-26 07:55:38', '2023-06-26 07:55:38', NULL),
+(99, 'Honda CS 1', 'Roda 2', '2011', 'KT 3256 M', 'JBA1E1126723', 'MH1JBA118BK128323', '2023-06-26 07:56:32', '2023-06-26 07:56:32', NULL),
+(100, 'Honda CS 1', 'Roda 2', '2011', 'KT 3257 M', 'JBA1E1126654', 'MH1JBA114BK128352', '2023-06-26 07:57:21', '2023-06-26 07:57:21', NULL),
+(101, 'Honda CS 1', 'Roda 2', '2011', 'KT 3258 M', 'JBA1E1124998', 'MH1JBA114BK', '2023-06-26 07:58:05', '2023-06-26 07:58:05', NULL),
+(102, 'Honda New Megapro Cw', 'Roda 2', '2011', 'KT 6191 BZ', 'KC31E1080586', 'MH1KC3178BK080634', '2023-06-26 07:58:59', '2023-06-26 07:58:59', NULL),
+(103, 'Vario techno CBS', 'Roda 2', '2011', 'KT 6204 BZ', 'CF71E1105664', 'MH1JF7110BK106257', '2023-06-26 07:59:57', '2023-06-26 07:59:57', NULL),
+(104, 'Vario techno CBS', 'Roda 2', '2011', 'KT 3251 M', 'JF71E1099924', 'MH11JF7110BK100426', '2023-06-26 08:03:27', '2023-06-26 08:03:27', NULL),
+(105, 'kawasaki LX 150 c', 'Roda 2', '2012', 'KT 3254 MZ', 'LX150CEB74859', 'MH4LX150CCKP48606', '2023-06-26 08:04:32', '2023-06-26 08:04:32', NULL),
+(106, 'kawasaki LX 150 c', 'Roda 2', '2012', 'KT 3253 MZ', 'LX150CEP72408', 'MH4LX150CCKP46671', '2023-06-26 08:05:37', '2023-06-26 08:05:37', NULL),
+(107, 'kawasaki LX 150 c', 'Roda 2', '2012', 'KT 3252 MZ', 'LX150CEP72418', 'MH4LX150CCHP46198', '2023-06-26 08:06:26', '2023-06-26 08:06:26', NULL),
+(108, 'kawasaki LX 150 c', 'Roda 2', '2012', 'KT 3251 MZ', 'LX150CEP73036', 'MH4LX150CCKP47318', '2023-06-26 08:07:12', '2023-06-26 08:07:12', NULL),
+(109, 'kawasaki LX 150 c', 'Roda 2', '2012', 'KT 3250 MZ', 'LX150CCP72386', 'MH4LX150CCKP46856', '2023-06-26 08:07:56', '2023-06-26 08:07:56', NULL),
+(110, 'honda megapro', 'Roda 2', '2013', '-', '-', '-', '2023-06-26 08:08:24', '2023-06-26 08:08:24', NULL),
+(111, 'honda', 'Roda 2', '2013', '-', '-', '-', '2023-06-26 08:08:44', '2023-06-26 08:08:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -114,11 +152,11 @@ INSERT INTO `dataken` (`id`, `merk_kendaraan`, `jenis_kendaraan`, `tahun_pembuat
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -131,14 +169,14 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `klasifikasi` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `dataken_id` bigint(20) UNSIGNED NOT NULL,
-  `jenis_kendaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tahun_pembuatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bahan_bakar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `komponen_mesin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ban` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lampu_utama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kondisi_rem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kelayakan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_kendaraan` varchar(255) NOT NULL,
+  `tahun_pembuatan` varchar(255) NOT NULL,
+  `bahan_bakar` varchar(255) NOT NULL,
+  `komponen_mesin` varchar(255) NOT NULL,
+  `ban` varchar(255) NOT NULL,
+  `lampu_utama` varchar(255) NOT NULL,
+  `kondisi_rem` varchar(255) NOT NULL,
+  `kelayakan` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -149,11 +187,6 @@ CREATE TABLE `klasifikasi` (
 --
 
 INSERT INTO `klasifikasi` (`id`, `dataken_id`, `jenis_kendaraan`, `tahun_pembuatan`, `bahan_bakar`, `komponen_mesin`, `ban`, `lampu_utama`, `kondisi_rem`, `kelayakan`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(2, 53, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 00:23:57', '2023-06-20 00:23:57', NULL),
-(3, 54, 'Roda 2', '>10 tahun', 'Pertamax', 'Sedang', 'Baik', 'Baik', 'Sedang', 'Layak', '2023-06-20 00:27:34', '2023-06-20 00:27:34', NULL),
-(4, 55, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Sedang', 'Sedang', 'Buruk', 'Tidak Layak', '2023-06-20 01:24:07', '2023-06-20 01:24:07', NULL),
-(5, 56, 'Roda 2', '>10 tahun', 'Pertamax', 'Buruk', 'Baik', 'Sedang', 'Baik', 'Tidak Layak', '2023-06-20 01:24:49', '2023-06-20 01:24:49', NULL),
-(6, 57, 'Roda 2', '>10 tahun', 'Pertamax', 'Sedang', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:25:23', '2023-06-20 01:25:23', NULL),
 (7, 39, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:26:05', '2023-06-20 01:26:05', NULL),
 (8, 42, 'Roda 2', '<10 tahun', 'Pertamax', 'Buruk', 'Buruk', 'Sedang', 'Buruk', 'Tidak Layak', '2023-06-20 01:27:28', '2023-06-20 01:27:28', NULL),
 (9, 13, 'Roda 2', '<10 tahun', 'Pertamax', 'Sedang', 'Sedang', 'Baik', 'Sedang', 'Layak', '2023-06-20 01:28:02', '2023-06-20 01:28:02', NULL),
@@ -162,13 +195,8 @@ INSERT INTO `klasifikasi` (`id`, `dataken_id`, `jenis_kendaraan`, `tahun_pembuat
 (12, 3, 'Roda 4', '<10 tahun', 'Pertamax', 'Baik', 'Sedang', 'Sedang', 'Sedang', 'Layak', '2023-06-20 01:29:36', '2023-06-20 01:29:36', NULL),
 (13, 8, 'Roda 4', '>10 tahun', 'Dexlite', 'Sedang', 'Baik', 'Baik', 'Sedang', 'Layak', '2023-06-20 01:30:10', '2023-06-20 01:30:10', NULL),
 (14, 41, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Buruk', 'Buruk', 'Sedang', 'Tidak Layak', '2023-06-20 01:30:40', '2023-06-20 01:30:40', NULL),
-(15, 58, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Sedang', 'Baik', 'Layak', '2023-06-20 01:31:18', '2023-06-20 01:31:18', NULL),
-(16, 59, 'Roda 2', '>10 tahun', 'Pertamax', 'Buruk', 'Buruk', 'Baik', 'Sedang', 'Tidak Layak', '2023-06-20 01:31:57', '2023-06-20 01:31:57', NULL),
 (17, 22, 'Roda 2', '<10 tahun', 'Pertamax', 'Buruk', 'Baik', 'Sedang', 'Sedang', 'Tidak Layak', '2023-06-20 01:32:34', '2023-06-20 01:32:34', NULL),
-(18, 47, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:33:17', '2023-06-20 01:33:17', NULL),
-(19, 60, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:33:40', '2023-06-20 01:33:40', NULL),
-(20, 61, 'Roda 2', '>10 tahun', 'Pertamax', 'Sedang', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:34:03', '2023-06-20 01:34:03', NULL),
-(21, 62, 'Roda 2', '>10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Sedang', 'Layak', '2023-06-20 01:34:19', '2023-06-20 01:34:19', NULL);
+(18, 47, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:33:17', '2023-06-20 01:33:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -178,7 +206,7 @@ INSERT INTO `klasifikasi` (`id`, `dataken_id`, `jenis_kendaraan`, `tahun_pembuat
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -201,8 +229,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -214,11 +242,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -232,12 +260,12 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `level` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -310,7 +338,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dataken`
 --
 ALTER TABLE `dataken`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -322,7 +350,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `migrations`
