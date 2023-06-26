@@ -5,7 +5,7 @@
 <!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:03 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Data kendaraan DISPANTPH</title>
+        <title>data training/testing</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -192,47 +192,88 @@
                         
                         <div class="content">
                         <div class="card-body">
-                        <form action="{{ url('update-dataken', $dataken->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ url('update-klasifikasi', $klasifikasi->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
-                    
-                            <div class="form-group">
-                            <label>Jenis Kendaraan</label>
-                                <select id="jenis_kendaraan" name="jenis_kendaraan" class="form-control" placeholder="Jenis Kendaraan"
-                                    value="{{ $dataken->jenis_kendaraan }}">
-                                    <option value="">Jenis Kendaraan</option>
-                                    <option value="Roda 2">Roda 2</option>
-                                    <option value="Roda 4">Roda 4</option>
-                                </select>
-                            </div>
 
                             <div class="form-group">
-                            <label>Merk Kendaraan</label>
-                                <input type="text" id="merk_kendaraan" name="merk_kendaraan" class="form-control" placeholder="Merk"
-                                    value="{{ $dataken->merk_kendaraan }}">
-                                    </div>
+                            <label>Jenis Kendaraan</label>
+                            <select class="form-control" name="dataken_id" >
+                                <option value="">Ubah Jenis Kendaraan</option>
+                                @foreach ($dataken as $item)
+                                <option value="{{ $item->id }}">
+                                {{ $item->merk_kendaraan." | ".$item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
+                                @endforeach
+                            </select>
+                            </div>
 
                             <div class="form-group">
                             <label>Tahun</label>
                                 <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control" placeholder="tahun"
-                                    value="{{ $dataken->tahun_pembuatan }}">
+                                    value="{{ $klasifikasi->tahun_pembuatan }}">
                                     </div>
 
                             <div class="form-group">
-                            <label>Nomor Polisi</label>
-                                <input type="text" id="no_polisi" name="no_polisi" class="form-control" placeholder="no polisi"
-                                    value="{{ $dataken->no_polisi }}">
+                            <label>Bahan Bakar</label>
+                                <select id="bahan_bakar" name="bahan_bakar" class="form-control" placeholder="Bahan bakar"
+                                    value="{{ $klasifikasi->bahan_bakar }}">
+                                    <option value="">Ubah bahan bakar</option>
+                                    <option value="Dexlite">Dexlite</option>
+                                    <option value="Pertamax">Pertamax</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
-                            <label>Nomor Mesin</label>
-                                <input type="text" id="no_mesin" name="no_mesin" class="form-control" placeholder="no mesin"
-                                    value="{{ $dataken->no_mesin }}">
+                            <label>Komponen mesin</label>
+                                <select id="komponen_mesin" name="komponen_mesin" class="form-control" placeholder="Bahan bakar"
+                                    value="{{ $klasifikasi->komponen_mesin }}">
+                                    <option value="">Ubah Komponen mesin</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Sedang">Sedang</option>
+                                    <option value="Buruk">Buruk</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
-                            <label>Nomor Rangka</label>
-                                <input type="text" id="no_rangka" name="no_rangka" class="form-control" placeholder="no rangka"
-                                    value="{{ $dataken->no_rangka }}">
+                            <label>Ban</label>
+                                <select id="ban" name="ban" class="form-control" placeholder="ban"
+                                    value="{{ $klasifikasi->ban }}">
+                                    <option value="">Ubah Ban</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Sedang">Sedang</option>
+                                    <option value="Buruk">Buruk</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                            <label>lampu utama</label>
+                                <select id="lampu_utama" name="lampu_utama" class="form-control" placeholder="lampu utama"
+                                    value="{{ $klasifikasi->lampu_utama }}">
+                                    <option value="">Ubah lampu utama</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Sedang">Sedang</option>
+                                    <option value="Buruk">Buruk</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                            <label>kondisi rem</label>
+                                <select id="kondisi_rem" name="kondisi_rem" class="form-control" placeholder="kondisi rem"
+                                    value="{{ $klasifikasi->kondisi_rem }}">
+                                    <option value="">Ubah lampu utama</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Sedang">Sedang</option>
+                                    <option value="Buruk">Buruk</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                            <label>kelayakan</label>
+                                <select id="kelayakan" name="kelayakan" class="form-control" placeholder="kelayakan"
+                                    value="{{ $klasifikasi->kelayakan }}">
+                                    <option value="">Ubah kelayakan</option>
+                                    <option value="Layak">Layak</option>
+                                    <option value="Tidak Layak">Tidak Layak</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Hasil prediksi</title>
+<title>Hasil Klasifikasi</title>
 <style>
     .border_table {
         border: 1px solid black;
@@ -30,9 +30,6 @@
     @php
     @endphp
     <div class="card">
-        <div class="card-header d-flex align-items-center justify-content-between">
-            <h5 class="card-title me-2">Data Realisasi </h5>
-        </div>
         <div class="card-datatable table-responsive pt-0">
             <table width="100%">
                 <tr>
@@ -73,7 +70,7 @@
                 </tr>
                 @foreach($klasifikasi as $data)
                 <tr>
-                    <td>{{ $data->dataken->merk_kendaraan }} <br>No Polisi : {{ $data->dataken->no_polisi }} <br>No Rangka : {{ $data->dataken->no_rangka }}<br>Jenis Kendaraan : {{ $data->jenis_kendaraan }}</td>
+                    <td>{{ $data->dataken->merk_kendaraan }}<br>Jenis Kendaraan : {{ $data->jenis_kendaraan }} <br>No Polisi : {{ $data->dataken->no_polisi }} <br>No Mesin : {{ $data->dataken->no_mesin }} <br>No Rangka : {{ $data->dataken->no_rangka }}</td>
                     <td>{{ $data->tahun_pembuatan }}</td>
                     <td>{{ $data->bahan_bakar }}</td>
                     <td>{{ $data->komponen_mesin }}</td>

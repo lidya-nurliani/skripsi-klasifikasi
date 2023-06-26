@@ -160,10 +160,6 @@
                                     <i class="fe-box"></i>
                                 Klasifikasi</a>
                             </li>
-
-                            <li class="has-submenu">
-                                <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
-                            </li>
                         </ul>
                         <!-- End navigation menu -->
 
@@ -203,7 +199,8 @@
                         </div>
                     </div>
                     <!-- end page title -->
-
+                    
+                    
                     <div class="row">
                         @if(Auth::user()->level == 'admin')
                         <div class="col-md-6">

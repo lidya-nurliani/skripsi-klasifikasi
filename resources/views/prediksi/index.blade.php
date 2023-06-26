@@ -161,10 +161,6 @@
                                     <i class="fe-box"></i>
                                 Klasifikasi</a>
                             </li>
-
-                            <li class="has-submenu">
-                                <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
-                            </li>
                         </ul>
                         <!-- End navigation menu -->
 
@@ -205,6 +201,7 @@
                     </div>
                     <!-- end page title -->
 
+                     <!-- Bagian Form Klasifikasi -->
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-box">

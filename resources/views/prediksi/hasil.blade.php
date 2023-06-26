@@ -150,10 +150,6 @@
                                     <i class="fe-box"></i>Klasifikasi</a>
 
                             </li>
-
-                            <li class="has-submenu">
-                                <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
-                            </li>
                         </ul>
 
 
@@ -244,6 +240,7 @@
                                 </table>
                                 <br>
                                 <h5>HASIL KEPUTUSAN : {{ $decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) }}</h5>
+                     
                                 <div class="single-table">
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
@@ -258,7 +255,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box table-responsive">
-                                <h4 class="header-title">DATA Testing</h4>
+                                <h4 class="header-title">DATA </h4>
 
                                 <table class="table table-bordered  dt-responsive nowrap"
                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -278,7 +275,9 @@
                                     <tbody>
                                         @foreach($klasifikasi as $data)
                                         <tr>
-                                            <td>{{ $data->dataken->merk_kendaraan }} <br>No Polisi : {{ $data->dataken->no_polisi }} <br>No Rangka : {{ $data->dataken->no_rangka }}</td>
+                                            <td>{{ $data->dataken->merk_kendaraan }}<br>Jenis Kendaraan : {{ $data->jenis_kendaraan }} 
+                                            <br>No Polisi : {{ $data->dataken->no_polisi }} <br>No Mesin : {{ $data->dataken->no_mesin }} 
+                                            <br>No Rangka : {{ $data->dataken->no_rangka }}</td>
                                             <td>{{ $data->jenis_kendaraan }}</td>
                                             <td>{{ $data->tahun_pembuatan }}</td>
                                             <td>{{ $data->bahan_bakar }}</td>

@@ -148,10 +148,6 @@
                                         <i class="fe-box"></i>Klasifikasi</a>
     
                                 </li>
-
-                                <li class="has-submenu">
-                                    <a href="#"> <i class="fe-sidebar"></i>Laporan</a>
-                                </li>
                             </ul>
 
 
