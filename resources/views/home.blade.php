@@ -16,9 +16,9 @@
         <link href="{{ asset('template/libs/c3/c3.min.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
-        <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+        <link href="{{ asset('template/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
         <link href="{{ asset('template/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('template/css/app.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+        <link href="{{ asset('template/css/app-dark.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
 
     </head>
     
@@ -103,42 +103,44 @@
                 <!-- end Topbar -->
 
                 <div class="topbar-menu">
-                    <div class="container-fluid">
+                
+                    <div class="container-fluid ">
                         <div id="navigation">
                             <!-- Navigation Menu-->
-                            <ul class="navigation-menu">
+                            <ul class="navigation-menu ">
 
                                 <li class="has-submenu">
-                                    <a href="#"> <i class="fe-airplay"></i>Home</a>
+                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="{{ route('index-dataken') }}">
+                                    <a href="{{ route('index-dataken') }}" class="text-white">
                                         <i class="fe-briefcase"></i>Data Kendaraan
                                     </a>
-           
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="{{ route('create-klasifikasi') }}">
+                                    <a href="{{ route('create-klasifikasi') }}"class="text-white">
                                         <i class="fe-box"></i>Data Training/Testing</a>
-                  
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="{{ route('prediksi') }}">
+                                    <a href="{{ route('prediksi') }}"class="text-white">
                                         <i class="fe-box"></i>
                                     Klasifikasi</a>
                                 </li>
                             </ul>
+                            
                             <!-- End navigation menu -->
 
                             <div class="clearfix"></div>
                         </div>
                         <!-- end #navigation -->
                     </div>
+                    
                     <!-- end container -->
                 </div>
+                
                 <!-- end navbar-custom -->
             </header>
             <!-- End Navigation Bar-->
@@ -182,7 +184,67 @@
                     </div>
                        
                    
-                           
+                    <div class="row">
+                                <div class="col-12">
+                                    <div class="card-box">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h4 class="header-title">Bootstrap Carousel</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <p class="sub-header">Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.carousel-item</code>. </p>
+    
+                                                <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                                                    <ol class="carousel-indicators">
+                                                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                                        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                                                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                                                    </ol>
+                                                    <div class="carousel-inner" role="listbox">
+                                                        <div class="carousel-item active">
+                                                            <img class="d-block img-fluid" src="assets/images/small/img-1.jpg" alt="First slide" />
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h3 class="text-white">First slide label</h3>
+                                                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <img class="d-block img-fluid" src="assets/images/small/img-2.jpg" alt="Second slide" />
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h3 class="text-white">Second slide label</h3>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <img class="d-block img-fluid" src="assets/images/small/img-3.jpg" alt="Third slide" />
+                                                            <div class="carousel-caption d-none d-md-block">
+                                                                <h3 class="text-white">Third slide label</h3>
+                                                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                        <!-- end row -->
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+                    </div> <!-- end container-fluid -->
+
+                </div> <!-- end content -->   
 
                      
                 

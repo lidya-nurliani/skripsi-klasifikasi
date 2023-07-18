@@ -15,17 +15,16 @@
 
     <link href="{{ asset('template/libs/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet" />
     <link href="{{ asset('template/libs/switchery/switchery.min.css" rel="stylesheet') }}" type="text/css" />
-    <link href="{{ asset('template/libs/select2/select2.min.css" rel="stylesheet') }}" type="text/css" />
-    <link href="{{ asset('template/libs/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('template/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.css') }}" rel="stylesheet"
-        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+    <link href="{{ asset('template/libs/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet"type="text/css" />
+    <link href="{{ asset('template/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App css -->
-    <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"
-        id="bootstrap-stylesheet" />
+    <link href="{{ asset('template/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
     <link href="{{ asset('template/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('template/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <link href="{{ asset('template/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
 
 </head>
 
@@ -83,12 +82,6 @@
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-settings"></i>
                                     <span>Settings</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-lock"></i>
-                                    <span>Lock Screen</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -210,17 +203,20 @@
 
                                 <form  action="{{ route('simpan-klasifikasi') }}" method="post" enctype="multipart/form-data">
                                   {{csrf_field() }}
+
+                                  
                                     <div class="form-group">
-                                        <label>Jenis Kendaraan</label>
-                                        <select class="form-control" name="dataken_id" >
-                                            <option value="">Pilih Jenis Kendaraan</option>
-                                            @foreach ($dataken as $item)
-                                            <option value="{{ $item->id }}">
-                                                {{ $item->merk_kendaraan." | ".$item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
-                                            @endforeach
-                                        </select>
+                                    <label for="dataken">jenis kendaraan</label>
+                                    <select name="dataken_id" id="dataken" class="form-control">
+                                        <option>pilih data kendaraan</option>
+                                       @foreach ($dataken as $item)
+                                        <option value="{{ $item->id }}">
+                                        {{ $item->merk_kendaraan." | ".$item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
+                                        @endforeach
+                                    </select>
                                     </div>
-                                    
+                                   
+   
                                     <div class="form-group">
                                         <label>Bahan Bakar</label>
                                         <select name="bahan_bakar" class="form-control">
@@ -386,7 +382,6 @@
 
     <script src="{{ asset('template/libs/switchery/switchery.min.js') }}"></script>
     <script src="{{ asset('template/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js') }}"></script>
-    <script src="{{ asset('template/libs/select2/select2.min.js') }}"></script>
     <script src="{{ asset('template/libs/jquery-mockjax/jquery.mockjax.min.js') }}"></script>
     <script src="{{ asset('template/libs/autocomplete/jquery.autocomplete.min.js') }}"></script>
     <script src="{{ asset('template/libs/bootstrap-select/bootstrap-select.min.js') }}"></script>
@@ -400,6 +395,13 @@
     <!-- App js -->
     <script src="{{ asset('template/js/app.min.js') }}"></script>
 
+    <script src="/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script>
+      $(document).ready(function(){
+          $('#dataken').select2();
+       });
+    </script>
 </body>
 
 <!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/form-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:27 GMT -->

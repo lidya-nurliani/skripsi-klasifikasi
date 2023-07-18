@@ -19,9 +19,9 @@
         <link href="{{ asset('template/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
-        <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+        <link href="{{ asset('template/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
         <link href="{{ asset('template/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('template/css/app.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+        <link href="{{ asset('template/css/app-dark.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
 
     </head>
 
@@ -74,12 +74,6 @@
                                         <span>Settings</span>
                                     </a>
 
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-lock"></i>
-                                        <span>Lock Screen</span>
-                                    </a>
-
                                     <div class="dropdown-divider"></div>
 
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
@@ -127,12 +121,12 @@
                             <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                    <a href="{{ route('home') }}"> <i class="fe-airplay"></i>Home</a>
+                                    <a href="{{ route('home') }}"> <i class="fe-home"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
                                     <a href="{{ route('index-dataken') }}">
-                                        <i class="fe-briefcase"></i>Data Kendaraan
+                                        <i class="fe-database"></i>Data Kendaraan
                                     </a>
            
                                 </li>
@@ -206,12 +200,69 @@
                                             Silahkan Isi data Terlebih dahulu.
                                         </p>
 
-                                        <div class="form-group">
+                                                {{-- notifikasi form validasi --}}
+                                                @if ($errors->has('file'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('file') }}</strong>
+                                                </span>
+                                                @endif
+                                        
+                                                {{-- notifikasi sukses --}}
+                                                @if ($sukses = Session::get('sukses'))
+                                                <div class="alert alert-success alert-block">
+                                                    <button type="button" class="close" data-dismiss="alert">×</button> 
+                                                    <strong>{{ $sukses }}</strong>
+                                                </div>
+                                                @endif
+                                        
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
                                         @if(Auth::user()->level == 'admin')
-                                        <a href="{{ route('create-dataken') }}" class="btn btn-primary waves-effect width-md waves-light">Tambah Data</a>
+                                        <a href="{{ route('create-dataken') }}">
+                                        <button type="button" class="btn btn-success waves-effect waves-light btn-md"><i class="fe-plus-square"></i>Tambah Data</button></a>
                                         @endif
+                                       
+                                        <a href="{{ route('export') }}">
+                                        <button type="button" class="btn btn-info waves-effect waves-light btn-md"><i class="fas fa-file-export"></i>Export</button></a>
+                 
+                                        <button type="button" class="btn btn-primary waves-effect waves-light btn-md" data-toggle="modal" data-target="#import"><i class="fas fa-file-import"></i>Import</button>
+                                            </div>
                                         </div>
-                                    
+                                    </div>
+
+                                        
+                                                <!-- Import Excel -->
+                                                <div class="modal fade" id="import" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <form method="post" action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                        
+                                                                    {{ csrf_field() }}
+                                        
+                                                                    <label>Pilih file excel</label>
+                                                                    <div class="form-group">
+                                                                        <input type="file" name="file" required="required">
+                                                                    </div>
+
+                                                                    <br>
+                                                                    <label>download format disini -> </label>
+                                                                    <a href="{{ asset('template-excel.xlsx') }}" class="">download template</a>
+                                        
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Import</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+ 
 
                                         <table id="datatable" class="table table-bordered  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     

@@ -17,10 +17,10 @@
     <link href="{{ asset('template/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- App css -->
-    <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"
+    <link href="{{ asset('template/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css"
         id="bootstrap-stylesheet" />
     <link href="{{ asset('template/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('template/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <link href="{{ asset('template/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet" />
 
 </head>
 
@@ -74,12 +74,6 @@
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
                                     <i class="fe-settings"></i>
                                     <span>Settings</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-lock"></i>
-                                    <span>Lock Screen</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -203,7 +197,7 @@
                                     </div>
                                 @else
                                     <div class="alert alert-icon alert-danger text-danger alert-dismissible fade show" role="alert">
-                                        <h4><i class="mdi mdi-alert mr-2"></i>
+                                        <h4><i class="mdi mdi-alert mr-2" ></i>
                                         Hasil Klasifikasi adalah <strong>Tidak Layak</strong></h4>
                                     </div>
                                 @endif

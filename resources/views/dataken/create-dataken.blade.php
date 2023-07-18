@@ -19,9 +19,9 @@
         <link href="{{ asset('template/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
-        <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+        <link href="{{ asset('template/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
         <link href="{{ asset('template/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('template/css/app.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+        <link href="{{ asset('template/css/app-dark.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
 
     </head>
 
@@ -72,12 +72,6 @@
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
                                         <i class="fe-settings"></i>
                                         <span>Settings</span>
-                                    </a>
-
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-lock"></i>
-                                        <span>Lock Screen</span>
                                     </a>
 
                                     <div class="dropdown-divider"></div>

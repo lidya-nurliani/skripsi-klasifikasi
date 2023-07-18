@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Models\Dataken;
 use Illuminate\Http\Request;
+use App\Exports\DatakenExport;
+use App\Imports\DatakenImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DatakenController extends Controller
 {
@@ -106,5 +110,35 @@ class DatakenController extends Controller
         $dataken->delete();
 
         return back()->with('info', 'Data Berhasil Dihapus!');
+    }
+
+    public function exportexcel() {
+        return excel::download(new DatakenExport, 'dataken.xlsx');
+    }
+
+    public function importexcel(Request $request) {
+
+        // validasi
+		$this->validate($request, [
+			'file' => 'required|mimes:csv,xls,xlsx'
+		]);
+
+        // menangkap file excel
+		$file = $request->file('file');
+ 
+		// membuat nama file unik
+		$nama_file = rand().$file->getClientOriginalName();
+ 
+		// upload ke folder file di dalam folder public
+		$file->move('file_dataken',$nama_file);
+ 
+		// import data
+		Excel::import(new DatakenImport, public_path('/file_dataken/'.$nama_file));
+ 
+		//notifikasi dengan session
+        Session::flash('sukses', 'data kendaraan berhasil di import');
+
+		// alihkan halaman kembali
+		return redirect('/index-dataken');
     }
 }

@@ -49,3 +49,7 @@ Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy']
 Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
 Route::post('/hasil-prediksi', [PrediksiController::class, 'hasil'])->name('prediksi.hasil');
 Route::post('/cetak-laporan-pdf', [PrediksiController::class, 'pdf'])->name('cetakLaporanPDF');
+
+//export import excel
+Route::get('/export_excel', [DatakenController::class, 'exportexcel'])->name('export');
+Route::post('/import_excel', [DatakenController::class, 'importexcel'])->name('import');
