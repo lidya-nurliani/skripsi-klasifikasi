@@ -6,6 +6,7 @@ use App\Http\Controllers\DatakenController;
 use App\Http\Controllers\KlasifikasiController;
 use App\Http\Controllers\PrediksiController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::get('/edit-dataken/{id}', [DatakenController::class, 'edit'])->name('edit
 Route::post('/update-dataken/{id}', [DatakenController::class, 'update'])->name('update-dataken');
 Route::get('/delete-dataken/{id}', [DatakenController::class, 'destroy'])->name('delete-dataken');
 
-//dafken
+//klasifikasi
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/create-klasifikasi', [KlasifikasiController::class, 'create'])->name('create-klasifikasi');
 Route::post('/simpan-klasifikasi', [KlasifikasiController::class, 'store'])->name('simpan-klasifikasi');
@@ -53,3 +54,8 @@ Route::post('/cetak-laporan-pdf', [PrediksiController::class, 'pdf'])->name('cet
 //export import excel
 Route::get('/export_excel', [DatakenController::class, 'exportexcel'])->name('export');
 Route::post('/import_excel', [DatakenController::class, 'importexcel'])->name('import');
+
+//profile
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/create-user', [ProfileController::class, 'create'])->name('create-user');
+Route::post('/simpan-user', [ProfileController::class, 'store'])->name('simpan-user');

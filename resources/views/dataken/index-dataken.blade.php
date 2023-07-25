@@ -114,31 +114,31 @@
 
 
                 
-                <div class="topbar-menu">
+                <div class="topbar-menu bg-primary">
                     <div class="container-fluid">
                         <div id="navigation">
                             <!-- Navigation Menu-->
                             <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                    <a href="{{ route('home') }}"> <i class="fe-home"></i>Home</a>
+                                    <a href="{{ route('home') }}" class="text-white">  <i class="fe-home"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="{{ route('index-dataken') }}">
+                                    <a href="{{ route('index-dataken') }}" class="text-white">
                                         <i class="fe-database"></i>Data Kendaraan
                                     </a>
            
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="{{ route('create-klasifikasi') }}">
+                                    <a href="{{ route('create-klasifikasi') }}" class="text-white">
                                         <i class="fe-box"></i>Data training/testing</a>
                   
                                 </li>
 
                                 <li class="has-submenu">
-                                    <a href="{{ route('prediksi') }}">
+                                    <a href="{{ route('prediksi') }}" class="text-white">
                                         <i class="fe-box"></i>Klasifikasi</a>
     
                                 </li>

@@ -3,6 +3,17 @@
     
 <!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 08:56:24 GMT -->
 <head>
+<style>
+        .centered-text {
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+            color:white;
+            font-size:24px;
+            font-weight:bold;
+        }
+</style>
         <meta charset="utf-8" />
         <title>Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,6 +72,12 @@
                                         <h6 class="text-overflow m-0">Welcome !</h6>
                                     </div>
 
+                                     <!-- item-->
+                                     <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>Profile</span>
+                                    </a>
+
                                  
                                     <div class="dropdown-divider"></div>
 
@@ -102,8 +119,8 @@
                 </div>
                 <!-- end Topbar -->
 
-                <div class="topbar-menu">
                 
+                <div class="topbar-menu bg-primary">
                     <div class="container-fluid ">
                         <div id="navigation">
                             <!-- Navigation Menu-->
@@ -151,50 +168,9 @@
 
             <div class="content-page">
                 <div class="content">
-                    
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-                        
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dispantph</a></li>
-                                            <li class="breadcrumb-item active"><a href="javascript: void(0);">Home</a></li>
-                                        </ol>
-                                    </div>
-                    
-                                </div>
-                            </div>
-                        </div>     
-                        <!-- end page title --> 
-
-                        <div class="content-header">
-                        <div class="container-fluid">
-                            <div class="row mb-2">
-                                <div class="col-sm-14">
-                                    <center>
-                                        <h3 class="m-0">Selamat datang di Sistem Klasifikasi Uji Kondisi Kelayakan pada Kendaraan Bermotor</h3>
-                                    </center>
-                                </div><!-- /.col -->
-                            </div><!-- /.row -->
-                        </div><!-- /.container-fluid -->
-                    </div>
-                       
-                   
-                    <div class="row">
-                                <div class="col-12">
-                                    <div class="card-box">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <h4 class="header-title">Bootstrap Carousel</h4>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <p class="sub-header">Add captions to your slides easily with the <code>.carousel-caption</code> element within any <code>.carousel-item</code>. </p>
+    
+                    <div class="row">  
+                                            <div class="col-lg-12">
     
                                                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                                                     <ol class="carousel-indicators">
@@ -204,21 +180,21 @@
                                                     </ol>
                                                     <div class="carousel-inner" role="listbox">
                                                         <div class="carousel-item active">
-                                                            <img class="d-block img-fluid" src="assets/images/small/img-1.jpg" alt="First slide" />
-                                                            <div class="carousel-caption d-none d-md-block">
-                                                                <h3 class="text-white">First slide label</h3>
-                                                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                            <img class="d-block img-fluid" src="{{ asset('template/images/small/slide1.png') }}" alt="First slide" />
+                                                            <div class="centered-text">
+                                                                <h2 class="text-white" align="center">SELAMAT DATANG</h2>
+                                                                <H3>Aplikasi Klasifikasi Kelayakan Kendaraan Bermotor</H3>
                                                             </div>
                                                         </div>
                                                         <div class="carousel-item">
-                                                            <img class="d-block img-fluid" src="assets/images/small/img-2.jpg" alt="Second slide" />
+                                                            <img class="d-block img-fluid" src="{{ asset('template/images/small/slide1.png') }}" alt="Second slide" />
                                                             <div class="carousel-caption d-none d-md-block">
                                                                 <h3 class="text-white">Second slide label</h3>
                                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                                             </div>
                                                         </div>
                                                         <div class="carousel-item">
-                                                            <img class="d-block img-fluid" src="assets/images/small/img-3.jpg" alt="Third slide" />
+                                                            <img class="d-block img-fluid" src="{{ asset('template/images/small/slide1.png') }}" alt="Third slide" />
                                                             <div class="carousel-caption d-none d-md-block">
                                                                 <h3 class="text-white">Third slide label</h3>
                                                                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -235,7 +211,7 @@
                                                     </a>
                                                 </div>
                                             </div>    
-                                        </div>
+                                        
                                         <!-- end row -->
                                         
                                     </div>

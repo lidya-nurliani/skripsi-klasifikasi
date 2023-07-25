@@ -53,7 +53,7 @@
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
-                                    Hai, {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
+                                    Hai, {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -74,8 +74,6 @@
                                         <span>Settings</span>
                                     </a>
 
-                            
-
                                     <div class="dropdown-divider"></div>
 
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
@@ -89,6 +87,7 @@
 
                                 </div>
                             </li>
+
                         </ul>
     
                         <!-- LOGO -->
@@ -104,6 +103,8 @@
                                     <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                                 </span>
                             </a>
+
+                         
                         </div>
     
                        
@@ -134,7 +135,7 @@
 
                                 <li class="has-submenu">
                                     <a href="{{ route('create-klasifikasi') }}">
-                                        <i class="fe-box"></i>Data Training/Testing</a>
+                                        <i class="fe-box"></i>Data Training/testing</a>
                   
                                 </li>
 
@@ -184,57 +185,45 @@
                         </div>     
                         <!-- end page title --> 
 
-
-                        
                         <div class="content">
-                        <div class="card-body">
-                        <form action="{{ url('update-dataken', $dataken->id) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                    
-                            <div class="form-group">
-                            <label>Jenis Kendaraan</label>
-                                <select id="jenis_kendaraan" name="jenis_kendaraan" class="form-control" placeholder="Jenis Kendaraan"
-                                    value="{{ $dataken->jenis_kendaraan }}">
-                                    <option value="">Jenis Kendaraan</option>
-                                    <option value="Roda 2">Roda 2</option>
-                                    <option value="Roda 4">Roda 4</option>
-                                </select>
-                            </div>
+    <div class="card card-info card-outline">
+        <div class="card-header">
+            <h3>Buat akun</h3>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('simpan-user') }}" method="post" enctype="multipart/form-data">
+                {{csrf_field() }}
+     
+                <div class="form-group">
+                <label>Nama</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="nama" required="">
+                </div>
 
-                            <div class="form-group">
-                            <label>Merk Kendaraan</label>
-                                <input type="text" id="merk_kendaraan" name="merk_kendaraan" class="form-control" placeholder="Merk"
-                                    value="{{ $dataken->merk_kendaraan }}">
-                                    </div>
+                <div class="form-group">
+                <label>Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="email" required="">
+                </div>
 
-                            <div class="form-group">
-                            <label>Tahun</label>
-                                <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control" placeholder="tahun"
-                                    value="{{ $dataken->tahun_pembuatan }}">
-                                    </div>
+                <div class="form-group">
+                <label>Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="password" required="">
+                </div>
 
-                            <div class="form-group">
-                            <label>Nomor Polisi</label>
-                                <input type="text" id="no_polisi" name="no_polisi" class="form-control" placeholder="no polisi"
-                                    value="{{ $dataken->no_polisi }}">
-                            </div>
+                <div class="form-group">
+                <label>Level</label>
+                     <select name="level" class="form-control" required="">
+                            <option value="">Pilih level akun</option>
+                            <option value="Admin">Admin</option>
+                            <option value="User">User</option>
+                     </select>
+                 </div>
 
-                            <div class="form-group">
-                            <label>Nomor Mesin</label>
-                                <input type="text" id="no_mesin" name="no_mesin" class="form-control" placeholder="no mesin"
-                                    value="{{ $dataken->no_mesin }}">
-                            </div>
-
-                            <div class="form-group">
-                            <label>Nomor Rangka</label>
-                                <input type="text" id="no_rangka" name="no_rangka" class="form-control" placeholder="no rangka"
-                                    value="{{ $dataken->no_rangka }}">
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Ubah Data</button>
-                            </div>
-                        </form>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div><!-- end row -->
     
     
@@ -328,6 +317,7 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
+      
 
         <!-- Vendor js -->
         <script src="{{ asset('template/js/vendor.min.js') }}"></script>
