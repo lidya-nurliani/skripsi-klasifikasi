@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2023 at 06:37 PM
+-- Generation Time: Jul 25, 2023 at 03:13 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -142,7 +142,27 @@ INSERT INTO `dataken` (`id`, `merk_kendaraan`, `jenis_kendaraan`, `tahun_pembuat
 (108, 'kawasaki LX 150 c', 'Roda 2', '2012', 'KT 3251 MZ', 'LX150CEP73036', 'MH4LX150CCKP47318', '2023-06-26 08:07:12', '2023-06-26 08:07:12', NULL),
 (109, 'kawasaki LX 150 c', 'Roda 2', '2012', 'KT 3250 MZ', 'LX150CCP72386', 'MH4LX150CCKP46856', '2023-06-26 08:07:56', '2023-06-26 08:07:56', NULL),
 (110, 'honda megapro', 'Roda 2', '2013', '-', '-', '-', '2023-06-26 08:08:24', '2023-06-26 08:08:24', NULL),
-(111, 'honda', 'Roda 2', '2013', '-', '-', '-', '2023-06-26 08:08:44', '2023-06-26 08:08:44', NULL);
+(111, 'honda', 'Roda 2', '2013', '-', '-', '-', '2023-06-26 08:08:44', '2023-06-26 08:08:44', NULL),
+(112, 'scoopy', 'roda 2', '2018', 'KT 2000 mz', 'ajsgurhd', 'ahdoufqwgc', '2023-07-12 23:47:20', '2023-07-12 23:47:20', NULL),
+(113, 'jupiter', 'roda 2', '2010', 'KT 3715 mz', 'jdshffyatf', 'asgiasgdw', '2023-07-12 23:47:20', '2023-07-12 23:47:20', NULL),
+(114, 'vario', 'roda 2', '2015', 'KT 3526 mz', 'sudcgiusgi', 'sichasgf', '2023-07-12 23:47:20', '2023-07-12 23:47:20', NULL),
+(115, 'lexi', 'roda 2', '2016', 'KT 2634 mz', 'sahfoasf', 'oaushoasd', '2023-07-12 23:47:20', '2023-07-12 23:47:20', NULL),
+(116, 'scoopy', 'roda 2', '2018', 'KT 2000 mz', 'ajsgurhd', 'ahdoufqwgc', '2023-07-12 23:49:27', '2023-07-12 23:49:27', NULL),
+(117, 'jupiter', 'roda 2', '2010', 'KT 3715 mz', 'jdshffyatf', 'asgiasgdw', '2023-07-12 23:49:27', '2023-07-12 23:49:27', NULL),
+(118, 'vario', 'roda 2', '2015', 'KT 3526 mz', 'sudcgiusgi', 'sichasgf', '2023-07-12 23:49:27', '2023-07-12 23:49:27', NULL),
+(119, 'lexi', 'roda 2', '2016', 'KT 2634 mz', 'sahfoasf', 'oaushoasd', '2023-07-12 23:49:27', '2023-07-12 23:49:27', NULL),
+(120, 'scoopy', 'roda 2', '2018', 'KT 2000 mz', 'ajsgurhd', 'ahdoufqwgc', '2023-07-12 23:55:00', '2023-07-12 23:55:00', NULL),
+(121, 'jupiter', 'roda 2', '2010', 'KT 3715 mz', 'jdshffyatf', 'asgiasgdw', '2023-07-12 23:55:00', '2023-07-12 23:55:00', NULL),
+(122, 'vario', 'roda 2', '2015', 'KT 3526 mz', 'sudcgiusgi', 'sichasgf', '2023-07-12 23:55:00', '2023-07-12 23:55:00', NULL),
+(123, 'lexi', 'roda 2', '2016', 'KT 2634 mz', 'sahfoasf', 'oaushoasd', '2023-07-12 23:55:00', '2023-07-12 23:55:00', NULL),
+(124, 'scoopy', 'roda 2', '2018', 'KT 2000 mz', 'ajsgurhd', 'ahdoufqwgc', '2023-07-13 00:03:07', '2023-07-13 00:03:07', NULL),
+(125, 'jupiter', 'roda 2', '2010', 'KT 3715 mz', 'jdshffyatf', 'asgiasgdw', '2023-07-13 00:03:08', '2023-07-13 00:03:08', NULL),
+(126, 'vario', 'roda 2', '2015', 'KT 3526 mz', 'sudcgiusgi', 'sichasgf', '2023-07-13 00:03:08', '2023-07-13 00:03:08', NULL),
+(127, 'lexi', 'roda 2', '2016', 'KT 2634 mz', 'sahfoasf', 'oaushoasd', '2023-07-13 00:03:08', '2023-07-13 00:03:08', NULL),
+(128, 'scoopy', 'roda 2', '2018', 'KT 2000 mz', 'ajsgurhd', 'ahdoufqwgc', '2023-07-13 00:12:29', '2023-07-13 00:12:29', NULL),
+(129, 'jupiter', 'roda 2', '2010', 'KT 3715 mz', 'jdshffyatf', 'asgiasgdw', '2023-07-13 00:12:29', '2023-07-13 00:12:29', NULL),
+(130, 'vario', 'roda 2', '2015', 'KT 3526 mz', 'sudcgiusgi', 'sichasgf', '2023-07-13 00:12:29', '2023-07-13 00:12:29', NULL),
+(131, 'lexi', 'roda 2', '2016', 'KT 2634 mz', 'sahfoasf', 'oaushoasd', '2023-07-13 00:12:29', '2023-07-13 00:12:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -338,7 +358,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dataken`
 --
 ALTER TABLE `dataken`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
