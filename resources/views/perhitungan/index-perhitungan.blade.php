@@ -5,7 +5,7 @@
 <!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:03 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Data kendaraan DISPANTPH</title>
+        <title>Detail Perhitungan Algoritma</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -53,7 +53,7 @@
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
-                                    Hai, {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
+                                    {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -74,8 +74,6 @@
                                         <span>Settings</span>
                                     </a>
 
-                            
-
                                     <div class="dropdown-divider"></div>
 
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
@@ -89,6 +87,7 @@
 
                                 </div>
                             </li>
+    
                         </ul>
     
                         <!-- LOGO -->
@@ -122,19 +121,19 @@
                             <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                    <a href="{{ route('home') }}" class="text-white"> <i class="fe-airplay"></i>Home</a>
+                                    <a href="{{ route('home') }}" class="text-white">  <i class="fe-home"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
                                     <a href="{{ route('index-dataken') }}" class="text-white">
-                                        <i class="fe-briefcase"></i>Data Kendaraan
+                                        <i class="fe-database"></i>Data Kendaraan
                                     </a>
            
                                 </li>
 
                                 <li class="has-submenu">
                                     <a href="{{ route('create-klasifikasi') }}" class="text-white">
-                                        <i class="fe-box"></i>Data Training/Testing</a>
+                                        <i class="fe-box"></i>Data training/testing</a>
                   
                                 </li>
 
@@ -145,6 +144,10 @@
                                 </li>
                             </ul>
 
+
+                               
+                                     
+                                      
                             <!-- End navigation menu -->
 
                             <div class="clearfix"></div>
@@ -183,73 +186,94 @@
                             </div>
                         </div>     
                         <!-- end page title --> 
-
-
-                        
-                        <div class="content">
-                        <div class="card-body">
-                        <form action="{{ url('update-dataken', $dataken->id) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                    
-                            <div class="form-group">
-                            <label>Jenis Kendaraan</label>
-                                <select id="jenis_kendaraan" name="jenis_kendaraan" class="form-control" placeholder="Jenis Kendaraan"
-                                    value="{{ $dataken->jenis_kendaraan }}">
-                                    <option value="">Jenis Kendaraan</option>
-                                    <option value="Roda 2">Roda 2</option>
-                                    <option value="Roda 4">Roda 4</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                            <label>Merk Kendaraan</label>
-                                <input type="text" id="merk_kendaraan" name="merk_kendaraan" class="form-control" placeholder="Merk"
-                                    value="{{ $dataken->merk_kendaraan }}">
-                                    </div>
-
-                            <div class="form-group">
-                            <label>Tahun</label>
-                                <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control" placeholder="tahun"
-                                    value="{{ $dataken->tahun_pembuatan }}">
-                                    </div>
-
-                            <div class="form-group">
-                            <label>Nomor Polisi</label>
-                                <input type="text" id="no_polisi" name="no_polisi" class="form-control" placeholder="no polisi"
-                                    value="{{ $dataken->no_polisi }}">
-                            </div>
-
-                            <div class="form-group">
-                            <label>Nomor Mesin</label>
-                                <input type="text" id="no_mesin" name="no_mesin" class="form-control" placeholder="no mesin"
-                                    value="{{ $dataken->no_mesin }}">
-                            </div>
-
-                            <div class="form-group">
-                            <label>Nomor Rangka</label>
-                                <input type="text" id="no_rangka" name="no_rangka" class="form-control" placeholder="no rangka"
-                                    value="{{ $dataken->no_rangka }}">
-                            </div>
-
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Ubah Data</button>
-                            </div>
-                        </form>
-</div><!-- end row -->
-    
-    
-                          
-                                           
-                                            
-                                      
-                            <!-- end row -->
-                        
-                    </div> <!-- end container-fluid -->
-
                 </div> <!-- end content -->
 
-                
+                <div class="row">
+                        <div class="col-12">
+                            <div class="card-box table-responsive">
+                                <h4 class="header-title">DATA Entropy dan Gain</h4>
 
+                                <table class="table table-bordered  dt-responsive nowrap"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Atribut</th>
+                                            <th>Value</th>
+                                            <th>Jumlah Kasus</th>
+                                            <th>Layak</th>
+                                            <th>Tidak Layak</th>
+                                            <th>Entropy</th>
+                                            <th>Gain</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($attributeInformation as $attribute => $information)
+                                            <tr>
+                                                <td rowspan="{{ count($information['values']) + 1 }}">{{ $attribute }}</td>
+                                                @foreach ($information['values'] as $value)
+                                                    <tr>
+                                                        <td>{{ $value['value'] }}</td>
+                                                        <td>{{ $value['count'] }}</td>
+                                                        <td>{{ $value['positiveCount'] }}</td>
+                                                        <td>{{ $value['negativeCount'] }}</td>
+                                                        <td>{{ $value['entropy'] }}</td>
+                                                        <td></td>
+                                                    </tr>
+                                                @endforeach
+                                                <tr>
+                                                    <td>Total</td>
+                                                    <td>{{ $information['totalInstances'] }}</td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>{{ $information['attributeGain'] }}</td>
+                                                </tr>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box table-responsive">
+                                <h4 class="header-title" class="text-white">Pohon Keputusan </h4>
+
+                                @php
+                                    function printDecisionTree($tree, $indent = 0)
+                                    {
+                                        echo "<ul>";
+                                        if (isset($tree['label'])) {
+                                            echo str_repeat("  ", $indent);
+                                            echo "|--" . $tree['label'] . "\n";
+                                        } else {
+                                            echo str_repeat("  ", $indent);
+                                            echo "# " . $tree['attribute'] . "\n";
+                                            foreach ($tree['children'] as $value => $child) {
+                                                echo str_repeat("  ", $indent + 1);
+                                                echo "|_" . "" . $value . "\n";
+                                                printDecisionTree($child, $indent + 2);
+                                            }
+                                        }
+                                        echo "</ul>";
+                                    }
+                                @endphp
+
+                                <pre>
+                                    @php
+                                        printDecisionTree($decisionTree);
+                                    @endphp
+                                </pre>
+                            
+                              
+                            </div>
+                        </div>
+                    </div> <!-- end row -->
+                    <!-- end row -->
+                    
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
@@ -327,7 +351,6 @@
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
-
 
         <!-- Vendor js -->
         <script src="{{ asset('template/js/vendor.min.js') }}"></script>

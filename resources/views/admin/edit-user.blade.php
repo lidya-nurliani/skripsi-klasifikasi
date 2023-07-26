@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:03 GMT -->
+
 <head>
     <meta charset="utf-8" />
-    <title>prediksi</title>
+    <title>Data kendaraan DISPANTPH</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -90,6 +92,7 @@
 
                             </div>
                         </li>
+
                     </ul>
 
                     <!-- LOGO -->
@@ -105,9 +108,11 @@
                                 <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                             </span>
                         </a>
+
+
                     </div>
 
-                    
+
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -123,32 +128,28 @@
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="{{ route('home') }}" class="text-white"> <i class="fe-airplay"></i>Home</a>
+                                <a href="{{ route('home') }}"> <i class="fe-airplay"></i>Home</a>
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('index-dataken') }}" class="text-white">
+                                <a href="{{ route('index-dataken') }}">
                                     <i class="fe-briefcase"></i>Data Kendaraan
                                 </a>
 
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('create-klasifikasi') }}" class="text-white">
+                                <a href="{{ route('create-klasifikasi') }}">
                                     <i class="fe-box"></i>Data Training/testing</a>
 
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('prediksi') }}" class="text-white">
+                                <a href="{{ route('prediksi') }}">
                                     <i class="fe-box"></i>Klasifikasi</a>
 
                             </li>
                         </ul>
-
-
-
-
 
                         <!-- End navigation menu -->
 
@@ -179,8 +180,8 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">hasil</a></li>
-                                        <li class="breadcrumb-item active">klasifikasi</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
+                                        <li class="breadcrumb-item active">Datatable</li>
                                     </ol>
                                 </div>
 
@@ -188,77 +189,63 @@
                         </div>
                     </div>
                     <!-- end page title -->
-                        
-                    <div class="row">
-                        <div class="col-12">
-                                @if($decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) == 'Layak')
-                                    <div class="alert alert-icon alert-success text-success alert-dismissible fade show" role="alert">
-                                    <h4 class="text-dark"><i class="mdi mdi-check-all mr-2"></i>Hasil Klasifikasi adalah <strong>Layak</strong></h4>
-                                    </div>
-                                @else
-                                    <div class="alert alert-icon alert-danger text-danger alert-dismissible fade show" role="alert">
-                                        <h4 class="text-dark"><i class="mdi mdi-alert mr-2" ></i>
-                                        Hasil Klasifikasi adalah <strong>Tidak Layak</strong></h4>
-                                    </div>
-                                @endif
-                        </div>
-                    </div> <!-- end row -->
 
-                        <div class="card">
+                    <div class="content">
+                        <div class="card card-info card-outline">
+                            <div class="card-header">
+                                <h3>Buat akun</h3>
+                            </div>
                             <div class="card-body">
-                            <h4 class="page-title pull-left">Data Rincian Klasifikasi</h4>
-                            <form action="{{ route('cetakLaporanPDF') }}" method="post" target="_blank">
-                                @csrf
-                                <input type="hidden" name="merk_kendaraan" value="{{ $getDataKen->merk_kendaraan }}">
-                                <input type="hidden" name="no_polisi" value="{{ $getDataKen->no_polisi }}">
-                                @foreach ($dataToPredict as $attribute => $value) 
-                                <input type="hidden" name="{{ $attribute }}" value="{{ $value }}"> 
-                                @endforeach
+                                <form action="{{ route('update-user',$user->id) }}" method="post" enctype="multipart/form-data">
+                                    {{csrf_field() }}
+                                    @method('PATCH')
 
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                <button type="submit" class="btn btn-icon waves-effect btn-danger justify"> <i class="far fa-file-pdf"></i> Cetak</button><br><br>
-                                
-                                <a href="{{ route('index-perhitungan') }}">
-                                        <button type="button" class="btn btn-info waves-effect waves-light btn-md"><i class="fas fa-file-export"></i>Detail Perhitungan
-                                    </button></a>
-                                </div>
+                                    <div class="form-group">
+                                        <label>Nama</label>
+                                        <input type="text" id="name" name="name" class="form-control" placeholder="nama" required="" value="{{ $user->name }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" placeholder="email" required="" value="{{ $user->email }}">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="password" required="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Level</label>
+                                        <select name="level" class="form-control" required="">
+                                            <option value="">Pilih level akun</option>
+                                            <option value="Admin" @if($user->level == 'Admin') selected @endif >Admin</option>
+                                            <option value="User" @if($user->level == 'User') selected @endif >User</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit"
+                                            class="btn btn-info waves-effect waves-light">Submit</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div><!-- end row -->
 
-                            </form>
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>Kendaraan</th>
-                                        <td>{{ $getDataKen->merk_kendaraan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>No Polisi</th>
-                                        <td>{{ $getDataKen->no_polisi }}</td>
-                                    </tr>
-                                    @foreach ($dataToPredict as $attribute => $value)
-                                    <tr>
-                                        <th>{{ $attribute }}</th>
-                                        <td>{{ $value }}</td>
-                                    </tr>
-                                    @endforeach
-                                </table>
-                                <br>
-                                <h5>HASIL KEPUTUSAN : {{ $decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) }}</h5>
-                     
-                                <div class="single-table">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                            </table>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
+
+
+
+
+
+                    <!-- end row -->
 
                 </div> <!-- end container-fluid -->
 
             </div> <!-- end content -->
+
+
+
             <!-- Footer Start -->
             <footer class="footer">
                 <div class="container-fluid">
@@ -280,10 +267,70 @@
     </div>
     <!-- END wrapper -->
 
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div class="rightbar-title">
+            <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                <i class="mdi mdi-close"></i>
+            </a>
+            <h4 class="font-16 m-0 text-white">Theme Customizer</h4>
+        </div>
+        <div class="slimscroll-menu">
+
+            <div class="p-3">
+                <div class="alert alert-warning" role="alert">
+                    <strong>Customize </strong> the overall color scheme, layout, etc.
+                </div>
+                <div class="mb-2">
+                    <img src="{{ asset('template/images/layouts/light.png') }}" class="img-fluid img-thumbnail" alt="">
+                </div>
+                <div class="custom-control custom-switch mb-3">
+                    <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
+                    <label class="custom-control-label" for="light-mode-switch">Light Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="{{ asset('template/images/layouts/dark.png') }}" class="img-fluid img-thumbnail" alt="">
+                </div>
+                <div class="custom-control custom-switch mb-3">
+                    <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch"
+                        data-bsStyle="{{ asset('template/css/bootstrap-dark.min.css') }}"
+                        data-appStyle="{{ asset('template/css/app-dark.min.css') }}" />
+                    <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="{{ asset('template/images/layouts/rtl.png') }}" class="img-fluid img-thumbnail" alt="">
+                </div>
+                <div class="custom-control custom-switch mb-3">
+                    <input type="checkbox" class="custom-control-input theme-choice" id="rtl-mode-switch"
+                        data-appStyle="{{ asset('template/css/app-rtl.min.css') }}" />
+                    <label class="custom-control-label" for="rtl-mode-switch">RTL Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="{{ asset('template/images/layouts/dark-rtl.png') }}" class="img-fluid img-thumbnail"
+                        alt="">
+                </div>
+                <div class="custom-control custom-switch mb-5">
+                    <input type="checkbox" class="custom-control-input theme-choice" id="dark-rtl-mode-switch"
+                        data-bsStyle="{{ asset('template/css/bootstrap-dark.min.css') }}"
+                        data-appStyle="{{ asset('template/css/app-dark-rtl.min.css') }}" />
+                    <label class="custom-control-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
+                </div>
+
+                <a href="https://1.envato.market/y2YAD" class="btn btn-danger btn-block mt-3 mb-5" target="_blank"><i
+                        class="mdi mdi-download mr-1"></i> Download Now</a>
+            </div>
+        </div> <!-- end slimscroll-menu-->
+    </div>
+    <!-- /Right-bar -->
+
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
-  
+
+
     <!-- Vendor js -->
     <script src="{{ asset('template/js/vendor.min.js') }}"></script>
 

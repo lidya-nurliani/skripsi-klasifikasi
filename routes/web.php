@@ -51,6 +51,9 @@ Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
 Route::post('/hasil-prediksi', [PrediksiController::class, 'hasil'])->name('prediksi.hasil');
 Route::post('/cetak-laporan-pdf', [PrediksiController::class, 'pdf'])->name('cetakLaporanPDF');
 
+Route::get('/index-perhitungan', [PrediksiController::class, 'index'])->name('index-perhitungan');
+
+
 //export import excel
 Route::get('/export_excel', [DatakenController::class, 'exportexcel'])->name('export');
 Route::post('/import_excel', [DatakenController::class, 'importexcel'])->name('import');
@@ -59,3 +62,6 @@ Route::post('/import_excel', [DatakenController::class, 'importexcel'])->name('i
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 Route::get('/create-user', [ProfileController::class, 'create'])->name('create-user');
 Route::post('/simpan-user', [ProfileController::class, 'store'])->name('simpan-user');
+Route::get('/edit-user/{id}', [ProfileController::class, 'edit'])->name('edit-user');
+Route::patch('/update-user/{id}', [ProfileController::class, 'update'])->name('update-user');
+Route::delete('/delete-user/{id}', [ProfileController::class, 'destroy'])->name('delete-user');

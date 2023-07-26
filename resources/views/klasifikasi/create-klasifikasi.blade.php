@@ -125,31 +125,31 @@
             <!-- end Topbar -->
 
 
-            <div class="topbar-menu">
+            <div class="topbar-menu bg-primary">
                 <div class="container-fluid">
                     <div id="navigation">
                         <!-- Navigation Menu-->
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="{{ route('home') }}"> <i class="fe-airplay"></i>Home</a>
+                                <a href="{{ route('home') }}" class="text-white"> <i class="fe-airplay"></i>Home</a>
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('index-dataken') }}">
-                                    <i class="fe-briefcase"></i>Data Kendaraan
+                                <a href="{{ route('index-dataken') }}" class="text-white">
+                                    <i class="fe-briefcase" ></i>Data Kendaraan
                                 </a>
 
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('create-klasifikasi') }}">
+                                <a href="{{ route('create-klasifikasi') }}" class="text-white">
                                     <i class="fe-box"></i>Data Training/Testing</a>
 
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('prediksi') }}">
+                                <a href="{{ route('prediksi') }}" class="text-white">
                                     <i class="fe-box"></i>
                                 Klasifikasi</a>
                             </li>
