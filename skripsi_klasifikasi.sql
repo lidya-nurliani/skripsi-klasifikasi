@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2023 at 03:13 AM
+-- Generation Time: Jul 27, 2023 at 06:53 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -216,7 +216,8 @@ INSERT INTO `klasifikasi` (`id`, `dataken_id`, `jenis_kendaraan`, `tahun_pembuat
 (13, 8, 'Roda 4', '>10 tahun', 'Dexlite', 'Sedang', 'Baik', 'Baik', 'Sedang', 'Layak', '2023-06-20 01:30:10', '2023-06-20 01:30:10', NULL),
 (14, 41, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Buruk', 'Buruk', 'Sedang', 'Tidak Layak', '2023-06-20 01:30:40', '2023-06-20 01:30:40', NULL),
 (17, 22, 'Roda 2', '<10 tahun', 'Pertamax', 'Buruk', 'Baik', 'Sedang', 'Sedang', 'Tidak Layak', '2023-06-20 01:32:34', '2023-06-20 01:32:34', NULL),
-(18, 47, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:33:17', '2023-06-20 01:33:17', NULL);
+(18, 47, 'Roda 2', '<10 tahun', 'Pertamax', 'Baik', 'Baik', 'Baik', 'Baik', 'Layak', '2023-06-20 01:33:17', '2023-06-20 01:33:17', NULL),
+(23, 5, 'Roda 4', '<10 tahun', 'Pertamax', 'Sedang', 'Sedang', 'Baik', 'Baik', 'Layak', '2023-07-26 20:50:30', '2023-07-26 20:50:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -296,8 +297,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$a1h8.Hu0t3ww9HB6U10AcOUSOaLZXdHxtp1ddADFogTDxP6.4R1zG', 'user', NULL, '2023-06-08 09:05:23', '2023-06-08 09:05:23'),
-(2, 'admin', 'admin@mail.com', NULL, '$2y$10$1SxrSNzyvGO29d4wx3veGed/P2Qva3FOseeLayMikszqz1OmfAZZe', 'admin', NULL, '2023-06-19 19:19:21', '2023-06-19 19:19:21'),
-(3, 'user', 'user@mail.com', NULL, '$2y$10$3Yeql0sOlduHj/CR3xu0mufaPGAXTrW1dhQDBW3VG.cfqtL/rkYLW', 'user', NULL, '2023-06-24 20:15:11', '2023-06-24 20:15:11');
+(2, 'admin', 'admin@gmail.com', NULL, '$2y$10$/KPCLrMZfgOI4II8PctekOgdNyRP5e/njd0nvWIKeJvkWiFdCI96G', 'Admin', NULL, '2023-06-19 19:19:21', '2023-07-26 04:03:01'),
+(3, 'user', 'user@mail.com', NULL, '$2y$10$/mvSB8/UmFwsrOO4mDNojuSQF/mwSvYIcq/M.cdXOIhotu5i/Kv.a', 'User', NULL, '2023-06-24 20:15:11', '2023-07-26 20:31:25'),
+(4, 'kasubbagkeu', 'keuangan@gmail.com', NULL, '$2y$10$JV/Z/Szuxu8SFGQbhuay5.71TmPdsbJ4Lm2Tx3d8Ya.KrVfuwQS8i', 'User', NULL, '2023-07-25 03:59:49', '2023-07-25 03:59:49');
 
 --
 -- Indexes for dumped tables
@@ -370,7 +372,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -388,7 +390,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
