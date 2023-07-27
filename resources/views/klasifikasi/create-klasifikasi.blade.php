@@ -62,8 +62,8 @@
                                 aria-expanded="false">
                                 <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
                                     class="rounded-circle">
-                                <span class="pro-user-name ml-1"> Hai,
-                                    {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
+                                <span class="pro-user-name ml-1">
+                                Hai {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -72,19 +72,13 @@
                                     <h6 class="text-overflow m-0">Welcome !</h6>
                                 </div>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-user"></i>
-                                    <span>Profile</span>
-                                </a>
+                               <!-- item-->
+                               <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>Profile</span>
+                                    </a>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-settings"></i>
-                                    <span>Settings</span>
-                                </a>
-
-                                <div class="dropdown-divider"></div>
+                              
 
                                 <!-- item-->
                                 <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"
@@ -103,20 +97,13 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-
-                        <a href="index.html" class="logo text-center logo-dark">
-                            <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                                <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                            </span>
-                            <span class="logo-sm">
-                                <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                            </span>
-                        </a>
-
-                    
-                    </div>
+                            <a href="#" class="logo text-center logo-light">
+                                <span class="logo-lg">
+                                    <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
+                                    <!-- <span class="logo-lg-text-dark">Adminox</span> -->
+                                </span>
+                            </a>
+                        </div>
 
                   
                     <div class="clearfix"></div>
@@ -144,7 +131,7 @@
 
                             <li class="has-submenu">
                                 <a href="{{ route('create-klasifikasi') }}" class="text-white">
-                                    <i class="fe-box"></i>Data Training/Testing</a>
+                                    <i class="far fa-file-alt"></i>Data Training/Testing</a>
 
                             </li>
 
@@ -182,12 +169,11 @@
                             <div class="page-title-box">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Adminox</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                        <li class="breadcrumb-item active">Form Advanced</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">create</a></li>
+                                        <li class="breadcrumb-item active">data</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">silahkan Isi data</h4>
                             </div>
                         </div>
                     </div>
@@ -195,7 +181,7 @@
                     
                     
                     <div class="row">
-                        @if(Auth::user()->level == 'admin')
+                        @if(Auth::user()->level == 'Admin')
                         <div class="col-md-6">
                             <div class="card-box">
                                 
@@ -275,7 +261,7 @@
                         </div>
                         <!-- end col -->
                         @endif
-                        @if(Auth::user()->level == 'admin')
+                        @if(Auth::user()->level == 'Admin')
                         <div class="col-md-6">
                         @else
                         <div class="col-md-12">
@@ -299,7 +285,7 @@
                                                 <th>Lampu Utama</th>
                                                 <th>Kondisi Rem</th>
                                                 <th>Kelayakan</th>
-                                                @if(Auth::user()->level == 'admin')
+                                                @if(Auth::user()->level == 'Admin')
                                                 <th>Aksi</th>
                                                 @endif
                                             </tr>
@@ -319,7 +305,7 @@
                                                 <td>{{ $item->lampu_utama}}</td>
                                                 <td>{{ $item->kondisi_rem}}</td>
                                                 <td>{{ $item->kelayakan}}</td>
-                                                @if(Auth::user()->level == 'admin')
+                                                @if(Auth::user()->level == 'Admin')
                                                 <td>
                                                     <center>
                                                         <a href="{{ url('edit-klasifikasi', $item->id) }}"><i

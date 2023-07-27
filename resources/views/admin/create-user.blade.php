@@ -57,7 +57,7 @@
                                 <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
                                     class="rounded-circle">
                                 <span class="pro-user-name ml-1">
-                                    Hai, {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
+                                    Hai {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -67,18 +67,11 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-user"></i>
-                                    <span>Profile</span>
-                                </a>
+                                <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>Profile</span>
+                                    </a>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-settings"></i>
-                                    <span>Settings</span>
-                                </a>
-
-                                <div class="dropdown-divider"></div>
 
                                 <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"
                                     onclick="event.preventDefault();
@@ -97,22 +90,13 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-
-                        <a href="index.html" class="logo text-center logo-dark">
-                            <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                                <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                            </span>
-                            <span class="logo-sm">
-                                <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                            </span>
-                        </a>
-
-
-                    </div>
-
-
+                            <a href="#" class="logo text-center logo-light">
+                                <span class="logo-lg">
+                                    <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
+                                    <!-- <span class="logo-lg-text-dark">Adminox</span> -->
+                                </span>
+                            </a>
+                        </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -128,24 +112,24 @@
                         <ul class="navigation-menu">
 
                             <li class="has-submenu">
-                                <a href="{{ route('home') }}"> <i class="fe-airplay"></i>Home</a>
+                                <a href="{{ route('home') }}" class="text-white"> <i class="fe-airplay"></i>Home</a>
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('index-dataken') }}">
+                                <a href="{{ route('index-dataken') }}" class="text-white">
                                     <i class="fe-briefcase"></i>Data Kendaraan
                                 </a>
 
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('create-klasifikasi') }}">
-                                    <i class="fe-box"></i>Data Training/testing</a>
+                                <a href="{{ route('create-klasifikasi') }}" class="text-white">
+                                    <i class="far fa-file-alt"></i>Data Training/testing</a>
 
                             </li>
 
                             <li class="has-submenu">
-                                <a href="{{ route('prediksi') }}">
+                                <a href="{{ route('prediksi') }}" class="text-white">
                                     <i class="fe-box"></i>Klasifikasi</a>
 
                             </li>
@@ -180,8 +164,8 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                        <li class="breadcrumb-item active">Datatable</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">create</a></li>
+                                        <li class="breadcrumb-item active">user</li>
                                     </ol>
                                 </div>
 

@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Data kendaraan DISPANTPH</title>
+    <title>Detail Perhitungan Algoritma</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -66,12 +66,11 @@
                                     <h6 class="text-overflow m-0">Welcome !</h6>
                                 </div>
 
-                                 <!-- item-->
-                                <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                               <!-- item-->
+                               <a href="{{ route('profile') }}" class="dropdown-item notify-item">
                                         <i class="fe-user"></i>
                                         <span>Profile</span>
                                     </a>
-
 
                                 <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"
                                     onclick="event.preventDefault();
@@ -168,8 +167,8 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                        <li class="breadcrumb-item active">Datatable</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">perhitungan</a></li>
+                                        <li class="breadcrumb-item active">data</li>
                                     </ol>
                                 </div>
 
@@ -178,141 +177,145 @@
                     </div>
                     <!-- end page title -->
 
+
                     <div class="row">
                         <div class="col-12">
+                            
                             <div class="card-box table-responsive">
-                                <h4 class="header-title">
-                                    @if(Auth::user()->level == 'Admin')
-                                    iNPUT
-                                    @endif
-                                    buat akun
-                                </h4>
+                                <h3 align="center">Perhitungan Data Entropy dan Gain</h3>
 
-                                <h1>Welcome, {{ Auth::user()->name }}!</h1>
-                                <p>Email: {{ Auth::user()->email }}</p>
-
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            @if(Auth::user()->level == 'Admin')
-                                            <a href="{{ route('create-user') }}"
-                                                class="btn btn-success waves-effect waves-light btn-md"><i
-                                                    class="fe-plus-square"></i> Tambah Data</a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <table id="datatable" class="table table-bordered  dt-responsive nowrap"
+                                <table class="table table-bordered  dt-responsive nowrap"
                                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Email</th>
-                                            <th>Level</th>
-                                            @if(Auth::user()->level == 'Admin')
-                                            <th>Aksi</th>
-                                            @endif
+                                            <th>Atribut</th>
+                                            <th>Value</th>
+                                            <th>Jumlah Kasus</th>
+                                            <th>Layak</th>
+                                            <th>Tidak Layak</th>
+                                            <th>Entropy</th>
+                                            <th>Gain</th>
                                         </tr>
                                     </thead>
-
-
                                     <tbody>
-                                        @foreach($user as $item)
+                                        @foreach ($attributeInformation as $attribute => $information)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->name}}</td>
-                                            <td>{{ $item->email}}</td>
-                                            <td>{{ $item->level}}</td>
-                                            @if(Auth::user()->level == 'Admin')
-                                            <th>
-                                                <a href="{{ route('edit-user',$item->id) }}"
-                                                    class="btn btn-info waves-effect waves-light btn-md"><i
-                                                        class="fe-edit"></i> Ubah Data</a>
-                                                <a href="#"
-                                                    class="btn btn-danger waves-effect waves-light btn-md" onclick="event.preventDefault();document.getElementById('delete-data').submit();"><i
-                                                        class="fe-trash"></i> Hapus Data</a>
-                                                <form id="delete-data" action="{{ route('delete-user',$item->id) }}" method="POST" class="d-none">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            </th>
-                                            @endif
+                                            <td rowspan="{{ count($information['values']) + 1 }}">{{ $attribute }}</td>
+                                            @foreach ($information['values'] as $value)
+                                        <tr>
+                                            <td>{{ $value['value'] }}</td>
+                                            <td>{{ $value['count'] }}</td>
+                                            <td>{{ $value['positiveCount'] }}</td>
+                                            <td>{{ $value['negativeCount'] }}</td>
+                                            <td>{{ $value['entropy'] }}</td>
+                                            <td></td>
+                                        </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td>Total</td>
+                                            <td>{{ $information['totalInstances'] }}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>{{ $information['attributeGain'] }}</td>
+                                        </tr>
                                         </tr>
                                         @endforeach
                                     </tbody>
-
                                 </table>
                             </div>
                         </div>
                     </div> <!-- end row -->
 
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card-box table-responsive">
+                                <h4 class="header-title" class="text-white">Pohon Keputusan </h4>
+
+                                @php
+                                function printDecisionTree($tree, $indent = 0)
+                                {
+                                echo "<ul>";
+                                    if (isset($tree['label'])) {
+                                    echo str_repeat(" ", $indent);
+                                    echo "|--" . $tree['label'] . "\n";
+                                    } else {
+                                    echo str_repeat(" ", $indent);
+                                    echo "# " . $tree['attribute'] . "\n";
+                                    foreach ($tree['children'] as $value => $child) {
+                                    echo str_repeat(" ", $indent + 1);
+                                    echo "|_" . "" . $value . "\n";
+                                    printDecisionTree($child, $indent + 2);
+                                    }
+                                    }
+                                    echo "</ul>";
+                                }
+                                @endphp
+
+                                <pre>
+                                    @php
+                                        printDecisionTree($decisionTree);
+                                    @endphp
+                                </pre>
 
 
-
-
-
+                            </div>
+                        </div>
+                    </div> <!-- end row -->
                     <!-- end row -->
 
-                </div> <!-- end container-fluid -->
-
-            </div> <!-- end content -->
-
-
-
-            <!-- Footer Start -->
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            2023 &copy; DISPANTPH <a href="#">Coderthemes</a>
+                    <!-- Footer Start -->
+                    <footer class="footer">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    2023 &copy; DISPANTPH <a href="#">Coderthemes</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </footer>
+                    <!-- end Footer -->
+
                 </div>
-            </footer>
-            <!-- end Footer -->
 
-        </div>
+                <!-- ============================================================== -->
+                <!-- End Page content -->
+                <!-- ============================================================== -->
 
-        <!-- ============================================================== -->
-        <!-- End Page content -->
-        <!-- ============================================================== -->
+            </div>
+            <!-- END wrapper -->
 
-    </div>
-    <!-- END wrapper -->
+          
 
+            <!-- Right bar overlay-->
+            <div class="rightbar-overlay"></div>
 
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+            <!-- Vendor js -->
+            <script src="{{ asset('template/js/vendor.min.js') }}"></script>
 
-    <!-- Vendor js -->
-    <script src="{{ asset('template/js/vendor.min.js') }}"></script>
+            <!-- Required datatable js -->
+            <script src="{{ asset('template/libs/datatables/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset('template/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
+            <!-- Buttons examples -->
+            <script src="{{ asset('template/libs/datatables/dataTables.buttons.min.js') }}"></script>
+            <script src="{{ asset('template/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
+            <script src="{{ asset('template/libs/jszip/jszip.min.js') }}"></script>
+            <script src="{{ asset('template/libs/pdfmake/pdfmake.min.js') }}"></script>
+            <script src="{{ asset('template/libs/pdfmake/vfs_fonts.js') }}"></script>
+            <script src="{{ asset('template/libs/datatables/buttons.html5.min.js') }}"></script>
+            <script src="{{ asset('template/libs/datatables/buttons.print.min.js') }}"></script>
+            <script src="{{ asset('template/libs/datatables/buttons.colVis.js') }}"></script>
 
-    <!-- Required datatable js -->
-    <script src="{{ asset('template/libs/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('template/libs/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <!-- Buttons examples -->
-    <script src="{{ asset('template/libs/datatables/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('template/libs/datatables/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('template/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('template/libs/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('template/libs/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('template/libs/datatables/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('template/libs/datatables/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('template/libs/datatables/buttons.colVis.js') }}"></script>
+            <!-- Responsive examples -->
+            <script src="{{ asset('template/libs/datatables/dataTables.responsive.min.js') }}"></script>
+            <script src="{{ asset('template/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
 
-    <!-- Responsive examples -->
-    <script src="{{ asset('template/libs/datatables/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('template/libs/datatables/responsive.bootstrap4.min.js') }}"></script>
+            <!-- Datatables init -->
+            <script src="{{ asset('template/js/pages/datatables.init.js') }}"></script>
 
-    <!-- Datatables init -->
-    <script src="{{ asset('template/js/pages/datatables.init.js') }}"></script>
-
-    <!-- App js -->
-    <script src="{{ asset('template/js/app.min.js') }}"></script>
+            <!-- App js -->
+            <script src="{{ asset('template/js/app.min.js') }}"></script>
 
 </body>
 

@@ -55,7 +55,7 @@
                                 <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
                                     class="rounded-circle">
                                 <span class="pro-user-name ml-1">
-                                    Hai, {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
+                                    Hai {{ Auth::user()->name }} ! <i class="mdi mdi-chevron-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -64,19 +64,12 @@
                                     <h6 class="text-overflow m-0">Welcome !</h6>
                                 </div>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-user"></i>
-                                    <span>Profile</span>
-                                </a>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-settings"></i>
-                                    <span>Settings</span>
-                                </a>
-
-                                <div class="dropdown-divider"></div>
+                             <!-- item-->
+                             <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>Profile</span>
+                                    </a>
 
                                 <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"
                                     onclick="event.preventDefault();
@@ -94,20 +87,13 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-
-                        <a href="index.html" class="logo text-center logo-dark">
-                            <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                                <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                            </span>
-                            <span class="logo-sm">
-                                <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                            </span>
-                        </a>
-                    </div>
-
-                    
+                            <a href="#" class="logo text-center logo-light">
+                                <span class="logo-lg">
+                                    <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
+                                    <!-- <span class="logo-lg-text-dark">Adminox</span> -->
+                                </span>
+                            </a>
+                        </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -135,7 +121,7 @@
 
                             <li class="has-submenu">
                                 <a href="{{ route('create-klasifikasi') }}" class="text-white">
-                                    <i class="fe-box"></i>Data Training/testing</a>
+                                    <i class="far fa-file-alt"></i>Data Training/testing</a>
 
                             </li>
 
@@ -188,73 +174,85 @@
                         </div>
                     </div>
                     <!-- end page title -->
-                        
+
                     <div class="row">
                         <div class="col-12">
-                                @if($decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) == 'Layak')
-                                    <div class="alert alert-icon alert-success text-success alert-dismissible fade show" role="alert">
-                                    <h4 class="text-dark"><i class="mdi mdi-check-all mr-2"></i>Hasil Klasifikasi adalah <strong>Layak</strong></h4>
-                                    </div>
-                                @else
-                                    <div class="alert alert-icon alert-danger text-danger alert-dismissible fade show" role="alert">
-                                        <h4 class="text-dark"><i class="mdi mdi-alert mr-2" ></i>
-                                        Hasil Klasifikasi adalah <strong>Tidak Layak</strong></h4>
-                                    </div>
-                                @endif
+                            @if($decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) == 'Layak')
+                            <div class="alert alert-icon alert-success text-success alert-dismissible fade show"
+                                role="alert">
+                                <h4 class="text-dark"><i class="mdi mdi-check-all mr-2"></i>Hasil Klasifikasi adalah
+                                    <strong>Layak</strong></h4>
+                            </div>
+                            @else
+                            <div class="alert alert-icon alert-danger text-danger alert-dismissible fade show"
+                                role="alert">
+                                <h4 class="text-dark"><i class="mdi mdi-alert mr-2"></i>
+                                    Hasil Klasifikasi adalah <strong>Tidak Layak</strong></h4>
+                            </div>
+                            @endif
                         </div>
                     </div> <!-- end row -->
 
-                        <div class="card">
-                            <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
                             <h4 class="page-title pull-left">Data Rincian Klasifikasi</h4>
                             <form action="{{ route('cetakLaporanPDF') }}" method="post" target="_blank">
                                 @csrf
                                 <input type="hidden" name="merk_kendaraan" value="{{ $getDataKen->merk_kendaraan }}">
                                 <input type="hidden" name="no_polisi" value="{{ $getDataKen->no_polisi }}">
-                                @foreach ($dataToPredict as $attribute => $value) 
-                                <input type="hidden" name="{{ $attribute }}" value="{{ $value }}"> 
+                                @foreach ($dataToPredict as $attribute => $value)
+                                <input type="hidden" name="{{ $attribute }}" value="{{ $value }}">
                                 @endforeach
 
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                <button type="submit" class="btn btn-icon waves-effect btn-danger justify"> <i class="far fa-file-pdf"></i> Cetak</button><br><br>
-                                
-                                <a href="{{ route('index-perhitungan') }}">
-                                        <button type="button" class="btn btn-info waves-effect waves-light btn-md"><i class="fas fa-file-export"></i>Detail Perhitungan
-                                    </button></a>
-                                </div>
-                            </div>
-                        </div>
-
-                            </form>
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <th>Kendaraan</th>
-                                        <td>{{ $getDataKen->merk_kendaraan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>No Polisi</th>
-                                        <td>{{ $getDataKen->no_polisi }}</td>
-                                    </tr>
-                                    @foreach ($dataToPredict as $attribute => $value)
-                                    <tr>
-                                        <th>{{ $attribute }}</th>
-                                        <td>{{ $value }}</td>
-                                    </tr>
-                                    @endforeach
-                                </table>
-                                <br>
-                                <h5>HASIL KEPUTUSAN : {{ $decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) }}</h5>
-                     
-                                <div class="single-table">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                            </table>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-icon waves-effect btn-danger justify">
+                                                <i class="far fa-file-pdf"></i> Cetak</button>
                                         </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <form action="{{ route('detailPerhitungan') }}" method="post">
+                                @csrf
+                                <input type="hidden" name="merk_kendaraan" value="{{ $getDataKen->merk_kendaraan }}">
+                                <input type="hidden" name="no_polisi" value="{{ $getDataKen->no_polisi }}">
+                                @foreach ($dataToPredict as $attribute => $value)
+                                <input type="hidden" name="{{ $attribute }}" value="{{ $value }}">
+                                @endforeach
+                                <button type="submit" class="btn btn-secondary waves-effect waves-light btn-md">
+                                    <i class="fas fa-file-export"></i>Detail Perhitungan
+                                </button>
+                            </form>
+                            <br>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Kendaraan</th>
+                                    <td>{{ $getDataKen->merk_kendaraan }}</td>
+                                </tr>
+                                <tr>
+                                    <th>No Polisi</th>
+                                    <td>{{ $getDataKen->no_polisi }}</td>
+                                </tr>
+                                @foreach ($dataToPredict as $attribute => $value)
+                                <tr>
+                                    <th>{{ $attribute }}</th>
+                                    <td>{{ $value }}</td>
+                                </tr>
+                                @endforeach
+                            </table>
+                            <br>
+                            <h5>HASIL KEPUTUSAN :
+                                {{ $decisionTreeController->predictFinalClass($dataToPredict, $decisionTree) }}</h5>
+
+                            <div class="single-table">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                    </table>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                 </div> <!-- end container-fluid -->
 
@@ -283,7 +281,7 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
-  
+
     <!-- Vendor js -->
     <script src="{{ asset('template/js/vendor.min.js') }}"></script>
 

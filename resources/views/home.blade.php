@@ -63,7 +63,7 @@
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
-                                    Hai, {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
+                                    Hai {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -77,11 +77,6 @@
                                         <i class="fe-user"></i>
                                         <span>Profile</span>
                                     </a>
-
-                                 
-                                    <div class="dropdown-divider"></div>
-
-                                    <!-- item-->
                                     
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
                                     onclick="event.preventDefault();
@@ -99,15 +94,10 @@
     
                         <!-- LOGO -->
                         <div class="logo-box">
-
-                            <a href="index.html" class="logo text-center logo-dark">
+                            <a href="#" class="logo text-center logo-light">
                                 <span class="logo-lg">
-                                    <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
+                                    <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
                                     <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                                </span>
-                                <span class="logo-sm">
-                                    <!-- <span class="logo-lg-text-dark">A</span> -->
-                                    <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
                                 </span>
                             </a>
                         </div>
@@ -138,7 +128,7 @@
 
                                 <li class="has-submenu">
                                     <a href="{{ route('create-klasifikasi') }}"class="text-white">
-                                        <i class="fe-box"></i>Data Training/Testing</a>
+                                        <i class="far fa-file-alt"></i>Data Training/Testing</a>
                                 </li>
 
                                 <li class="has-submenu">
@@ -169,38 +159,32 @@
             <div class="content-page">
                 <div class="content">
     
-                    <div class="row">  
+                                        <div class="row">  
                                             <div class="col-lg-12">
-    
                                                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                                                     <ol class="carousel-indicators">
                                                         <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                                                         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                                                     </ol>
                                                     <div class="carousel-inner" role="listbox">
+
                                                         <div class="carousel-item active">
-                                                            <img class="d-block img-fluid" src="{{ asset('template/images/small/slide1.png') }}" alt="First slide" />
+                                                            <img class="d-block" src="{{ asset('template/images/small/slide1.png') }}" alt="First slide" />
                                                             <div class="centered-text">
                                                                 <h2 class="text-white" align="center">SELAMAT DATANG</h2>
-                                                                <H3>Aplikasi Klasifikasi Kelayakan Kendaraan Bermotor</H3>
+                                                                <h3>Aplikasi Klasifikasi Kelayakan Kendaraan Bermotor</h3>
                                                             </div>
                                                         </div>
+
                                                         <div class="carousel-item">
-                                                            <img class="d-block img-fluid" src="{{ asset('template/images/small/slide1.png') }}" alt="Second slide" />
-                                                            <div class="carousel-caption d-none d-md-block">
-                                                                <h3 class="text-white">Second slide label</h3>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                            <img class="d-block" src="{{ asset('template/images/small/slide1.png') }}" alt="First slide" />
+                                                            <div class="centered-text">
+                                                                <h2 class="text-white" align="center">KLASIFIKASIKAN KELAYAKAN KENDARAAN ANDA DISINI</h2>
+                                                                <h4 align="center">mari kita lihat faktor-faktor penting yang mempengaruhi status kelayakan kendaraan anda</h4>
                                                             </div>
                                                         </div>
-                                                        <div class="carousel-item">
-                                                            <img class="d-block img-fluid" src="{{ asset('template/images/small/slide1.png') }}" alt="Third slide" />
-                                                            <div class="carousel-caption d-none d-md-block">
-                                                                <h3 class="text-white">Third slide label</h3>
-                                                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                                                      
                                                     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                         <span class="sr-only">Previous</span>

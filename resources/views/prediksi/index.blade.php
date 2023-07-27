@@ -18,6 +18,7 @@
     <link href="{{ asset('template/libs/select2/select2.min.css" rel="stylesheet') }}" type="text/css" />
     <link href="{{ asset('template/libs/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet"
         type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
     <link href="{{ asset('template/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.css') }}" rel="stylesheet"
         type="text/css" />
 
@@ -63,8 +64,8 @@
                                 aria-expanded="false">
                                 <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
                                     class="rounded-circle">
-                                <span class="pro-user-name ml-1"> Hai,
-                                    {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i>
+                                <span class="pro-user-name ml-1">
+                                Hai {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -74,19 +75,10 @@
                                 </div>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-user"></i>
-                                    <span>Profile</span>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="fe-settings"></i>
-                                    <span>Settings</span>
-                                </a>
-
-                              
-                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>Profile</span>
+                                    </a>
 
                                 <!-- item-->
                                 <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"
@@ -107,21 +99,13 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-
-                        <a href="index.html" class="logo text-center logo-dark">
-                            <span class="logo-lg">
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                                <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                            </span>
-                            <span class="logo-sm">
-                                <!-- <span class="logo-lg-text-dark">A</span> -->
-                                <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                            </span>
-                        </a>
-
-                      
-                    </div>
-
+                            <a href="#" class="logo text-center logo-light">
+                                <span class="logo-lg">
+                                    <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
+                                    <!-- <span class="logo-lg-text-dark">Adminox</span> -->
+                                </span>
+                            </a>
+                        </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -147,7 +131,7 @@
 
                             <li class="has-submenu">
                                 <a href="{{ route('create-klasifikasi') }}" class="text-white">
-                                    <i class="fe-box"></i>Data Training/testing</a>
+                                    <i class="far fa-file-alt"></i>Data Training/testing</a>
 
                             </li>
 
@@ -186,11 +170,11 @@
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Form</a></li>
                                         <li class="breadcrumb-item active">Klasifikasi</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">Klasifikasi Data Kendaraan</h4>
+                      
                             </div>
                         </div>
                     </div>
@@ -203,15 +187,16 @@
                                 <h4 class="header-title mb-4">Form Klasifikasi</h4>
                                 <form action="{{ route('prediksi.hasil') }}" method="post">
                                     @csrf
+                                    
                                     <div class="form-group">
-                                        <label>Jenis Kendaraan</label>
-                                        <select class="form-control" name="dataken_id" >
-                                            <option value="">Pilih Jenis Kendaraan</option>
-                                            @foreach ($dataken as $item)
-                                            <option value="{{ $item->id }}">
-                                                {{ $item->merk_kendaraan." | ".$item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
-                                            @endforeach
-                                        </select>
+                                    <label for="dataken">jenis kendaraan</label>
+                                    <select name="dataken_id" id="dataken" class="form-control">
+                                        <option>pilih data kendaraan</option>
+                                       @foreach ($dataken as $item)
+                                        <option value="{{ $item->id }}">
+                                        {{ $item->merk_kendaraan." | ".$item->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}</option>
+                                        @endforeach
+                                    </select>
                                     </div>
                                     
                                     <div class="form-group">
@@ -316,6 +301,14 @@
 
     <!-- App js -->
     <script src="{{ asset('template/js/app.min.js') }}"></script>
+
+    <script src="/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script>
+      $(document).ready(function(){
+          $('#dataken').select2();
+       });
+    </script>
 
 </body>
 

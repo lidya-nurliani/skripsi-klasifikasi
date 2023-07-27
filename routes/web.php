@@ -47,11 +47,11 @@ Route::get('/edit-klasifikasi/{id}', [KlasifikasiController::class, 'edit'])->na
 Route::post('/update-klasifikasi/{id}', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
 Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy'])->name('delete-klasifikasi');
 
+//prediksi
 Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
 Route::post('/hasil-prediksi', [PrediksiController::class, 'hasil'])->name('prediksi.hasil');
 Route::post('/cetak-laporan-pdf', [PrediksiController::class, 'pdf'])->name('cetakLaporanPDF');
-
-Route::get('/index-perhitungan', [PrediksiController::class, 'index'])->name('index-perhitungan');
+Route::post('/detailPerhitungan', [PrediksiController::class, 'detailPerhitungan'])->name('detailPerhitungan');
 
 
 //export import excel

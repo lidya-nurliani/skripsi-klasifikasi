@@ -53,7 +53,7 @@
                                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                     <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ml-1">
-                                    Hai, {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
+                                    Hai {{ Auth::user()->name }} !<i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -69,14 +69,10 @@
                                     </a>
 
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="fe-settings"></i>
-                                        <span>Settings</span>
+                                    <a href="{{ route('profile') }}" class="dropdown-item notify-item">
+                                        <i class="fe-user"></i>
+                                        <span>Profile</span>
                                     </a>
-
-                                   
-
-                                    <div class="dropdown-divider"></div>
 
                                     <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"  
                                     onclick="event.preventDefault();
@@ -93,20 +89,13 @@
     
                         <!-- LOGO -->
                         <div class="logo-box">
-
-                            <a href="index.html" class="logo text-center logo-dark">
+                            <a href="#" class="logo text-center logo-light">
                                 <span class="logo-lg">
-                                    <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
+                                    <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
                                     <!-- <span class="logo-lg-text-dark">Adminox</span> -->
                                 </span>
-                                <span class="logo-sm">
-                                    <!-- <span class="logo-lg-text-dark">A</span> -->
-                                    <img src="{{ asset('template/images/logo-dinas.png') }}" alt="" height="64">
-                                </span>
                             </a>
-                        </div>
-    
-                       
+                        </div>           
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -134,7 +123,7 @@
 
                                 <li class="has-submenu">
                                     <a href="{{ route('create-klasifikasi') }}" class="text-white">
-                                        <i class="fe-box"></i>Data Training/Testing</a>
+                                        <i class="far fa-file-alt"></i>Data Training/Testing</a>
                   
                                 </li>
 
@@ -174,8 +163,8 @@
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
                                             <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                            <li class="breadcrumb-item active">Datatable</li>
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">edit</a></li>
+                                            <li class="breadcrumb-item active">data</li>
                                         </ol>
                                     </div>
                                   

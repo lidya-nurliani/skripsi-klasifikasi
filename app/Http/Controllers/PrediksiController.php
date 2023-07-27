@@ -255,6 +255,7 @@ class PrediksiController extends Controller
         }else{
             $getSelisihTahun = ">10 tahun";
         }
+        
 
         $dataToPredict = [
             'jenis_kendaraan' => $getDataKen->jenis_kendaraan,
@@ -299,5 +300,34 @@ class PrediksiController extends Controller
 
         $pdf = PDF::loadview('laporan.pdf', compact('dataset','klasifikasi','attributeInformation','decisionTree','dataToPredict','decisionTreeController','merkKendaraan','noPolisi'));
         return $pdf->download(date("dmyHis").'laporan.pdf');
+    }
+
+    public function detailPerhitungan(Request $request) {
+        $klasifikasi = Klasifikasi::all();
+        $dataset = Klasifikasi::all()->toArray();
+        $attributes = ['jenis_kendaraan', 'tahun_pembuatan', 'bahan_bakar', 'komponen_mesin', 'ban', 'lampu_utama', 'kondisi_rem'];
+        $attributeInformation = [];
+
+        foreach ($attributes as $attribute) {
+            $attributeInformation[$attribute] = $this->getAttributeInformation($dataset, $attribute);
+        }
+
+        $decisionTree = $this->buildDecisionTree($dataset, $attributes);
+
+        $dataToPredict = [
+            'jenis_kendaraan' => $request->jenis_kendaraan,
+            'tahun_pembuatan' => $request->tahun_pembuatan,
+            'bahan_bakar' => $request->bahan_bakar,
+            'komponen_mesin' => $request->komponen_mesin,
+            'ban' => $request->ban,
+            'lampu_utama' => $request->lampu_utama,
+            'kondisi_rem' => $request->kondisi_rem,
+        ];
+
+        $decisionTreeController = new PrediksiController();
+        $merkKendaraan = $request->merk_kendaraan;
+        $noPolisi = $request->no_polisi;
+
+        return view('prediksi.detailPerhitungan', compact('dataset','klasifikasi','attributeInformation','decisionTree','dataToPredict','decisionTreeController','merkKendaraan','noPolisi'));
     }
 }
