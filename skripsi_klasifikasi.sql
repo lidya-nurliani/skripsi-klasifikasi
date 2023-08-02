@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2023 at 06:53 AM
+-- Generation Time: Aug 02, 2023 at 05:39 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -299,7 +299,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `le
 (1, 'lidya nurliani', 'lidyanurliani27@gmail.com', NULL, '$2y$10$a1h8.Hu0t3ww9HB6U10AcOUSOaLZXdHxtp1ddADFogTDxP6.4R1zG', 'user', NULL, '2023-06-08 09:05:23', '2023-06-08 09:05:23'),
 (2, 'admin', 'admin@gmail.com', NULL, '$2y$10$/KPCLrMZfgOI4II8PctekOgdNyRP5e/njd0nvWIKeJvkWiFdCI96G', 'Admin', NULL, '2023-06-19 19:19:21', '2023-07-26 04:03:01'),
 (3, 'user', 'user@mail.com', NULL, '$2y$10$/mvSB8/UmFwsrOO4mDNojuSQF/mwSvYIcq/M.cdXOIhotu5i/Kv.a', 'User', NULL, '2023-06-24 20:15:11', '2023-07-26 20:31:25'),
-(4, 'kasubbagkeu', 'keuangan@gmail.com', NULL, '$2y$10$JV/Z/Szuxu8SFGQbhuay5.71TmPdsbJ4Lm2Tx3d8Ya.KrVfuwQS8i', 'User', NULL, '2023-07-25 03:59:49', '2023-07-25 03:59:49');
+(4, 'kasubbagkeu', 'keuangan@gmail.com', NULL, '$2y$10$JV/Z/Szuxu8SFGQbhuay5.71TmPdsbJ4Lm2Tx3d8Ya.KrVfuwQS8i', 'User', NULL, '2023-07-25 03:59:49', '2023-07-25 03:59:49'),
+(5, 'test', 'test@gmail.com', NULL, '$2y$10$N6SClZW8wWlLaeUpGbMF9ekMoR3KYt9ZQuY7PNItKjEid/aBkRmW6', 'User', NULL, '2023-07-30 18:43:12', '2023-07-30 18:43:12');
 
 --
 -- Indexes for dumped tables
@@ -390,7 +391,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
