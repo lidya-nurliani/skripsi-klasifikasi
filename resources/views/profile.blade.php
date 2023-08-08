@@ -194,11 +194,11 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            @if(Auth::user()->level == 'Admin')
+                                        @role('Admin')
                                             <a href="{{ route('create-user') }}"
                                                 class="btn btn-success waves-effect waves-light btn-md"><i
                                                     class="fe-plus-square"></i> Tambah Data</a>
-                                            @endif
+                                        @endrole
                                         </div>
                                     </div>
                                 </div>
@@ -212,22 +212,22 @@
                                             <th>No</th>
                                             <th>Nama</th>
                                             <th>Email</th>
-                                            <th>Level</th>
-                                            @if(Auth::user()->level == 'Admin')
+                                            <th>role</th>
+                                            @role('Admin')
                                             <th>Aksi</th>
-                                            @endif
+                                            @endrole
                                         </tr>
                                     </thead>
-
-
                                     <tbody>
+                                    
                                         @foreach($user as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name}}</td>
                                             <td>{{ $item->email}}</td>
-                                            <td>{{ $item->level}}</td>
-                                            @if(Auth::user()->level == 'Admin')
+                                            <td>{{ $item->roles->first()->name}}</td>
+                                     
+                                            @role('Admin')
                                             <th>
                                                 <a href="{{ route('edit-user',$item->id) }}"
                                                     class="btn btn-info waves-effect waves-light btn-md"><i
@@ -240,7 +240,7 @@
                                                     @method('DELETE')
                                                 </form>
                                             </th>
-                                            @endif
+                                            @endrole
                                         </tr>
                                         @endforeach
                                     </tbody>

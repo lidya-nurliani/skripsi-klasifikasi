@@ -24,32 +24,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
-Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
+//Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('/index-dataken', [DatakenController::class, 'index'])->name('index-dataken');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//dafken
+Route::get('/index-dataken', [DatakenController::class, 'index'])->name('index-dataken');
+Route::group(['middleware' => ['role:Admin']], function() {
     Route::get('/create-dataken', [DatakenController::class, 'create'])->name('create-dataken');
     Route::post('/simpan-dataken', [DatakenController::class, 'store'])->name('simpan-dataken');
     Route::get('/edit-dataken/{id}', [DatakenController::class, 'edit'])->name('edit-dataken');
     Route::post('/update-dataken/{id}', [DatakenController::class, 'update'])->name('update-dataken');
     Route::get('/delete-dataken/{id}', [DatakenController::class, 'destroy'])->name('delete-dataken');
-
 });
-//dafken
 
 //klasifikasi
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/create-klasifikasi', [KlasifikasiController::class, 'create'])->name('create-klasifikasi')->middleware('auth');
-Route::post('/simpan-klasifikasi', [KlasifikasiController::class, 'store'])->name('simpan-klasifikasi')->middleware('auth');
-Route::get('/edit-klasifikasi/{id}', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi')->middleware('auth');
-Route::post('/update-klasifikasi/{id}', [KlasifikasiController::class, 'update'])->name('update-klasifikasi')->middleware('auth');
-Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy'])->name('delete-klasifikasi')->middleware('auth');
+Route::get('/create-klasifikasi', [KlasifikasiController::class, 'create'])->name('create-klasifikasi');
+Route::group(['middleware' => ['role:Admin']], function() {
+Route::post('/simpan-klasifikasi', [KlasifikasiController::class, 'store'])->name('simpan-klasifikasi');
+Route::get('/edit-klasifikasi/{id}', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');
+Route::post('/update-klasifikasi/{id}', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');
+Route::get('/delete-klasifikasi/{id}', [KlasifikasiController::class, 'destroy'])->name('delete-klasifikasi');
+});
+
 
 //prediksi
 Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
@@ -59,13 +63,17 @@ Route::post('/detailPerhitungan', [PrediksiController::class, 'detailPerhitungan
 
 
 //export import excel
+Route::group(['middleware' => ['role:Admin']], function() {
 Route::get('/export_excel', [DatakenController::class, 'exportexcel'])->name('export');
 Route::post('/import_excel', [DatakenController::class, 'importexcel'])->name('import');
+});
 
 //profile
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
-Route::get('/create-user', [ProfileController::class, 'create'])->name('create-user')->middleware('auth');
-Route::post('/simpan-user', [ProfileController::class, 'store'])->name('simpan-user')->middleware('auth');
-Route::get('/edit-user/{id}', [ProfileController::class, 'edit'])->name('edit-user')->middleware('auth');
-Route::patch('/update-user/{id}', [ProfileController::class, 'update'])->name('update-user')->middleware('auth');
-Route::delete('/delete-user/{id}', [ProfileController::class, 'destroy'])->name('delete-user')->middleware('auth');
+Route::group(['middleware' => ['role:Admin']], function() {
+Route::get('/create-user', [ProfileController::class, 'create'])->name('create-user');
+Route::post('/simpan-user', [ProfileController::class, 'store'])->name('simpan-user');
+Route::get('/edit-user/{id}', [ProfileController::class, 'edit'])->name('edit-user');
+Route::patch('/update-user/{id}', [ProfileController::class, 'update'])->name('update-user');
+Route::delete('/delete-user/{id}', [ProfileController::class, 'destroy'])->name('delete-user');
+});

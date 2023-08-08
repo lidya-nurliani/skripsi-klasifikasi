@@ -202,11 +202,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Level</label>
-                                        <select name="level" class="form-control" required="">
-                                            <option value="">Pilih level akun</option>
-                                            <option value="Admin">Admin</option>
-                                            <option value="User">User</option>
+                                        <label>Role</label>
+                                        <select name="role_id" id="role_id" class="form-control" required="">
+                                            <option disabled value>Pilih Role</option>
+                                        @foreach ($role as $item)
+                                        <option value="{{ $item->id }}"> {{ $item->name }}</option>
+                                        @endforeach
                                         </select>
                                     </div>
 

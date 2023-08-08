@@ -178,9 +178,9 @@
                                 <div class="col-12">
                                     <div class="card-box table-responsive">
                                         <h4 class="header-title">
-                                            @if(Auth::user()->level == 'Admin')
+                                            @role('Admin')
                                             iNPUT
-                                            @endif
+                                            @endrole
                                             DATA KENDARAAN
                                         </h4>
                                         <p class="sub-header">
@@ -205,15 +205,16 @@
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="form-group">
-                                        @if(Auth::user()->level == 'Admin')
+                                        @role('Admin')
                                         <a href="{{ route('create-dataken') }}">
                                         <button type="button" class="btn btn-success waves-effect waves-light btn-md"><i class="fe-plus-square"></i>Tambah Data</button></a>
-                                        @endif
+                                      
                                        
                                         <a href="{{ route('export') }}">
                                         <button type="button" class="btn btn-info waves-effect waves-light btn-md"><i class="fas fa-file-export"></i>Export</button></a>
                  
                                         <button type="button" class="btn btn-primary waves-effect waves-light btn-md" data-toggle="modal" data-target="#import"><i class="fas fa-file-import"></i>Import</button>
+                                        @endrole
                                             </div>
                                         </div>
                                     </div>
@@ -262,9 +263,9 @@
                                                 <th>no polisi</th>
                                                 <th>no mesin</th>
                                                 <th>no rangka</th>
-                                                @if(Auth::user()->level == 'Admin')
+                                                @role('Admin')
                                                 <th>Aksi</th>
-                                                @endif
+                                                @endrole
                                             </tr>
                                             </thead>
     
@@ -279,7 +280,7 @@
                                                 <td>{{ $item->no_polisi}}</td>
                                                 <td>{{ $item->no_mesin}}</td>
                                                 <td>{{ $item->no_rangka}}</td>
-                                                @if(Auth::user()->level == 'Admin')
+                                                @role('Admin')
                                                 <td>
                                                 <center>
                                                     <a href="{{ url('edit-dataken', $item->id) }}"><i class="fas fa-edit"></i></a>
@@ -287,7 +288,7 @@
                                                     <a href="{{ url('delete-dataken', $item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
                                                 </center>
                                                 </td>
-                                                @endif
+                                                @endrole
                                         </tr>
                                         @endforeach
                                     </tbody>
