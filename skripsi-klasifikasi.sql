@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2023 at 06:13 PM
+-- Generation Time: Aug 08, 2023 at 06:28 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -182,6 +182,14 @@ CREATE TABLE `klasifikasi` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `klasifikasi`
+--
+
+INSERT INTO `klasifikasi` (`id`, `dataken_id`, `jenis_kendaraan`, `tahun_pembuatan`, `bahan_bakar`, `komponen_mesin`, `ban`, `lampu_utama`, `kondisi_rem`, `kelayakan`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 1, 'Roda 4', '<10 tahun', 'Pertamax', 'Buruk', 'Buruk', 'Buruk', 'Buruk', 'Tidak Layak', '2023-08-08 08:25:20', '2023-08-08 08:25:20', NULL),
+(2, 2, 'Roda 4', '<10 tahun', 'Pertamax', 'Baik', 'Buruk', 'Sedang', 'Sedang', 'Layak', '2023-08-08 08:26:08', '2023-08-08 08:26:08', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -236,8 +244,9 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(1, 'App\\Models\\User', 1),
-(2, 'App\\Models\\User', 2);
+(1, 'App\\Models\\User', 4),
+(2, 'App\\Models\\User', 2),
+(2, 'App\\Models\\User', 3);
 
 -- --------------------------------------------------------
 
@@ -338,8 +347,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$AGxpGso9ggp07oERrawVT.TmX5fLdVK4GVM4zYYQuqxGsWnlVpp5K', NULL, '2023-08-08 08:03:31', '2023-08-08 08:03:31'),
-(2, 'user', 'user@gmail.com', NULL, '$2y$10$nW2RrsmNNktkhAvuBf9Fq.Fs1v5W9smObakm.LQ5amCfSUJaPDJxC', NULL, '2023-08-08 08:04:48', '2023-08-08 08:04:48');
+(2, 'user', 'user@gmail.com', NULL, '$2y$10$nW2RrsmNNktkhAvuBf9Fq.Fs1v5W9smObakm.LQ5amCfSUJaPDJxC', NULL, '2023-08-08 08:04:48', '2023-08-08 08:04:48'),
+(3, 'lidya', 'lidyanurliani27@gmail.com', NULL, '$2y$10$WBp0OQPbGkPB/Flrq/jVheIv2oZYEEO0Wav7UYg5uF.07ryD7cTcm', NULL, '2023-08-08 08:18:08', '2023-08-08 08:21:48'),
+(4, 'admin', 'admin@gmail.com', NULL, '$2y$10$5IlhItvVmDxBvRWATXepoOLv9SXdG0GpvI7lkVAcIw.dFGaTxFegK', NULL, '2023-08-08 08:20:07', '2023-08-08 08:20:07');
 
 --
 -- Indexes for dumped tables
@@ -447,7 +457,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -477,7 +487,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
