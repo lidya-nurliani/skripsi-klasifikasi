@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2023 at 06:28 PM
+-- Generation Time: Aug 09, 2023 at 08:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -246,7 +246,8 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 4),
 (2, 'App\\Models\\User', 2),
-(2, 'App\\Models\\User', 3);
+(2, 'App\\Models\\User', 3),
+(2, 'App\\Models\\User', 5);
 
 -- --------------------------------------------------------
 
@@ -259,6 +260,13 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('lidyanurliani27@gmail.com', '$2y$10$XSTgVMnoXhHeRGabz/n1LOJ1xpH9i72tjIIilzhOygnL0h87a49MG', '2023-08-08 18:51:03');
 
 -- --------------------------------------------------------
 
@@ -349,7 +357,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'user', 'user@gmail.com', NULL, '$2y$10$nW2RrsmNNktkhAvuBf9Fq.Fs1v5W9smObakm.LQ5amCfSUJaPDJxC', NULL, '2023-08-08 08:04:48', '2023-08-08 08:04:48'),
 (3, 'lidya', 'lidyanurliani27@gmail.com', NULL, '$2y$10$WBp0OQPbGkPB/Flrq/jVheIv2oZYEEO0Wav7UYg5uF.07ryD7cTcm', NULL, '2023-08-08 08:18:08', '2023-08-08 08:21:48'),
-(4, 'admin', 'admin@gmail.com', NULL, '$2y$10$5IlhItvVmDxBvRWATXepoOLv9SXdG0GpvI7lkVAcIw.dFGaTxFegK', NULL, '2023-08-08 08:20:07', '2023-08-08 08:20:07');
+(4, 'admin', 'admin@gmail.com', NULL, '$2y$10$5IlhItvVmDxBvRWATXepoOLv9SXdG0GpvI7lkVAcIw.dFGaTxFegK', 'D6N3VlRQTxrq1ukWu6XhZiUyHQPJbqlXOg9FuIiQdLAOp9RtxcoX0ntOgiUo', '2023-08-08 08:20:07', '2023-08-08 08:20:07'),
+(5, 'klasifikasi', 'klasifikasiapk@gmail.com', NULL, '$2y$10$33tABk07ej3aHmlV3j4YuuTNKVZi88.wwG1w1hoaB75nM2U0SYP/6', 'Te7b8yd22F2X2SiUqREhuCsPxC3WJ67bZjTq6HzZc00ngZCwoR0iNB2QVypD', '2023-08-08 19:17:32', '2023-08-08 19:51:02');
 
 --
 -- Indexes for dumped tables
@@ -487,7 +496,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

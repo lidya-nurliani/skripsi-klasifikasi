@@ -260,9 +260,9 @@
                                                 <th>Merk Kendaraan</th>
                                                 <th>Jenis Kendaraan</th>
                                                 <th>Tahun Pembuatan</th>
-                                                <th>no polisi</th>
-                                                <th>no mesin</th>
-                                                <th>no rangka</th>
+                                                <th>No Polisi</th>
+                                                <th>No Mesin</th>
+                                                <th>No Rangka</th>
                                                 @role('Admin')
                                                 <th>Aksi</th>
                                                 @endrole

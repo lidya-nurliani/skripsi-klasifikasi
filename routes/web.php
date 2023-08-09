@@ -24,15 +24,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register'=> false]);
 
-//Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
+Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //dafken
 Route::get('/index-dataken', [DatakenController::class, 'index'])->name('index-dataken');
