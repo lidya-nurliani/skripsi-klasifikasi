@@ -8,13 +8,18 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Role;
 use DB;
 use Flash;
+use App\Http\Requests\UserRequest;
 
 class ProfileController extends Controller
 {
     public function profile()
     {
+        return view('profile');
+    }
+
+    public function index() {
         $user = User::all();
-        return view('profile',compact('user'));
+        return view('admin.data-user',compact('user'));
     }
 
     public function create()
@@ -23,8 +28,10 @@ class ProfileController extends Controller
         return view('admin.create-user', compact('role'));
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
+        $validated = $request->validated();
+        
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
@@ -34,7 +41,7 @@ class ProfileController extends Controller
                 
         $user->assignRole($request['role_id']);
     
-        return redirect()->route('profile')->with('success', 'User berhasil dibuat!');
+        return redirect()->route('data-user')->with('success', 'User berhasil dibuat!');
         
     }
 
@@ -60,13 +67,13 @@ class ProfileController extends Controller
 
         $user->assignRole($request['role_id']);
     
-        return redirect()->route('profile')->with('success', 'User berhasil diupdate!');
+        return redirect()->route('data-user')->with('success', 'User berhasil diupdate!');
     }
 
     public function destroy($id){
         
         User::findOrFail($id)->delete();
-        return redirect()->route('profile')->with('success', 'User berhasil dihapus!');
+        return redirect()->route('data-user')->with('success', 'User berhasil dihapus!');
     }
 
 }

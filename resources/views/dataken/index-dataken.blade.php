@@ -127,8 +127,16 @@
                                 <li class="has-submenu">
                                     <a href="{{ route('prediksi') }}" class="text-white">
                                         <i class="fe-box"></i>Klasifikasi</a>
-    
                                 </li>
+
+                                @role('Admin')
+                                <li class="has-submenu">
+                                    <a href="{{ route('data-user') }}"class="text-white">
+                                        <i class="fe-user"></i>
+                                        Data Pengguna
+                                    </a>
+                                </li>
+                                @endrole
                             </ul>
 
 

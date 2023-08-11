@@ -117,7 +117,7 @@
                             <ul class="navigation-menu ">
 
                                 <li class="has-submenu">
-                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Home</a>
+                                    <a href="{{ route('home') }}" class="text-white"> <i class="fe-airplay"></i>Home</a>
                                 </li>
 
                                 <li class="has-submenu">
@@ -136,6 +136,23 @@
                                         <i class="fe-box"></i>
                                     Klasifikasi</a>
                                 </li>
+
+                                
+                                @role('Admin')
+                                <li class="has-submenu">
+                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
+                                    <ul class="submenu">
+                                        <li><a href="index.html"> Merk Kendaraan</a></li>
+                                        <li><a href="dashboard-2.html">Jenis Kendaraan</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="{{ route('data-user') }}"class="text-white">
+                                        <i class="fe-user"></i>
+                                        Data Pengguna
+                                    </a>
+                                </li>
+                                @endrole
                             </ul>
                             
                             <!-- End navigation menu -->

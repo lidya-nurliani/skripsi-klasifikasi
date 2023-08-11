@@ -133,6 +133,22 @@
                                     <i class="fe-box"></i>Klasifikasi</a>
 
                             </li>
+
+                            @role('Admin')
+                            <li class="has-submenu">
+                                <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
+                                <ul class="submenu">
+                                    <li><a href="index.html"> Merk Kendaraan</a></li>
+                                    <li><a href="dashboard-2.html">Jenis Kendaraan</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="{{ route('data-user') }}" class="text-white">
+                                    <i class="fe-user"></i>
+                                    Data Pengguna
+                                </a>
+                            </li>
+                            @endrole
                         </ul>
 
                         <!-- End navigation menu -->
@@ -185,35 +201,65 @@
 
                                     <div class="form-group">
                                         <label>Nama</label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="nama"
+                                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="masukkan nama"
                                             required="">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" id="email" name="email" class="form-control"
-                                            placeholder="email" required="">
+                                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                                            placeholder="masukkan email" required="">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" id="password" name="password" class="form-control"
-                                            placeholder="password" required="">
+                                        <input type="password" id="password" name="password @error('password') is-invalid @enderror" class="form-control"
+                                            placeholder="masukkan password" required="">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Konfirmasi Password</label>
+                                        <input type="password" id="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="masukkan konfirmasi password" required="">
+                                        @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label>Role</label>
-                                        <select name="role_id" id="role_id" class="form-control" required="">
-                                            <option disabled value>Pilih Role</option>
+                                        <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror" required="">
+                                            <option value="">Pilih Role</option>
                                         @foreach ($role as $item)
                                         <option value="{{ $item->id }}"> {{ $item->name }}</option>
                                         @endforeach
                                         </select>
+                                        @error('role_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit"
-                                            class="btn btn-info waves-effect waves-light">Submit</button>
+                                            class="btn btn-info waves-effect waves-light">Buat Akun</button>
                                     </div>
                                 </form>
                             </div>

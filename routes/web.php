@@ -71,6 +71,7 @@ Route::post('/import_excel', [DatakenController::class, 'importexcel'])->name('i
 //profile
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 Route::group(['middleware' => ['role:Admin']], function() {
+Route::get('/data-user', [ProfileController::class, 'index'])->name('data-user');
 Route::get('/create-user', [ProfileController::class, 'create'])->name('create-user');
 Route::post('/simpan-user', [ProfileController::class, 'store'])->name('simpan-user');
 Route::get('/edit-user/{id}', [ProfileController::class, 'edit'])->name('edit-user');
