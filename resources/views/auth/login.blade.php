@@ -1,66 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 
 <head>
-    <meta charset="utf-8" />
-    <title>Login Page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('template/images/favicon.ico')}}">
+<style>
+ * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    <!-- App css -->
-    <link href=" {{ asset('template/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-    <link href=" {{ asset('template/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href=" {{ asset('template/css/app.min.css')}}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #64C5B1;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      width: 600px;
+      margin: 0 auto;
+      padding: 50px;
+      background-color: #333;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 36px;
+      color: #64C5B1;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #64C5B1;
+    }
+
+    input {
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #555;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #64C5B1;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #18617a;
+    }
+
+    a {
+      text-decoration: none;
+      color: #64C5B1;
+      font-size: 18px;
+      transition: color 0.2s ease-in-out;
+    }
+
+    a:hover {
+      color: #18617a;
+    }
+
+    p {
+      text-align: right;
+      margin: 8px;
+    }
+
+    .captcha-box {
+        width: 100%;
+        text-align: right;
+        display: flex;
+      
+    }
+</style>
 
 </head>
-
-<body class="authentication-bg bg-primary authentication-bg-pattern d-flex align-items-center pb-0 vh-100">
+<body>
+  
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+    <div class="form-container" id="login-form">
+      <h1>Login</h1>
+      <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="masukkan email aktif">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="masukkan paswword min 8 karakter">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
+                        <label for="email">Email</label>
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="masukkan email aktif">
+                       
+                        <label for="password">Password</label>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="masukkan paswword min 8 karakter">
                       
-                        <div class="form-group row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-6">
+                        @if (Route::has('password.request'))
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <p>{{ __('Forgot Your Password?') }}</p>
+                            </a>
+                        @endif
+                        <br>
+           
+                        <div class="captcha-box">
+                          <div class="col-md-6">
                                 {!! NoCaptcha::display() !!}
                                 {!! NoCaptcha::renderJs() !!}
                                 @error('g-recaptcha-response')
@@ -68,34 +130,21 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                            </div>
-                        </div>
+                          </div>
+                         </div>
+                        <br>
 
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                        <button type="submit">{{ __('Login') }}</button>
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
+
 <!-- Vendor js -->
 <script src="{{ asset('template/js/vendor.min.js')}}"></script>
 
 <!-- App js -->
 <script src="{{ asset('template/js/app.min.js')}}"></script>
-
 </body>
-
 </html>

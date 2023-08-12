@@ -181,14 +181,15 @@
                     <!-- end page title -->
 
                      <!-- Bagian Form Klasifikasi -->
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-10">
                             <div class="card-box">
-                                <h4 class="header-title mb-4">Form Klasifikasi</h4>
-                                <form action="{{ route('prediksi.hasil') }}" method="post">
+                                <h3 class="header-title mb-4" align="center">Form Klasifikasi</h3>
+                                <form action="{{ route('prediksi.hasil') }}" method="post" >
                                     @csrf
                                     
-                                    <div class="form-group">
+                                    <div class="row justify-content-md-center">
+                                    <div class="col-6">
                                     <label for="dataken">jenis kendaraan</label>
                                     <select name="dataken_id" id="dataken" class="form-control">
                                         <option>pilih data kendaraan</option>
@@ -199,7 +200,7 @@
                                     </select>
                                     </div>
                                     
-                                    <div class="form-group">
+                                    <div class="col-6">
                                         <label>Bahan Bakar</label>
                                         <select name="bahan_bakar" class="form-control">
                                             <option value="">Pilih jenis bahan bakar</option>
@@ -207,7 +208,11 @@
                                             <option value="Pertamax">Pertamax</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    </div>
+                                    <br>
+
+                                    <div class="row justify-content-md-center">
+                                    <div class="col-6">
                                         <label>Komponen Mesin</label>
                                         <select name="komponen_mesin" class="form-control">
                                             <option value="">Pilih Kondisi Komponen mesin</option>
@@ -216,7 +221,7 @@
                                             <option value="Buruk">Buruk</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-6">
                                         <label>Ban Kendaraan</label>
                                         <select name="ban" class="form-control">
                                             <option value="">Pilih Kondisi Ban</option>
@@ -225,7 +230,11 @@
                                             <option value="Buruk">Buruk</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    </div>
+                                    <br>
+
+                                    <div class="row justify-content-md-center">
+                                    <div class="col-6">
                                         <label>Lampu Utama</label>
                                         <select name="lampu_utama" class="form-control">
                                             <option value="">Pilih Kondisi Lampu</option>
@@ -234,7 +243,7 @@
                                             <option value="Buruk">Buruk</option>
                                         </select>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="col-6">
                                         <label>Kondisi Rem</label>
                                         <select name="kondisi_rem" class="form-control">
                                             <option value="">Pilih Kondisi Rem</option>
@@ -243,6 +252,8 @@
                                             <option value="Buruk">Buruk</option>
                                         </select>
                                     </div>
+                                    </div>
+                                    <br>
                                     <button type="submit" class="btn btn-primary">Klasifikasi</button>
                                 </form>
                             </div>
