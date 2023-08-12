@@ -131,6 +131,13 @@
 
                                 @role('Admin')
                                 <li class="has-submenu">
+                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
+                                    <ul class="submenu">
+                                        <li><a href="{{ route('merk.index') }}"> Merk Kendaraan</a></li>
+                                        <li><a href="{{ route('jenis.index') }}">Jenis Kendaraan</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
                                     <a href="{{ route('data-user') }}"class="text-white">
                                         <i class="fe-user"></i>
                                         Data Pengguna
@@ -189,43 +196,113 @@
      
                 <div class="form-group">
                 <label>Merk Kendaraan</label>
-                    <input type="text" id="merk_kendaraan" name="merk_kendaraan" class="form-control" placeholder="Merk">
+                    <select class="form-control select2 @error('merk_id') is-invalid @enderror" style="width : 100%;" name="merk_id"
+                        id="merk_id" placeholder="Jenis Kendaraan">
+                        <option value="">Merk</option>
+                        @foreach ($merk as $item)
+                            <option value="{{ $item->id }}">{{ $item->merk }}</option>
+                        @endforeach
+                    </select>
+                    @error('merk_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                 </div>
 
                 <div class="form-group">
                 <label>Jenis Kendaraan</label>
-                    <select class="form-control select2" style="width : 100%;" name="jenis_kendaraan"
-                        id="jenis_kendaraan" placeholder="Jenis Kendaraan">
+                    <select class="form-control select2 @error('jenis_id') is-invalid @enderror" style="width : 100%;" name="jenis_id"
+                        id="jenis_id">
                         <option value="">Jenis Kendaraan</option>
-                        <option value="Roda 2"> Roda 2</option>
-                        <option value="Roda 4"> Roda 4</option>
+                        @foreach ($jenis as $item)
+                            <option value="{{ $item->id }}">{{ $item->jenis_kendaraan }}</option>
+                        @endforeach
                     </select>
+                    @error('jenis_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                 <label>Tahun</label>
-                    <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control" placeholder="tahun">
+                    <input type="text" id="tahun_pembuatan" name="tahun_pembuatan" class="form-control @error('tahun_pembuatan') is-invalid @enderror" placeholder="tahun">
+                    @error('tahun_pembuatan')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                 <label>Nomor Polisi</label>
-                    <input type="text" id="no_polisi" name="no_polisi" class="form-control" placeholder="nomor polisi">
+                    <input type="text" id="no_polisi" name="no_polisi" class="form-control @error('no_polisi') is-invalid @enderror" placeholder="nomor polisi">
+                    @error('no_polisi')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                 <label>Nomor Mesin</label>
-                    <input type="text" id="no_mesin" name="no_mesin" class="form-control" placeholder="nomor mesin">
+                    <input type="text" id="no_mesin" name="no_mesin" class="form-control @error('no_mesin') is-invalid @enderror" placeholder="nomor mesin">
+                    @error('no_mesin')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                 <label>Nomor Rangka</label>
-                    <input type="text" id="no_rangka" name="no_rangka" class="form-control" placeholder="nomor rangka">
+                    <input type="text" id="no_rangka" name="no_rangka" class="form-control @error('no_rangka') is-invalid @enderror" placeholder="nomor rangka">
+                    @error('no_rangka')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                
                 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-info waves-effect waves-light">Submit</button>
+                    <button type="button" class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target="#konfirmasi">Submit</button>
                 </div>
+
+                <!-- Signup modal content -->
+                <div id="konfirmasi" class="modal fade" tabindex="-1" role="dialog"
+                aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-body p-3">
+                            <div class="text-center mb-3">
+                                <a href="index.html">
+                                    <img src="assets/images/logo-dark.png" alt="" height="30">
+                                </a>
+                            </div>
+
+                                <center>
+                                    <p>Apakah anda yakin menambah data ?</p>
+                                </center><br>
+
+                                <div class="form-group account-btn row text-center mb-0">
+                                    <div class="col-12">
+                                        <button
+                                            class="btn width-lg btn-rounded btn-lg btn-primary waves-effect waves-light"
+                                            type="submit">Yakin</button>
+                                        <button
+                                            class="btn width-lg btn-rounded btn-lg btn-danger waves-effect waves-light"
+                                            data-dismiss="modal" type="button">Tidak</button>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
             </form>
         </div>
     </div>

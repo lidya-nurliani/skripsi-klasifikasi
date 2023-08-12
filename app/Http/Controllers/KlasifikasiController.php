@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Dataken;
 use App\Models\Klasifikasi;
 use Illuminate\Http\Request;
+use App\Http\Requests\KlasifikasiRequest;
 
 class KlasifikasiController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -33,8 +37,10 @@ class KlasifikasiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KlasifikasiRequest $request)
     {
+        $validated = $request->validated();
+
         $getDataKen = Dataken::findOrFail($request->dataken_id);
         if($getDataKen->tahun_pembuatan < 2010){
             $getSelisihTahun = "<10 tahun";
@@ -43,7 +49,7 @@ class KlasifikasiController extends Controller
         }
         $klasifikasi = new Klasifikasi;
         $klasifikasi->dataken_id = $request->dataken_id;
-        $klasifikasi->jenis_kendaraan = $getDataKen->jenis_kendaraan;
+        $klasifikasi->jenis_kendaraan = $getDataKen->jenis->jenis_kendaraan;
         $klasifikasi->tahun_pembuatan = $getSelisihTahun;
         $klasifikasi->bahan_bakar = $request->bahan_bakar;
         $klasifikasi->komponen_mesin = $request->komponen_mesin;
@@ -87,8 +93,10 @@ class KlasifikasiController extends Controller
      * @param  \App\Models\Klasifikasi  $klasifikasi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KlasifikasiRequest $request, $id)
     {
+        $validated = $request->validated();
+
         $klasifikasi = Klasifikasi::findorfail($id);
         $klasifikasi->update($request->all());
 

@@ -137,8 +137,8 @@
                             <li class="has-submenu">
                                 <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
                                 <ul class="submenu">
-                                    <li><a href="index.html"> Merk Kendaraan</a></li>
-                                    <li><a href="dashboard-2.html">Jenis Kendaraan</a></li>
+                                    <li><a href="{{ route('merk.index') }}"> Merk Kendaraan</a></li>
+                                        <li><a href="{{ route('jenis.index') }}">Jenis Kendaraan</a></li>
                                 </ul>
                             </li>
                             <li class="has-submenu">

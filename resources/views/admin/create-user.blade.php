@@ -135,20 +135,20 @@
                             </li>
 
                             @role('Admin')
-                            <li class="has-submenu">
-                                <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
-                                <ul class="submenu">
-                                    <li><a href="index.html"> Merk Kendaraan</a></li>
-                                    <li><a href="dashboard-2.html">Jenis Kendaraan</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu">
-                                <a href="{{ route('data-user') }}" class="text-white">
-                                    <i class="fe-user"></i>
-                                    Data Pengguna
-                                </a>
-                            </li>
-                            @endrole
+                                <li class="has-submenu">
+                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
+                                    <ul class="submenu">
+                                        <li><a href="{{ route('merk.index') }}"> Merk Kendaraan</a></li>
+                                        <li><a href="{{ route('jenis.index') }}">Jenis Kendaraan</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="{{ route('data-user') }}"class="text-white">
+                                        <i class="fe-user"></i>
+                                        Data Pengguna
+                                    </a>
+                                </li>
+                                @endrole
                         </ul>
 
                         <!-- End navigation menu -->
@@ -201,8 +201,7 @@
 
                                     <div class="form-group">
                                         <label>Nama</label>
-                                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="masukkan nama"
-                                            required="">
+                                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="masukkan nama">
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -212,8 +211,7 @@
 
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                                            placeholder="masukkan email" required="">
+                                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="masukkan email">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -223,8 +221,7 @@
 
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" id="password" name="password @error('password') is-invalid @enderror" class="form-control"
-                                            placeholder="masukkan password" required="">
+                                        <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="masukkan password">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -234,7 +231,7 @@
 
                                     <div class="form-group">
                                         <label>Konfirmasi Password</label>
-                                        <input type="password" id="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="masukkan konfirmasi password" required="">
+                                        <input type="password" id="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="masukkan konfirmasi password">
                                         @error('password_confirmation')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -244,7 +241,7 @@
 
                                     <div class="form-group">
                                         <label>Role</label>
-                                        <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror" required="">
+                                        <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
                                             <option value="">Pilih Role</option>
                                         @foreach ($role as $item)
                                         <option value="{{ $item->id }}"> {{ $item->name }}</option>
@@ -258,19 +255,43 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit"
-                                            class="btn btn-info waves-effect waves-light">Buat Akun</button>
+                                        <button type="button"
+                                            class="btn btn-info waves-effect waves-light" data-toggle="modal" data-target="#konfirmasi">Buat Akun</button>
                                     </div>
+
+                                    <!-- Signup modal content -->
+                                    <div id="konfirmasi" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+
+                                                <div class="modal-body p-3">
+                                                    <div class="text-center mb-3">
+                                                        <a href="index.html">
+                                                            <img src="assets/images/logo-dark.png" alt="" height="30">
+                                                        </a>
+                                                    </div>
+
+                                                    <form class="form-horizontal" action="#">
+
+                                                        <center><p>Apakah anda yakin menambah data ?</p></center><br>
+
+                                                        <div class="form-group account-btn row text-center mb-0">
+                                                            <div class="col-12">
+                                                                <button class="btn width-lg btn-rounded btn-lg btn-primary waves-effect waves-light" type="submit">Yakin</button>
+                                                                <button class="btn width-lg btn-rounded btn-lg btn-danger waves-effect waves-light" data-dismiss="modal" type="button">Tidak</button>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
                                 </form>
                             </div>
                         </div>
                     </div><!-- end row -->
-
-
-
-
-
-
                     <!-- end row -->
 
                 </div> <!-- end container-fluid -->

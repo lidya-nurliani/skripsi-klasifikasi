@@ -9,6 +9,7 @@ use App\Models\Role;
 use DB;
 use Flash;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserEditRequest;
 
 class ProfileController extends Controller
 {
@@ -52,7 +53,9 @@ class ProfileController extends Controller
         return view('admin.edit-user', compact('user','role'));
     }
     
-    public function update(Request $request, $id){
+    public function update(UserEditRequest $request, $id){
+        $validated = $request->validated();
+        
         $user = User::findOrFail($id);
 
         $user->name = $request->name;

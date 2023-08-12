@@ -138,6 +138,13 @@
                             </li>
                             @role('Admin')
                                 <li class="has-submenu">
+                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
+                                    <ul class="submenu">
+                                        <li><a href="{{ route('merk.index') }}"> Merk Kendaraan</a></li>
+                                        <li><a href="{{ route('jenis.index') }}">Jenis Kendaraan</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
                                     <a href="{{ route('data-user') }}"class="text-white">
                                         <i class="fe-user"></i>
                                         Data Pengguna
@@ -197,27 +204,47 @@
 
                                     <div class="form-group">
                                         <label>Nama</label>
-                                        <input type="text" id="name" name="name" class="form-control" placeholder="nama" required="" value="{{ $user->name }}">
+                                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="nama" value="{{ $user->name }}">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" id="email" name="email" class="form-control" placeholder="email" required="" value="{{ $user->email }}">
+                                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="email" value="{{ $user->email }}">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" id="password" name="password" class="form-control" placeholder="password" required="">
+                                        <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">
                                         <label>Role</label>
-                                        <select name="role_id" id="role_id" class="form-control" required="">
+                                        <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
                                             <option value="">Pilih Role</option>
                                             @foreach ($role as $item)
                                         <option value="{{ $item->id }}"> {{ $item->name }}</option>
                                         @endforeach
                                         </select>
+                                        @error('role_id')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
 
                                     <div class="form-group">

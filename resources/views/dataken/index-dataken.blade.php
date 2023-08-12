@@ -131,6 +131,13 @@
 
                                 @role('Admin')
                                 <li class="has-submenu">
+                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
+                                    <ul class="submenu">
+                                        <li><a href="{{ route('merk.index') }}"> Merk Kendaraan</a></li>
+                                        <li><a href="{{ route('jenis.index') }}">Jenis Kendaraan</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
                                     <a href="{{ route('data-user') }}"class="text-white">
                                         <i class="fe-user"></i>
                                         Data Pengguna
@@ -195,20 +202,7 @@
                                             Silahkan Isi data Terlebih dahulu.
                                         </p>
 
-                                                {{-- notifikasi form validasi --}}
-                                                @if ($errors->has('file'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('file') }}</strong>
-                                                </span>
-                                                @endif
-                                        
-                                                {{-- notifikasi sukses --}}
-                                                @if ($sukses = Session::get('sukses'))
-                                                <div class="alert alert-success alert-block">
-                                                    <button type="button" class="close" data-dismiss="alert">×</button> 
-                                                    <strong>{{ $sukses }}</strong>
-                                                </div>
-                                                @endif
+                                                @include('layouts.alert')
                                         
                                     <div class="row">
                                         <div class="col-lg-4">
@@ -282,8 +276,8 @@
                                             @foreach ($dataken as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->merk_kendaraan}}</td>
-                                                <td>{{ $item->jenis_kendaraan}}</td>
+                                                <td>{{ $item->merk->merk}}</td>
+                                                <td>{{ $item->jenis->jenis_kendaraan}}</td>
                                                 <td>{{ $item->tahun_pembuatan}}</td>
                                                 <td>{{ $item->no_polisi}}</td>
                                                 <td>{{ $item->no_mesin}}</td>
@@ -293,8 +287,35 @@
                                                 <center>
                                                     <a href="{{ url('edit-dataken', $item->id) }}"><i class="fas fa-edit"></i></a>
                                                     |
-                                                    <a href="{{ url('delete-dataken', $item->id) }}"><i class="fas fa-trash-alt" style="color: red"></i></a>
+                                                    <a data-toggle="modal" data-target="#delete{{ $item->id }}" href=""><i class="fas fa-trash-alt" style="color: red"></i></a>
+                                                    
                                                 </center>
+                                                <div id="delete{{ $item->id }}" class="modal fade" tabindex="-1" role="dialog"
+                                                    aria-hidden="true" style="display: none;">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body p-3">
+                                                                    <center>
+                                                                        <p>Apakah anda yakin menghapus data ?</p>
+                                                                    </center><br>
+                                                                    <div class="form-group account-btn row text-center mb-0">
+                                                                        <div class="col-12">
+                                                                            <form action="{{ route('delete-dataken', $item->id) }}" method="POST">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button
+                                                                                class="btn width-lg btn-rounded btn-lg btn-primary waves-effect waves-light"
+                                                                                type="submit">Yakin</button>
+                                                                                <button
+                                                                                class="btn width-lg btn-rounded btn-lg btn-danger waves-effect waves-light"
+                                                                                data-dismiss="modal" type="button">Tidak</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                        </div><!-- /.modal-content -->
+                                                    </div><!-- /.modal-dialog -->
+                                                </div><!-- /.modal -->
                                                 </td>
                                                 @endrole
                                         </tr>
