@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Data kendaraan DISPANTPH</title>
+    <title>Data Pengguna</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -57,7 +57,7 @@
                                 <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
                                     class="rounded-circle">
                                 <span class="pro-user-name ml-1">
-                                    Hai {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
+                                Hai {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -66,11 +66,11 @@
                                     <h6 class="text-overflow m-0">Welcome !</h6>
                                 </div>
 
-                                <!-- item-->
+                                 <!-- item-->
                                 <a href="{{ route('profile') }}" class="dropdown-item notify-item">
-                                    <i class="fe-user"></i>
-                                    <span>Profile</span>
-                                </a>
+                                        <i class="fe-user"></i>
+                                        <span>Profile</span>
+                                    </a>
 
 
                                 <a href=" {{ route('logout') }}" method="POST" class="dropdown-item notify-item"
@@ -90,13 +90,13 @@
 
                     <!-- LOGO -->
                     <div class="logo-box">
-                        <a href="#" class="logo text-center logo-light">
-                            <span class="logo-lg">
-                                <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
-                                <!-- <span class="logo-lg-text-dark">Adminox</span> -->
-                            </span>
-                        </a>
-                    </div>
+                            <a href="#" class="logo text-center logo-light">
+                                <span class="logo-lg">
+                                    <img src="{{ asset('template/images/logodinas.png') }}" alt="" height="30">
+                                    <!-- <span class="logo-lg-text-dark">Adminox</span> -->
+                                </span>
+                            </a>
+                        </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -134,20 +134,20 @@
 
                             </li>
                             @role('Admin')
-                            <li class="has-submenu">
-                                <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
-                                <ul class="submenu">
-                                    <li><a href="{{ route('merk.index') }}"> Merk Kendaraan</a></li>
+                                <li class="has-submenu">
+                                    <a href="#" class="text-white"> <i class="fe-airplay"></i>Data Master</a>
+                                    <ul class="submenu">
+                                        <li><a href="{{ route('merk.index') }}"> Merk Kendaraan</a></li>
                                         <li><a href="{{ route('jenis.index') }}">Jenis Kendaraan</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu">
-                                <a href="{{ route('data-user') }}" class="text-white">
-                                    <i class="fe-user"></i>
-                                    Data Pengguna
-                                </a>
-                            </li>
-                            @endrole
+                                    </ul>
+                                </li>
+                                <li class="has-submenu">
+                                    <a href="{{ route('data-user') }}"class="text-white">
+                                        <i class="fe-user"></i>
+                                        Data Pengguna
+                                    </a>
+                                </li>
+                                @endrole
                         </ul>
 
 
@@ -182,80 +182,95 @@
                             <div class="page-title-box">
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                                        <li class="breadcrumb-item active">Profil</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">DISPANTPH</a></li>
+                                        <li class="breadcrumb-item active">Data Pengguna</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">Profil</h4>
+
                             </div>
                         </div>
                     </div>
                     <!-- end page title -->
 
                     <div class="row">
-                        <div class="col-sm-12">
-                            <div class="profile-bg-picture"
-                                style="background-image:url('{{ asset('template/images/bg-profile.jpg') }}')">
-                                <span class="picture-bg-overlay"></span><!-- overlay -->
-                            </div>
-                            <!-- meta -->
-                            <div class="profile-user-box">
+                        <div class="col-12">
+                            <div class="card-box table-responsive">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <span class="float-left mr-3"><img src="{{ asset('template/images/users/avatar-1.jpg') }}" alt=""
-                                                class="avatar-xl rounded-circle"></span>
-                                        <div class="media-body">
-                                            <h4 class="mt-1 mb-1 font-18 ellipsis">{{ Auth::user()->name }}</h4>
-                                            <p class="font-13">{{ Auth::user()->email }}</p>
-                                            <p class="text-muted mb-0"><small>Level : {{ auth()->user()->roles->pluck('name')[0] ?? '' }}</small></p>
-                                        </div>
+                                        <h4 class="mt-1 mb-1 font-18 ellipsis">Data Pengguna</h4>
                                     </div>
                                     <div class="col-sm-6">
-                                        {{-- <div class="text-right">
-                                            <button type="button" class="btn btn-success waves-effect waves-light">
-                                                <i class="mdi mdi-account-settings-variant mr-1"></i> Edit Profile
-                                            </button>
-                                        </div> --}}
+                                        <div class="text-right">
+                                            @role('Admin')
+                                                <a href="{{ route('create-user') }}"
+                                                    class="btn btn-success waves-effect waves-light btn-md"><i
+                                                        class="fe-plus-square"></i> Tambah Data</a>
+                                            @endrole
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <table id="datatable" class="table table-bordered  dt-responsive nowrap"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Email</th>
+                                            <th>role</th>
+                                            @role('Admin')
+                                            <th>Aksi</th>
+                                            @endrole
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    
+                                        @foreach($user as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->name}}</td>
+                                            <td>{{ $item->email}}</td>
+                                            <td>{{ $item->roles->first()->name}}</td>
+                                     
+                                            @role('Admin')
+                                            <th>
+                                                <a href="{{ route('edit-user',$item->id) }}"
+                                                    class="btn btn-info waves-effect waves-light btn-md"><i
+                                                        class="fe-edit"></i> Ubah Data</a>
+                                                <a href="#"
+                                                    class="btn btn-danger waves-effect waves-light btn-md" onclick="event.preventDefault();document.getElementById('delete-data').submit();"><i
+                                                        class="fe-trash"></i> Hapus Data</a>
+                                                <form id="delete-data" action="{{ route('delete-user',$item->id) }}" method="POST" class="d-none">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            </th>
+                                            @endrole
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+
+                                </table>
                             </div>
-                            <!--/ meta -->
                         </div>
-                    </div>
+                    </div> <!-- end row -->
+
+
+
+
+
+
                     <!-- end row -->
-
-                    <div class="row">
-                        <div class="col-xl-12">
-
-                            <div class="card-box">
-                                <h4 class="header-title mt-0 mb-4">Edit Profil</h4>
-                                <form>
-                                    <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email address</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password" name="password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="foto">Foto Profil</label>
-                                        <input type="file" name="foto_profil" class="form-control" id="foto" name="foto_profil">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                </form>
-                            </div>
-
-                        </div>
-                        <!-- end col -->
-
-                    </div>
-                    <!-- end row -->
-
 
                 </div> <!-- end container-fluid -->
 
@@ -268,7 +283,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            2017 - 2019 &copy; Adminox theme by <a href="#">Coderthemes</a>
+                            2023 &copy; DISPANTPH <a href="#">Coderthemes</a>
                         </div>
                     </div>
                 </div>

@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Session;
-use App\Models\Dataken;
+use App\Models\Dataken, \App\Models\Merk, \App\Models\Jenis;
 use Illuminate\Http\Request;
 use App\Exports\DatakenExport;
 use App\Imports\DatakenImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\DatakenRequest;
 
 class DatakenController extends Controller
 {
@@ -29,7 +30,9 @@ class DatakenController extends Controller
      */
     public function create()
     {
-        return view('dataken.create-dataken');
+        $merk = Merk::all();
+        $jenis = Jenis::all();
+        return view('dataken.create-dataken', compact('merk','jenis'));
     }
 
     /**
@@ -38,11 +41,13 @@ class DatakenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DatakenRequest $request)
     {
+        $validated = $request->validated();
+        
         $dataken = new Dataken;
-        $dataken->merk_kendaraan = $request->merk_kendaraan;
-        $dataken->jenis_kendaraan = $request->jenis_kendaraan;
+        $dataken->merk_id = $request->merk_id;
+        $dataken->jenis_id = $request->jenis_id;
         $dataken->tahun_pembuatan = $request->tahun_pembuatan;
         $dataken->no_polisi = $request->no_polisi;
         $dataken->no_mesin = $request->no_mesin;
@@ -50,7 +55,7 @@ class DatakenController extends Controller
        
         $dataken->save();
 
-        return redirect('index-dataken');
+        return redirect ('index-dataken')->with('sukses', 'Data Berhasil Ditambah!');
     }
 
     /**
@@ -72,8 +77,10 @@ class DatakenController extends Controller
      */
     public function edit($id)
     {
+        $merk = Merk::all();
+        $jenis = Jenis::all();
         $dataken = Dataken::findorfail($id);
-        return view('dataken.edit-dataken',compact('dataken'));
+        return view('dataken.edit-dataken',compact('dataken','merk','jenis'));
     }
 
     /**
@@ -83,11 +90,13 @@ class DatakenController extends Controller
      * @param  \App\Models\Dataken  $dataken
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DatakenRequest $request, $id)
     {
+        $validated = $request->validated();
+
         $dataken = Dataken::findorfail($id);
-        $dataken->merk_kendaraan = $request->merk_kendaraan;
-        $dataken->jenis_kendaraan = $request->jenis_kendaraan;
+        $dataken->merk_id = $request->merk_id;
+        $dataken->jenis_id = $request->jenis_id;
         $dataken->tahun_pembuatan = $request->tahun_pembuatan;
         $dataken->no_polisi = $request->no_polisi;
         $dataken->no_mesin = $request->no_mesin;
@@ -95,7 +104,7 @@ class DatakenController extends Controller
        
         $dataken->update();
 
-        return redirect ('index-dataken')->with('toast_success', 'Data Berhasil Diubah!');
+        return redirect ('index-dataken')->with('sukses', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -109,7 +118,7 @@ class DatakenController extends Controller
         $dataken = Dataken::findorfail($id);
         $dataken->delete();
 
-        return back()->with('info', 'Data Berhasil Dihapus!');
+        return redirect('index-dataken')->with('sukses', 'Data Berhasil Dihapus!');
     }
 
     public function exportexcel() {

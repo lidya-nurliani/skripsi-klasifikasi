@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Klasifikasi;
 use App\Models\Dataken;
 use PDF;
+use App\Http\Requests\PrediksiRequest;
 
 class PrediksiController extends Controller
 {
@@ -237,7 +238,9 @@ class PrediksiController extends Controller
         return view('prediksi.index',compact('dataken', 'klasifikasi'));
     }
 
-    public function hasil(Request $request) {
+    public function hasil(PrediksiRequest $request) {
+        $validated = $request->validated();
+        
         $klasifikasi = Klasifikasi::all();
         $dataset = Klasifikasi::all()->toArray();
         $attributes = ['jenis_kendaraan', 'tahun_pembuatan', 'bahan_bakar', 'komponen_mesin', 'ban', 'lampu_utama', 'kondisi_rem'];
@@ -258,7 +261,7 @@ class PrediksiController extends Controller
         
 
         $dataToPredict = [
-            'jenis_kendaraan' => $getDataKen->jenis_kendaraan,
+            'jenis_kendaraan' => $getDataKen->jenis->jenis_kendaraan,
             'tahun_pembuatan' => $getSelisihTahun,
             'bahan_bakar' => $request->bahan_bakar,
             'komponen_mesin' => $request->komponen_mesin,
