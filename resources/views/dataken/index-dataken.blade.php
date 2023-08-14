@@ -254,6 +254,7 @@
                                                 </div>
  
 
+                                    <div class="card-box table-responsive">
                                         <table id="datatable" class="table table-bordered  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     
                                             <thead>
@@ -318,11 +319,12 @@
                                                 </div><!-- /.modal -->
                                                 </td>
                                                 @endrole
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
+                                                </tr>
+                                                @endforeach
+                                                </tbody>
  
                                         </table>
+                                    </div>
                                     </div>
                                 </div>
                             </div> <!-- end row -->

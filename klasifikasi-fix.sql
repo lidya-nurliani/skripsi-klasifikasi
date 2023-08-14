@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 09:52 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Aug 14, 2023 at 11:26 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `skripsi_klasifikasi`
+-- Database: `klasifikasi-fix`
 --
 
 -- --------------------------------------------------------
@@ -31,10 +31,10 @@ CREATE TABLE `dataken` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `merk_id` bigint(20) NOT NULL,
   `jenis_id` bigint(20) NOT NULL,
-  `tahun_pembuatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_polisi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_mesin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `no_rangka` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tahun_pembuatan` varchar(255) NOT NULL,
+  `no_polisi` varchar(255) NOT NULL,
+  `no_mesin` varchar(255) NOT NULL,
+  `no_rangka` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -46,7 +46,8 @@ CREATE TABLE `dataken` (
 
 INSERT INTO `dataken` (`id`, `merk_id`, `jenis_id`, `tahun_pembuatan`, `no_polisi`, `no_mesin`, `no_rangka`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 1, 1, '1997', 'KT 8275 B', '7K-0191496', 'MHF31KF000005766', '2023-08-08 08:13:01', '2023-08-08 08:13:01', NULL),
-(101, 3, 3, '2012', '123123', 'KBJ23H2IO3P1', 'ASD23HF9H', '2023-08-12 11:51:42', '2023-08-12 11:51:42', NULL);
+(101, 3, 3, '2012', '123123', 'KBJ23H2IO3P1', 'ASD23HF9H', '2023-08-12 11:51:42', '2023-08-12 11:51:42', NULL),
+(103, 4, 3, '2017', '123', 'asdvsdg', '456', '2023-08-12 23:41:54', '2023-08-12 23:41:54', NULL);
 
 -- --------------------------------------------------------
 
@@ -56,11 +57,11 @@ INSERT INTO `dataken` (`id`, `merk_id`, `jenis_id`, `tahun_pembuatan`, `no_polis
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -75,7 +76,7 @@ CREATE TABLE `jenis` (
   `jenis_kendaraan` varchar(35) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `jenis`
@@ -94,14 +95,14 @@ INSERT INTO `jenis` (`id`, `jenis_kendaraan`, `created_at`, `updated_at`) VALUES
 CREATE TABLE `klasifikasi` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `dataken_id` bigint(20) UNSIGNED NOT NULL,
-  `jenis_kendaraan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tahun_pembuatan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bahan_bakar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `komponen_mesin` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ban` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lampu_utama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kondisi_rem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kelayakan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_kendaraan` varchar(255) NOT NULL,
+  `tahun_pembuatan` varchar(255) NOT NULL,
+  `bahan_bakar` varchar(255) NOT NULL,
+  `komponen_mesin` varchar(255) NOT NULL,
+  `ban` varchar(255) NOT NULL,
+  `lampu_utama` varchar(255) NOT NULL,
+  `kondisi_rem` varchar(255) NOT NULL,
+  `kelayakan` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -113,7 +114,8 @@ CREATE TABLE `klasifikasi` (
 
 INSERT INTO `klasifikasi` (`id`, `dataken_id`, `jenis_kendaraan`, `tahun_pembuatan`, `bahan_bakar`, `komponen_mesin`, `ban`, `lampu_utama`, `kondisi_rem`, `kelayakan`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (3, 1, 'Roda 2', '<10 tahun', 'Dexlite', 'Sedang', 'Sedang', 'Baik', 'Sedang', 'Tidak Layak', '2023-08-12 11:24:04', '2023-08-12 11:24:04', NULL),
-(4, 1, 'Roda 2', '<10 tahun', 'Dexlite', 'Sedang', 'Sedang', 'Sedang', 'Buruk', 'Layak', '2023-08-12 11:36:07', '2023-08-12 11:36:07', NULL);
+(4, 1, 'Roda 2', '<10 tahun', 'Dexlite', 'Sedang', 'Sedang', 'Sedang', 'Buruk', 'Layak', '2023-08-12 11:36:07', '2023-08-12 11:36:07', NULL),
+(5, 101, 'Roda 4', '>10 tahun', 'Dexlite', 'Baik', 'Sedang', 'Sedang', 'Baik', 'Tidak Layak', '2023-08-12 23:59:55', '2023-08-12 23:59:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,7 @@ CREATE TABLE `merk` (
   `merk` varchar(35) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `merk`
@@ -134,7 +136,8 @@ CREATE TABLE `merk` (
 
 INSERT INTO `merk` (`id`, `merk`, `created_at`, `updated_at`) VALUES
 (1, 'Honda', '2023-08-12 10:17:38', '2023-08-12 10:17:38'),
-(3, 'Yamahmud', '2023-08-12 10:27:29', '2023-08-12 10:27:29');
+(3, 'Yamahmud', '2023-08-12 10:27:29', '2023-08-12 10:27:29'),
+(4, 'yamehong', '2023-08-12 15:18:49', '2023-08-12 15:18:49');
 
 -- --------------------------------------------------------
 
@@ -144,7 +147,7 @@ INSERT INTO `merk` (`id`, `merk`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -169,7 +172,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `model_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
-  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -181,7 +184,7 @@ CREATE TABLE `model_has_permissions` (
 
 CREATE TABLE `model_has_roles` (
   `role_id` bigint(20) UNSIGNED NOT NULL,
-  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_type` varchar(255) NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -190,6 +193,7 @@ CREATE TABLE `model_has_roles` (
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 3),
 (1, 'App\\Models\\User', 4),
 (2, 'App\\Models\\User', 2),
 (2, 'App\\Models\\User', 3),
@@ -203,8 +207,8 @@ INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -223,8 +227,8 @@ INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
 
 CREATE TABLE `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -237,11 +241,11 @@ CREATE TABLE `permissions` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -255,8 +259,8 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `roles` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `guard_name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -288,11 +292,11 @@ CREATE TABLE `role_has_permissions` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -303,9 +307,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'user', 'user@gmail.com', NULL, '$2y$10$nW2RrsmNNktkhAvuBf9Fq.Fs1v5W9smObakm.LQ5amCfSUJaPDJxC', NULL, '2023-08-08 08:04:48', '2023-08-08 08:04:48'),
-(3, 'lidya', 'lidyanurliani27@gmail.com', NULL, '$2y$10$WBp0OQPbGkPB/Flrq/jVheIv2oZYEEO0Wav7UYg5uF.07ryD7cTcm', NULL, '2023-08-08 08:18:08', '2023-08-08 08:21:48'),
-(4, 'admin', 'admin@gmail.com', NULL, '$2y$10$5IlhItvVmDxBvRWATXepoOLv9SXdG0GpvI7lkVAcIw.dFGaTxFegK', 'T3SII50S91vmN7Y5dhfCpLgThoXQFast2j6FDTHfQX317PiXgfe5iJqUxQNK', '2023-08-08 08:20:07', '2023-08-08 08:20:07'),
-(5, 'klasifikasi', 'klasifikasiapk@gmail.com', NULL, '$2y$10$33tABk07ej3aHmlV3j4YuuTNKVZi88.wwG1w1hoaB75nM2U0SYP/6', 'Te7b8yd22F2X2SiUqREhuCsPxC3WJ67bZjTq6HzZc00ngZCwoR0iNB2QVypD', '2023-08-08 19:17:32', '2023-08-08 19:51:02'),
+(3, 'lidya', 'lidyanurliani27@gmail.com', NULL, '$2y$10$FDPMlXPsx03xBqTHkHLU/ux/d9orEILfGZyVg9T1FSFLTki1at/MW', NULL, '2023-08-08 08:18:08', '2023-08-12 15:24:30'),
+(4, 'admin', 'admin@gmail.com', NULL, '$2y$10$5IlhItvVmDxBvRWATXepoOLv9SXdG0GpvI7lkVAcIw.dFGaTxFegK', 'JhSH9v9b0hah297P7ZueDDr5kXtZcQNlxZErOr8fwiMAc2zt3SH3BE8QLSbL', '2023-08-08 08:20:07', '2023-08-08 08:20:07'),
+(5, 'klasifikasi', 'klasifikasiapk@gmail.com', NULL, '$2y$10$33tABk07ej3aHmlV3j4YuuTNKVZi88.wwG1w1hoaB75nM2U0SYP/6', '2a2kPnj1q3wwryZzRLg7pO4TJ1z9HFN6LKfrHozMKsOMs1BFi2vbFn5rHpAr', '2023-08-08 19:17:32', '2023-08-08 19:51:02'),
 (6, 'Alex', 'alex@gmail.com', NULL, '$2y$10$w55dwMRLTP6lVSemuEvXQ.H2OvVT9w9WfVBuiylfYUs05tR8XcXu2', NULL, '2023-08-11 08:05:55', '2023-08-12 09:13:11');
 
 --
@@ -416,7 +420,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dataken`
 --
 ALTER TABLE `dataken`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -434,13 +438,13 @@ ALTER TABLE `jenis`
 -- AUTO_INCREMENT for table `klasifikasi`
 --
 ALTER TABLE `klasifikasi`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `merk`
 --
 ALTER TABLE `merk`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`

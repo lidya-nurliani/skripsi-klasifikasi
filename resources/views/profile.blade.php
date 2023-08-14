@@ -202,7 +202,7 @@
                             <div class="profile-user-box">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <span class="float-left mr-3"><img src="{{ asset('template/images/users/avatar-1.jpg') }}" alt=""
+                                        <span class="float-left mr-3"><img src="{{ asset('template/images/users/user1.png') }}" alt=""
                                                 class="avatar-xl rounded-circle"></span>
                                         <div class="media-body">
                                             <h4 class="mt-1 mb-1 font-18 ellipsis">{{ Auth::user()->name }}</h4>
@@ -230,16 +230,9 @@
                             <div class="card-box">
                                 <h4 class="header-title mt-0 mb-4">Edit Profil</h4>
                                 <form>
+                                    
                                     <div class="form-group">
-                                        <label for="nama">Nama</label>
-                                        <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama" name="name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email address</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Masukkan Email" name="email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
+                                        <label for="password">Ganti Password</label>
                                         <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password" name="password">
                                     </div>
                                     <div class="form-group">

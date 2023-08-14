@@ -197,7 +197,7 @@
                                                             <img class="d-block" src="{{ asset('template/images/small/slide1.png') }}" alt="First slide" />
                                                             <div class="centered-text">
                                                                 <h2 class="text-white" align="center">KLASIFIKASIKAN KELAYAKAN KENDARAAN ANDA DISINI</h2>
-                                                                <h4 align="center">mari kita lihat faktor-faktor penting yang mempengaruhi status kelayakan kendaraan anda</h4>
+                                                               
                                                             </div>
                                                         </div>
 
