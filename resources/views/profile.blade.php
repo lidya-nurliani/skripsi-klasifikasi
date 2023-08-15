@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Data kendaraan DISPANTPH</title>
+    <title>Profil saya</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -54,8 +54,8 @@
                             <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light"
                                 data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                 aria-expanded="false">
-                                <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image"
-                                    class="rounded-circle">
+                                
+                                <img src="{{ asset('template/images/users/user1.png') }}" alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ml-1">
                                     Hai {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                                 </span>
@@ -149,11 +149,6 @@
                             </li>
                             @endrole
                         </ul>
-
-
-
-
-
                         <!-- End navigation menu -->
 
                         <div class="clearfix"></div>
@@ -195,16 +190,17 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="profile-bg-picture"
-                                style="background-image:url('{{ asset('template/images/bg-profile.jpg') }}')">
+                                style="background-image:url('{{ asset('template/images/bg-profile.png') }}')">
                                 <span class="picture-bg-overlay"></span><!-- overlay -->
                             </div>
                             <!-- meta -->
                             <div class="profile-user-box">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <span class="float-left mr-3"><img src="{{ asset('template/images/users/user1.png') }}" alt=""
+                                    <span class="float-left mr-3"><img src="{{ asset('template/images/users/user1.png') }}" alt=""
                                                 class="avatar-xl rounded-circle"></span>
                                         <div class="media-body">
+                                            
                                             <h4 class="mt-1 mb-1 font-18 ellipsis">{{ Auth::user()->name }}</h4>
                                             <p class="font-13">{{ Auth::user()->email }}</p>
                                             <p class="text-muted mb-0"><small>Level : {{ auth()->user()->roles->pluck('name')[0] ?? '' }}</small></p>
@@ -227,18 +223,32 @@
                     <div class="row">
                         <div class="col-xl-12">
 
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if(session('error'))
+                            <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
+
                             <div class="card-box">
                                 <h4 class="header-title mt-0 mb-4">Edit Profil</h4>
-                                <form>
-                                    
-                                    <div class="form-group">
-                                        <label for="password">Ganti Password</label>
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password" name="password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="foto">Foto Profil</label>
-                                        <input type="file" name="foto_profil" class="form-control" id="foto" name="foto_profil">
-                                    </div>
+                                <form action="{{ route('update-profile', ['id' => Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PATCH')
+                                <div class="form-group">
+                                    <label for="password_lama">Password Lama</label>
+                                    <input type="password" name="password_lama" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_baru">Password Baru</label>
+                                    <input type="password" name="password_baru" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_baru_confirmation">Konfirmasi Password Baru</label>
+                                    <input type="password" name="password_baru_confirmation" class="form-control">
+                                </div>
+                                
                                     <button type="submit" class="btn btn-primary">Simpan</button>
                                 </form>
                             </div>
@@ -261,7 +271,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            2017 - 2019 &copy; Adminox theme by <a href="#">Coderthemes</a>
+                        2023 DISPANTPH <a href="#">Coderthemes</a>
                         </div>
                     </div>
                 </div>

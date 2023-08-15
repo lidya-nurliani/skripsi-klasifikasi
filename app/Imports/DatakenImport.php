@@ -15,8 +15,8 @@ class DatakenImport implements ToModel
     public function model(array $row)
     {
         return new Dataken([
-            'merk_kendaraan' => $row[1],
-            'jenis_kendaraan' => $row[2],
+            'merk_id' => $row[1],
+            'jenis_id' => $row[2],
             'tahun_pembuatan' => $row[3],
             'no_polisi' => $row[4],
             'no_mesin' => $row[5],

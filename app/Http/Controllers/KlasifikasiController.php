@@ -98,7 +98,14 @@ class KlasifikasiController extends Controller
         $validated = $request->validated();
 
         $klasifikasi = Klasifikasi::findorfail($id);
-        $klasifikasi->update($request->all());
+        $klasifikasi->dataken_id = $request->dataken_id;
+        $klasifikasi->bahan_bakar = $request->bahan_bakar;
+        $klasifikasi->komponen_mesin = $request->komponen_mesin;
+        $klasifikasi->ban = $request->ban;
+        $klasifikasi->lampu_utama = $request->lampu_utama;
+        $klasifikasi->kondisi_rem = $request->kondisi_rem;
+        $klasifikasi->kelayakan = $request->kelayakan;
+        $klasifikasi->update();
 
         return redirect ('create-klasifikasi')->with('toast_success', 'Data Berhasil Diubah!');
     }

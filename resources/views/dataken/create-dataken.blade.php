@@ -19,6 +19,7 @@
         <link href="{{ asset('template/libs/datatables/responsive.bootstrap4.css') }}" rel="stylesheet" type="text/css" />
 
         <!-- App css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
         <link href="{{ asset('template/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
         <link href="{{ asset('template/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('template/css/app-dark.min.css') }}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
@@ -196,7 +197,7 @@
      
                 <div class="row justify-content-md-center">
                     <div class="col-6">
-                        <label>Merk Kendaraan</label>
+                        <label for="merk_id">Merk Kendaraan</label>
                         <select class="form-control select2 @error('merk_id') is-invalid @enderror" style="width : 100%;" name="merk_id"
                         id="merk_id" placeholder="Jenis Kendaraan">
                             <option value="">Merk</option>
@@ -330,7 +331,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                2023 &copy; DISPANTPH <a href="#">Coderthemes</a>
+                                2023 DISPANTPH <a href="#">Coderthemes</a>
                             </div>
                         </div>
                     </div>
@@ -430,7 +431,14 @@
 
         <!-- App js -->
         <script src="{{ asset('template/js/app.min.js') }}"></script>
-        
+       
+        <script src="/js/app.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+            <script>
+            $(document).ready(function(){
+                $('#merk_id').select2();
+            });
+    </script>
     </body>
 
 <!-- Mirrored from coderthemes.com/adminox/layouts/horizontal/tables-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 14 May 2023 09:02:09 GMT -->

@@ -231,7 +231,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                2023 &copy; DISPANTPH <a href="#">Coderthemes</a>
+                                2023 DISPANTPH <a href="#">Coderthemes</a>
                             </div>
                         </div>
                     </div>

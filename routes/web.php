@@ -28,25 +28,31 @@ use App\Http\Controllers\JenisController;
 
 Auth::routes(['register'=> false]);
 
+
 Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //dafken
 Route::get('/index-dataken', [DatakenController::class, 'index'])->name('index-dataken');
+
 //klasifikasi
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/create-klasifikasi', [KlasifikasiController::class, 'create'])->name('create-klasifikasi');
+
 //prediksi
 Route::get('/prediksi', [PrediksiController::class, 'index'])->name('prediksi');
 Route::post('/hasil-prediksi', [PrediksiController::class, 'hasil'])->name('prediksi.hasil');
 Route::post('/cetak-laporan-pdf', [PrediksiController::class, 'pdf'])->name('cetakLaporanPDF');
 Route::post('/detailPerhitungan', [PrediksiController::class, 'detailPerhitungan'])->name('detailPerhitungan');
+
 //profile
 Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+Route::patch('/update-profile/{id}', [ProfileController::class, 'updateProfile'])->name('update-profile');
 
 //khusus admin
 Route::group(['middleware' => ['role:Admin']], function() {
+
 Route::post('/simpan-klasifikasi', [KlasifikasiController::class, 'store'])->name('simpan-klasifikasi');
 Route::get('/edit-klasifikasi/{id}', [KlasifikasiController::class, 'edit'])->name('edit-klasifikasi');
 Route::patch('/update-klasifikasi/{id}', [KlasifikasiController::class, 'update'])->name('update-klasifikasi');

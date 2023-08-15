@@ -35,9 +35,9 @@
                         {{csrf_field() }}
 
                         <div class="form-group">
-                            <label>Jenis Kendaraan</label>
-                            <select name="dataken_id" class="form-control @error('dataken_id') is-invalid @enderror">
-                                <option value="">Pilih jenis kendaran</option>
+                            <label for="dataken_id">Jenis Kendaraan</label>
+                            <select name="dataken_id" id="dataken_id" class="form-control @error('dataken_id') is-invalid @enderror">
+                                <option value="">Pilih jenis kendaraan</option>
                                 @foreach ($dataken as $item)
                                 <option value="{{ $item->id }}">
                                     {{ $item->merk->merk." | ".$item->jenis->jenis_kendaraan."(".$item->tahun_pembuatan.") - ".$item->no_polisi }}
@@ -183,7 +183,7 @@
                         <div class="card-box table-responsive">
 
                             <table id="datatable" class="table table-bordered  dt-responsive nowrap"
-                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                style="border-collapse: collapse; border-spacing: 0; width: 100%;" data-page-length='25'>
 
                                 <thead>
                                     <tr>

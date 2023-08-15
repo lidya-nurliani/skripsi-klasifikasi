@@ -255,7 +255,7 @@
  
 
                                     <div class="card-box table-responsive">
-                                        <table id="datatable" class="table table-bordered  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <table id="datatable" class="table table-bordered  dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;" data-page-length='25'>
     
                                             <thead>
                                             <tr>
@@ -273,7 +273,7 @@
                                             </thead>
     
     
-                                            <tbody>
+                                        <tbody>
                                             @foreach ($dataken as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
@@ -313,21 +313,20 @@
                                                                             </form>
                                                                         </div>
                                                                     </div>
-                                                            </div>
-                                                        </div><!-- /.modal-content -->
-                                                    </div><!-- /.modal-dialog -->
-                                                </div><!-- /.modal -->
+                                                                </div>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                    </div><!-- /.modal -->
                                                 </td>
-                                                @endrole
-                                                </tr>
-                                                @endforeach
-                                                </tbody>
- 
-                                        </table>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div> <!-- end row -->
+                                            @endrole
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                        </table>
+                 </div>
+             </div>
+        </div>
+   </div> <!-- end row -->
     
     
                           
@@ -347,7 +346,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                2023 &copy; DISPANTPH <a href="#">Coderthemes</a>
+                                2023 DISPANTPH <a href="#">Coderthemes</a>
                             </div>
                         </div>
                     </div>

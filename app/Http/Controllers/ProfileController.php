@@ -46,6 +46,40 @@ class ProfileController extends Controller
         
     }
 
+    public function updateProfile(Request $request, $id)
+{
+    $user = User::findOrFail($id);
+
+    // Validasi data berdasarkan peran pengguna
+    $validatedData = [
+        'password_baru' => ['required', 'min:8', 'confirmed'],
+        'foto_profil' => ['image', 'max:2048'],
+    ];
+
+    if (auth()->user()->hasRole('admin')) {
+        $validatedData['password_lama'] = ['required', 'password'];
+    }
+
+    $request->validate($validatedData);
+
+    // Jika pengguna adalah admin dan memasukkan password lama
+    if (auth()->user()->hasRole('admin') && !Hash::check($request->password_lama, $user->password)) {
+        return redirect()->back()->with('error', 'Password lama tidak sesuai.');
+    }
+
+    $user->password = Hash::make($request->password_baru);
+
+    if ($request->hasFile('foto_profil')) {
+        // Proses upload foto dan simpan path ke database
+        // ...
+    }
+
+    $user->save();
+
+    return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
+}
+
+
     public function edit($id) {
         
         $role = Role::all(); 

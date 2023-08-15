@@ -33,8 +33,8 @@
 
                         <div class="row justify-content-md-center">
                             <div class="col-6">
-                            <label for="dataken">jenis kendaraan</label>
-                            <select name="dataken_id" id="dataken" class="form-control @error('dataken_id') is-invalid @enderror">
+                            <label for="dataken_id">jenis kendaraan</label>
+                            <select name="dataken_id" id="dataken_id" class="form-control @error('dataken_id') is-invalid @enderror">
                                 <option value="">pilih data kendaraan</option>
                                 @foreach ($dataken as $item)
                                 <option value="{{ $item->id }}">
